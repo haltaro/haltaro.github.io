@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/page5/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/06/17/intro-to-lightgbm">PythonとLight GBMで遊ぶNotebookを作った</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>知り合いから「プログラミングしたことないけどLight GBMを使ってみたい．2時間くらいで教えてくれ」と言われた．2時間だと理論面をカバーするのは難しいので，とりあえず触ってみることを目標に，Pythonおよび関連ライブラリの基礎（のさらにごく一部）でさくっと遊ぶNotebookを作った．勉強会当日は一緒に動かしながらレクチャーする予定．
+
+対象者
+
+
+  統計的な専門用語（平均，分散，相関係数，平均二乗誤差，等々）に馴染みがある．
+  Excelでデータ分析をしたことがある．
+  Pythonどころか，プログラミング自体の経験がない．
+
+
+初学者を対象とするため，用語の厳密さよりもわかりやすさを重視した．
+
+レポジトリ
+
+haltaro/intro-to-lightgbm - GitHub
+
+make_data.ipynb
+
+データ加工を行う自分用のNotebook．Bostonデータは，sklearnから直接ダウンロードできるが，より実務に近い使い方をしてもらうため，一旦csvファイルに加工した．また，回帰問題だけでなく識別問題にも触れてもらいたいということでseabornからtitanicをcsvファイルとして保存した．カテゴリカル変数は，その対応方法も体験して欲しかったので敢えてそのまま残している1．
+
+intro_to_python.ipynb
+
+Pythonの基本の基本から，numpy，matplotlib，pandas，sklearn，そしてlightgbmで遊べる構成にした．以下はその詳細である．
+
+Jupyter notebook
+
+そもそもJupyter notebookに馴染みがないと思うので，簡単に操作方法を記載した．
+
+Python：基本の基本
+
+時間に限りがあるので，データ分析に特化して，四則演算，変数への代入，リスト操作，ループ，条件分岐について記載した．これでなんとなくわかった気になってほしい．
+
+numpy
+
+ベクトル，行列，および統計量の計算方法を記載した．
+
+matplotlib
+
+折れ線グラフ，散布図，棒グラフ，ヒストグラムの表示方法を記載した．
+
+pandas
+
+データの読み込み，統計量の計算，ソート，フィルタリング，numpy.arrayへの変換方法等を記載した．
+
+sklearn
+
+線形回帰モデルLinearRegressorや平均絶対誤差の計算方法を記載した．
+
+lightgbm
+
+学習方法，ハイパーパラメータのチューニング方法などを記載した．
+
+感想
+
+これで十分だとは全く思っていないが，なんとなく雰囲気を掴む程度のものはできたと思う．これをきっかけに興味を持ってくれたら嬉しい．勉強会でフィードバックがあったらNotebookを修正したい．
+
+  
+    
+      結局，時間切れでtitanicデータで遊ぶ部分は作れなかった． &#8617;
+    
+  
+
+</p>-->
+      <p><p>知り合いから「プログラミングしたことないけどLight GBMを使ってみたい．2時間くらいで教えてくれ」と言われた．2時間だと理論面をカバーするのは難しいので，とりあえず触ってみることを目標に，Pythonおよび関連ライブラリの基礎（のさらにごく一部）でさくっと遊ぶ<a href="https://github.com/haltaro/intro-to-lightgbm">Notebook</a>を作った．勉強会当日は一緒に動かしながらレクチャーする予定．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">June 17, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#machine learning">Machine learning</a>, 
+        
+      
+        
+        <a href="/categories/#python">Python</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/06/16/too-old-openssl">OpenSSLが古すぎてbundle updateできない</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Algoliaで全文検索機能を実装するためにGemfileを書き換えて$ bundle updateしたところ，OpenSSLが古すぎると叱られた．How to troubleshoot RubyGems and Bundler TLS/SSL Issues - Bundler Docsを参考に対応したら解決した． 症状 bundle updateしたら，次のようなエラーが出た． よく見たら，冒頭に以下のような警告が．OpenSSLのバージョンが古すぎるのが原因らしい． 対応記録 ほぼ原因はわかっていたが，念の為How to troubleshoot RubyGems and Bundler TLS/SSL Issues - Bundler Docsを参考に以下のテストを実行した． すると，案の定，OpenSSLのバージョンが古いことがわかった． Ruby using wrong version of opensslを参考に以下を実行した． するとbrew reinstall opensslしろと怒られた． これで再度$ ruby -ropen-uri -e 'eval open("https://git.io/vQhWq").read'にトライしたが，解決せず．How to troubleshoot RubyGems and Bundler...</p>-->
+      <p><p><a href="https://haltaro.github.io/2018/06/16/jekyll-algolia">Algoliaで全文検索機能を実装</a>するために<code class="highlighter-rouge">Gemfile</code>を書き換えて<code class="highlighter-rouge">$ bundle update</code>したところ，<code class="highlighter-rouge">OpenSSL</code>が古すぎると叱られた．<a href="https://bundler.io/guides/rubygems_tls_ssl_troubleshooting_guide.html#the-solutions">How to troubleshoot RubyGems and Bundler TLS/SSL Issues - Bundler Docs</a>を参考に対応したら解決した．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">June 16, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#ruby">Ruby</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/06/16/jekyll-algolia">JekyllにAlgoliaで全文検索機能を実装する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>本サイトに待望の全文検索機能を実装した．Algolia社のDocSearchの審査に通らなかったので，同社のFree hacker planを利用した． Algolia Algoliaは，リアルタイム検索をSaaSで提供するサービス群．今回は，DocSearchおよびFree hacker planの利用を検討した． DocSearch DocSearch申請用ページで登録したURLが審査に通ると，Algoliaのクローラが自動でインデックスファイルを構築し，検索用APIを公開してくれるという，ゆとりには嬉しいサービス．何を隠そうJekyllの検索システムもこれで実装されている．今回は残念ながら審査に通らなかった1ので，Free hacker planを利用することにした． Free hacker plan 自力で作成したインデックスファイルをAlgoliaにアップロードし，検索用APIを利用するプラン．マスターデータは1万件まで登録でき，APIを月10万回まで利用できる．Algoliaを利用してサイト内検索機能を実装する - WEB EGGによると，上限をオーバーすると検索もコンテンツの追加もできなくなるみたい．月1万PV程度のブログでギリギリ足りない感じらしいので，本ウェブサイトなら余裕である2． 幸い，Jekyll向けのプラグインがあるため，私でも簡単に実装できた．以下に手順を示す． 手順 以下は基本的にAlgolia for Jekyll - AlgoliaおよびBlog search - Algolia for Jekyllに則っているが，ウェブサイトの一貫性を保つために一部のコードを修正している． Algoliaのユーザ登録 Algoliaからサインアップする．以降の処理で，ダッシュボードのApplication ID，Search-Only API Key，およびAdmin API Keyが必要なのでメモしておく． jekyll-algliaの設定 Gemfileに以下を追記し，$ bundle updateする． _config.ymlにjekyll-algoliaの設定を追加する． インデックスの作成とアップロード シェルで以下を実行する． ここで，Admin API Keyはローカルで保管する必要がある．間違ってGitHub等にアップしないように注意．以降は，検索窓の実装に入る． _layouts/search.html Blog search...</p>-->
+      <p><p>本サイトに待望の<a href="https://haltaro.github.io/search/">全文検索機能を実装</a>した．Algolia社の<a href="https://community.algolia.com/docsearch/">DocSearch</a>の審査に通らなかったので，同社の<a href="https://www.algolia.com/pricing">Free hacker plan</a>を利用した．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">June 16, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#jekyll">Jekyll</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/06/15/rename-permalinks">CentrariumのPostsをCategoriesにリネームする</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>近々，全文検索機能を実装し，現在のPostsページに配置しようと考えている．とは言え，現在のPostsページのcategories一覧は便利なので，できれば残したい．そこで，一旦PostsページをCategoriesページとしてリネームして退避することにした．
+
+手順
+
+posts.html
+
+まず，posts.htmlをcategories.htmlにリネームする．フロントマターを次のように変更する．
+
+
+
+index.html
+
+index.htmlで列挙される，各ポストのカテゴリへのリンク先を，/posts/#から/categories/#に変更する．
+
+
+
+_layouts/post.html
+
+_layouts/post.html
+の各カテゴリへのリンク先を，/posts/#から/categories/#に変更する．
+
+
+
+</p>-->
+      <p><p>近々，全文検索機能を実装し，現在の<code class="highlighter-rouge">Posts</code>ページに配置しようと考えている．とは言え，現在の<code class="highlighter-rouge">Posts</code>ページの<code class="highlighter-rouge">categories</code>一覧は便利なので，できれば残したい．そこで，一旦<code class="highlighter-rouge">Posts</code>ページを<code class="highlighter-rouge">Categories</code>ページとしてリネームして退避することにした．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">June 15, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#jekyll">Jekyll</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/06/15/jekyll-archives">Centrariumのjekyll-archives問題を回避する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>このウェブサイトのベーステーマであるCentrariumは，非常に完成度が高く，使い勝手が良いテーマである．しかし，私の力不足のため，内部で利用されているjekyll-archivesがまともに動作せず，各ポストのカテゴリリンク先が正しく貼れていなかった．いろいろ試した結果，_config.ymlでjekyll-archivesを無効化したら，すべての問題が解決したのでメモしておく．
+
+環境
+
+Gemfileは以下のような感じ．
+
+
+
+手順
+
+_config.ymlにおける，jekyll-archives関連のすべての設定をコメントアウトする．
+
+
+
+これだけでOK．各ポストのカテゴリリンク先は，/posts/#に向けて貼られるようになる．これは，index.htmlや_layouts/post.htmlにおいて次のようにリンク先を指定しているため．
+
+
+
+感想
+
+カテゴリごとに独立したページを作成したいわけではないので，この対応で十分．
+</p>-->
+      <p><p>このウェブサイトのベーステーマである<a href="https://github.com/bencentra/centrarium">Centrarium</a>は，非常に完成度が高く，使い勝手が良いテーマである．しかし，私の力不足のため，<a href="https://haltaro.github.io/2018/02/11/theme-change">内部で利用されているjekyll-archivesがまともに動作せず</a>，各ポストのカテゴリリンク先が正しく貼れていなかった．いろいろ試した結果，<code class="highlighter-rouge">_config.yml</code>で<code class="highlighter-rouge">jekyll-archives</code>を無効化したら，すべての問題が解決したのでメモしておく．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">June 15, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#jekyll">Jekyll</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+			
+			<a class="newer-posts" href="/page4">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			
+		
+		<span class="page-number">Page 5 of 15</span>
+		
+		<a class="newer-posts" href="/page6">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

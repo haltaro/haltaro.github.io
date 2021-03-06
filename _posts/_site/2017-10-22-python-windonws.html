@@ -1,0 +1,35 @@
+<p><a href="https://anaconda.org/">Anaconda</a>とは，<a href="https://www.python.org/">Python</a>のライブラリパッケージである．普段はUbuntuでコーディングしているが，<a href="https://haltaro.github.io/2017/10/15/jekyll-windows">以前の記事</a>で述べたように，しばらくWindowsで作業する必要が出てきた．そこで，Windows 7に<a href="https://anaconda.org/">Anaconda 5.0.0</a>環境を構築した．仮想環境のactivateにハマったのでメモしておく．</p>
+
+<h1 id="section">前提</h1>
+
+<ul>
+  <li>Windows 7 Professional, Serice Pack 1, 64 bit</li>
+  <li>Anaconda 5.0.0</li>
+  <li>PowerShell 5.0.10586.117</li>
+</ul>
+
+<h1 id="section-1">手順</h1>
+
+<h2 id="anaconda">1. Anacondaインストール</h2>
+
+<p><a href="https://www.anaconda.com/download/#windows">Anaconda cloud</a>から，Python 3.6対応の64 bit Windows向けインストーラをダウンロード．デフォルト設定でインストール．</p>
+
+<h2 id="section-2">2. 環境変数の設定</h2>
+
+<p><a href="https://qiita.com/dddmm/items/2ccfe13d04ba30238bf3">Qiita，Anaconda4.4.0 最初の設定 for Windows</a>を参考に，環境変数<code class="highlighter-rouge">Path</code>にAnacondaのパスを追加．自分の場合は，<code class="highlighter-rouge">C:\Users\haltaro\Anaconda3\Scripts</code>だった．</p>
+
+<h2 id="section-3">3. 設定ファイルの作成</h2>
+
+<p>PowerShellから設定ファイルを作成．</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; jupyter notebook --generate-config
+</code></pre>
+</div>
+
+<h2 id="activatedeactivate">4. activate，deactivateパッチ</h2>
+
+<p>このままだと，PowerShellから仮想環境をactivateできない．<a href="https://qiita.com/ihlbbfbtr/items/097553ccd51543ee31fb">Qiita - PowerShellでAnacondaの仮想環境をactivateするメモ</a>を参考に，<a href="https://github.com/Liquidmantis/PSCondaEnvs">Liquidmantis - PSCondaEnvs</a>から<code class="highlighter-rouge">activate.ps1</code>と<code class="highlighter-rouge">deactivate.ps1</code>をダウンロードし，<code class="highlighter-rouge">activate.bat</code>と<code class="highlighter-rouge">deactivate.bat</code>があるフォルダにコピー．自分の場合は，<code class="highlighter-rouge">C:\Users\haltaro\Anaconda3\Scripts</code>だった．</p>
+
+<h1 id="section-4">感想</h1>
+
+<p>PowerShellは便利だけど，割とハマることが多い．早くLinux届かないかしら．</p>

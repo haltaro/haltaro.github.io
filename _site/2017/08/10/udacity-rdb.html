@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Udacity, Intro to Relational Databases</title>
+  <meta name="description" content=" 更新中：Udacity, Intro to Relational Databasesの受講メモ．5部構成の無料講座．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content=" 更新中：Udacity, Intro to Relational Databasesの受講メモ．5部構成の無料講座．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Udacity, Intro to Relational Databases" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2017-08-13-data.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Udacity, Intro to Relational Databases">
+  <meta name="twitter:description" content=" 更新中：Udacity, Intro to Relational Databasesの受講メモ．5部構成の無料講座．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2017-08-13-data.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2017/08/10/udacity-rdb">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2017-08-13-data.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">Udacity, Intro to Relational Databases</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">August 10, 2017</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#data science">Data science</a>, 
+    
+  
+    
+    <a href="/categories/#moocs">Moocs</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="https://www.udacity.com/course/intro-to-relational-databases--ud197">Udacity, Intro to Relational Databases</a>の受講メモ．5部構成の無料講座．</p>
+
+<iframe width="100%" height="460" src="https://www.youtube.com/embed/jyju2P-7hPA?rel=0" frameborder="0" allowfullscreen=""></iframe>
+
+<h1 id="1-data-and-tables">1. Data and Tables</h1>
+
+<ul>
+  <li>Databaseは，同時に複数の人が編集可能．これが，普通のファイルと異なる点．</li>
+  <li>Tableは，headerとbodyからなる．headerは，table nameと，column nameと，column typeからなる．bodyは，rowsとcolumnsからなる．</li>
+  <li>複数の行に跨る演算をaggregationと呼ぶ．SQLで使えるaggregationの代表的なものとして，count，avg，max，min，sumなどがある．</li>
+  <li>codeからdatabaseに<code class="highlighter-rouge">query</code>を出すと，<code class="highlighter-rouge">result</code>を返される．<code class="highlighter-rouge">result</code>は，原則的にTable形式．</li>
+  <li>Database中でデータの唯一性を担保するために，idを与えることがある．このように識別に用いられるcolumnを<code class="highlighter-rouge">primary key</code>と呼ぶ．</li>
+  <li>複数の情報を持つオブジェクトを定義するよりは，複数のTableで管理したほうが効率的．</li>
+</ul>
+
+<h1 id="2-elements-of-sql">2. Elements of SQL</h1>
+
+<ul>
+  <li>SQLのtypeとして，<code class="highlighter-rouge">text</code>，<code class="highlighter-rouge">integer</code>，<code class="highlighter-rouge">date</code>などがある．<code class="highlighter-rouge">text</code>および<code class="highlighter-rouge">date</code>は，<code class="highlighter-rouge">'2017-08-10'</code>のようにシングルクォートで囲む．主なSQLのtypeは以下．</li>
+  <li>Text and string types
+    <ul>
+      <li><code class="highlighter-rouge">text</code>：長さに制限のない文字列．Pythonの<code class="highlighter-rouge">str</code>に相当．</li>
+      <li><code class="highlighter-rouge">char(n)</code>：長さが<code class="highlighter-rouge">n</code>の文字列．</li>
+      <li><code class="highlighter-rouge">varchar(n)</code>：長さが最大<code class="highlighter-rouge">n</code>の文字列．</li>
+    </ul>
+  </li>
+  <li>Numeric types
+    <ul>
+      <li><code class="highlighter-rouge">integer</code>：整数型．Pythonの<code class="highlighter-rouge">int</code>に相当．</li>
+      <li><code class="highlighter-rouge">real</code>：浮動小数点型．Pythonの<code class="highlighter-rouge">float</code>に相当．精度は小数第6位．</li>
+      <li><code class="highlighter-rouge">double precision</code>：倍精度小数点．精度は小数第15位．</li>
+      <li><code class="highlighter-rouge">decimal</code>：正確な小数型（？）．</li>
+    </ul>
+  </li>
+  <li>Date and time types
+    <ul>
+      <li><code class="highlighter-rouge">date</code>：日付型．年，月，日．</li>
+      <li><code class="highlighter-rouge">time</code>：時刻型．</li>
+      <li><code class="highlighter-rouge">timestamp</code>：<code class="highlighter-rouge">date</code>および<code class="highlighter-rouge">time</code>．</li>
+    </ul>
+  </li>
+  <li>基本構文：<strong>select</strong> <em>columns</em> <strong>from</strong> <em>tables</em> <strong>where</strong> <em>condition</em>;</li>
+  <li>出力数に制限を設けるとき：<strong>limit</strong> <em>count</em> [<strong>offset</strong> <em>skip</em>]</li>
+  <li>並び替えるとき：<strong>order by</strong> <em>columns</em> [<strong>desc</strong>]</li>
+  <li>結果をまとめるとき：<strong>group by</strong> <em>columns</em>
+    <ul>
+      <li>例えば，同じ名前の動物の数を数えるとき：<code class="highlighter-rouge">select name, count(*) as num from animals group by name;</code></li>
+    </ul>
+  </li>
+  <li>Pythonでも同様のことはできる．違いはスピードとメモリ．Databaseは格段に高速に，かつメモリ消費を抑えて実行できる．</li>
+  <li>新たに要素を追加するとき：<strong>insert into</strong> <em>table</em> <strong>values (</strong> <em>val1, val2, …</em> <strong>)</strong>;</li>
+  <li>ただし，特定の列を指定して追加するときは：<strong>insert into</strong> <em>table</em>(<em>column1, column2, …</em>) <strong>values (</strong> <em>val1, val2, …</em> <strong>)</strong>;</li>
+  <li>Databaseを結合するとき：<em>T</em> <strong>join</strong> <em>S</em> <strong>on</strong> <em>T.color = S.paint</em>
+    <ul>
+      <li>例えば，<code class="highlighter-rouge">fish</code>を食べる動物の名前を抽出したとき：<code class="highlighter-rouge">select name from animals join diet on animals.species=diet.species where food='fish';</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">where</code>は<code class="highlighter-rouge">group by</code>の前に適用されるが，<code class="highlighter-rouge">having</code>は<code class="highlighter-rouge">group by</code>の後に適用される．</li>
+  <li>Lesson 3に向けて，<a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>と<a href="https://www.vagrantup.com/">Vagrant</a>で環境を構築．Vagrantってこんな便利だったのか．
+    <ul>
+      <li>仮想環境構築：<code class="highlighter-rouge">$ vagrant up</code></li>
+      <li>ログイン：<code class="highlighter-rouge">$ vagrant ssh</code></li>
+      <li>ファイル共有は<code class="highlighter-rouge">/vagrant</code>ディレクトリ．</li>
+      <li>PostgreSQLの起動：<code class="highlighter-rouge">$ psql</code></li>
+      <li>ログアウト：<code class="highlighter-rouge">$ exit</code>あるいは<code class="highlighter-rouge">Ctrl-D</code></li>
+    </ul>
+  </li>
+  <li>VagrantとDockerの違いについては，以下が参考になった．
+    <ul>
+      <li><a href="http://qiita.com/hidekuro/items/fc12344d36d996198e96">VagrantとDockerについて名前しか知らなかったので試した</a></li>
+      <li><a href="http://acchi-muite-hoi.hatenablog.com/entry/2016/05/30/041618">dockerとvagrantの違い言える？新人エンジニアでも分かった気になれる俺流まとめ</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="3-python-db-api">3. Python DB-API</h1>
+
+<ul>
+  <li>PythonからDatabaseを叩く際，DB-APIを用いる．DB-APIはPythonの組み込みモジュール．Databaseに応じて，DB-APIモジュールは異なる：SQLiteは<code class="highlighter-rouge">sqlite3</code>，PostgreSQLは<code class="highlighter-rouge">psycopg2</code>，ODBCは<code class="highlighter-rouge">pyodbc</code>，MySQLは<code class="highlighter-rouge">mysql.connector</code>など．</li>
+  <li>例えば，次のようなPythonコードを書く．</li>
+</ul>
+
+<script src="https://gist.github.com/haltaro/92a4506f6b0f3461b217934860490173.js"></script>
+
+<ul>
+  <li>Databaseにおける追加や削除を行った後は，必ず<code class="highlighter-rouge">Connection.commit()</code>する．</li>
+  <li>PostgreSQLを使って，簡易なForumサイトを作成する．実験環境を確認．
+    <ul>
+      <li><code class="highlighter-rouge">$ vagrant up</code>で仮想環境を立ち上げ．</li>
+      <li><code class="highlighter-rouge">$ vagrant ssh</code>で仮想環境にログイン．</li>
+      <li><code class="highlighter-rouge">$ cd /vagrant/forum</code>で当該ディレクトリに移動．</li>
+      <li><code class="highlighter-rouge">$ python form.py</code>でForumサーバを起動．ブラウザで<code class="highlighter-rouge">http://localhost:8000</code>にアクセス．適当にMessageを投稿してみる．</li>
+      <li><code class="highlighter-rouge">Ctrl+C</code>と<code class="highlighter-rouge">$ python form.py</code>で再起動すると，先ほど投稿したMessageが消えていることがわかる．以降では，Messageを保存する機能をPostgreSQLで実装する．</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="4-deeper-into-sql">4. Deeper into SQL</h1>
+
+<h1 id="5-tournament-database">5. Tournament Database</h1>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

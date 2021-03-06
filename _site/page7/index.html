@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/page7/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/04/15/sort-categories">JekyllのCategories一覧をアルファベット順にする</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>PostsページのCategoriesが出現順で使いづらかったので，アルファベット順になるようコードをを修正した．
+
+こちらは修正前．
+
+
+そしてこちらが修正後．
+
+
+アルファベット順になった．
+
+参考
+
+
+  Phlow/jekyll-sorted-category-for-loop-alphabetical-date.liquid - Gist
+
+
+手順
+
+./posts.mdのcategoryループを
+
+
+
+以下のように修正した．
+
+
+
+感想
+
+そろそろ真面目にRubyを勉強するべきかもしれない．
+</p>-->
+      <p><p><a href="https://haltaro.github.io/posts/">Posts</a>ページのCategoriesが出現順で使いづらかったので，アルファベット順になるようコードをを修正した．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">April 15, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#jekyll">Jekyll</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/03/29/dmm-english">DMM英会話受講メモ：2018年3月</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>仕事が落ち着いてきたので，DMM英会話を再開することにした． 20180313 以前使っていたskypeアカウントは使えないことが発覚．なんとかならないか公式に問い合わせてみる． 20180314 対応メールが来ていたので打ち返した．たぶん入会可能になるのは明日以降． 20180315 無事対応していただけた．明日から体験授業． 20180316 DMM英会話，無料体験第一回． Theoretical Physicist Stephen Hawking Dies at 76 intricacy：the details of something that is complex Lucasian：教員職の一種．https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%AB%E3%82%B9%E6%95%99%E6%8E%88%E8%81%B7 confine：限定する，制限する，閉じ込める． proponent：提唱者，主張者． 久々の英会話で楽しかった． 20180319 DMM英会話，無料体験二回目． Smart Mirrors Used to Lure Shoppers Back into Stores lure：to make someone do something by presenting it in an attractive way．...</p>-->
+      <p><p>仕事が落ち着いてきたので，<a href="http://eikaiwa.dmm.com/">DMM英会話</a>を再開することにした．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 29, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/03/11/fastai-01-01">Fast.ai，Practical Deep Learning for Coders 2018：1．Dogs and cats</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p> 更新中：Fast.aiのMOOCPractical Deep Learning for Coders 2018の受講を開始した．全7回の講座で，KaggleマスターのJeremy Howardから無料でDeep learningを教えてもらえるらしい．第1回は，犬と猫の分類コンペをベースに，CNNのチューニングについて学ぶ．
+
+教材
+
+2018年に入ってからビデオの内容を更新したらしいので注意．
+
+
+  Video lesson：全7本．それぞれ2時間以上ある．
+  Notebook：Videoのデモの詳細な説明がある．
+  Wiki：更に詳細な説明がある．
+  Forum：わからないことはここで聞く．
+
+
+Lesson 1. Recognizing cats and dogs
+
+
+
+GPUの準備
+
+GPUの準備方法として，いくつかのオプションがある：
+
+
+  Crestle
+  Paperspace：Paperspace for fast.ai - GitHubが参考になる．
+  AWS：AWS fastami GPU Image Setupが参考になる．
+
+
+とりあえず，使ったことのあるAWSを選択する．
+
+参考
+
+
+  Getting started
+  Paperspace for fast.ai - GitHub
+  fast.aiの最初の最初のAWS設定につまずかないために - Qiita
+
+</p>-->
+      <p><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="http://www.fast.ai/">Fast.ai</a>のMOOC<a href="http://course.fast.ai/">Practical Deep Learning for Coders 2018</a>の受講を開始した．全7回の講座で，KaggleマスターのJeremy Howardから無料でDeep learningを教えてもらえるらしい．第1回は，犬と猫の分類コンペをベースに，CNNのチューニングについて学ぶ．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 11, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#deep learning">Deep learning</a>, 
+        
+      
+        
+        <a href="/categories/#moocs">Moocs</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/03/05/jupyter-font">Jupyter notebookのフォントを変更する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Jupyter notebookのコードブロックを等幅フォントにしたい．Jupyterthemeを使っても良いが，拡張機能のボタンが消えてしまうことがあり不便．~/.jupyter/custom/custom.cssをいじって変更した．
+
+参考
+
+  Jupyter notebookを等幅フォントにする - 元文学部統計学専攻学生の備忘録
+  Jupyter Notebookを自分仕様に：背景，アイコンの変更 - Qiita
+
+
+手順
+
+~/.jupyter/custom/custom.cssに，.CodeMirror pre, .output pre { font-family: Monaco, monospace; }を追記して，Jupyterを再起動する．
+</p>-->
+      <p><p><a href="http://jupyter.org/">Jupyter notebook</a>のコードブロックを等幅フォントにしたい．<a href="https://github.com/dunovank/jupyter-themes">Jupytertheme</a>を使っても良いが，拡張機能のボタンが消えてしまうことがあり不便．<code class="highlighter-rouge">~/.jupyter/custom/custom.css</code>をいじって変更した．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 5, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#python">Python</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/03/03/kaggle-wikipedia-1st">Kaggle，Web Traffic Time Series Forecasting，1st place solution</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Kaggle，Web Traffic Time Series Forecastingの1st place solutionのメモ．Wikipediaのpageviewを予測するコンテスト．解法のポイントは，一年前と四半期前の値を特徴量として追加し，RNN seq2seqを使うこと． 概要 TL;DR 予測には２つの情報を用いた： ローカルな特徴量．自己相関モデル，移動平均モデル，季節性モデルなど． グローバルな特徴量．年周期，四半期周期のトレンド． RNN seq2seqを利用した理由は： RNNはARIMAの自然な拡張と考えられるし，柔軟で表現力が高い． RNNはノンパラメトリック． RNNはどんな特徴量も簡単に扱える． seq2seqはこのタスクに適していると考えた．直前の時系列の予測値を入力として使うため，誤差が蓄積されやすいため，結果として極端な予測は避けるようになる1． Deep learningは流行っている． Feature engineering 利用した特徴量は： pageviews：log1p()で変換したビュー数． agent，country，site：ページのURLから抽出． year-to-year autocorrelation，quarter-to-quarter autocorrelation：年周期や四半期周期のトレンドを捉えるため． page popularity：人気のページとそうでないものは，動きが異なるため． lagged pageviews：365日前と90日前のpageview． Feature preprocessing One-hot encodingしたカテゴリカル変数を含む，全ての特徴量をそれぞれ独立に正規化した．時不変な特徴量（countryなど）を時系列データ長にtf.tile()で変換した． 学習用データは，固定長でランダムに抽出した． Model core EncoderとしてcuDNN GRUを使った．cuDNN GRUはドキュメントが貧弱だが，通常のTensorFlowのRNNCellsより5倍から10倍ほど高速だ． DecoderとしてGRUBlockCellをtf.while_loop()でラップして使った．ループの中で，直前の時系列の予測結果を次のセルに入力する． Working with long timeseries LSTM/GRUはせいぜい100から300アイテム前の情報しか保持できないため，700日分のpageviewを使用する今回のタスクには，直接利用できない． 最初はattention的な考え方で，一年前と四半期前のEncoderの出力をDecoderの入力に使うことを考えた．しかし，処理が重い割に性能が出なかった．...</p>-->
+      <p><p><a href="https://www.kaggle.com/c/web-traffic-time-series-forecasting">Kaggle，Web Traffic Time Series Forecasting</a>の<a href="https://www.kaggle.com/c/web-traffic-time-series-forecasting/discussion/43795">1st place solution</a>のメモ．Wikipediaのpageviewを予測するコンテスト．解法のポイントは，一年前と四半期前の値を特徴量として追加し，RNN seq2seqを使うこと．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 3, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#deep learning">Deep learning</a>, 
+        
+      
+        
+        <a href="/categories/#kaggle">Kaggle</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+			
+			<a class="newer-posts" href="/page6">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			
+		
+		<span class="page-number">Page 7 of 15</span>
+		
+		<a class="newer-posts" href="/page8">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

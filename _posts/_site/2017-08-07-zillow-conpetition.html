@@ -1,0 +1,101 @@
+<p><a href="https://www.kaggle.com/c/zillow-prize-1">KaggleのZillow Prize</a>は，<a href="https://www.zillow.com/">Zillow</a>が2017年5月に開始したコンペティション．課題は不動産価格の予測であり，賞金は総額1億円以上（$1,200,000）．</p>
+
+<p>誤訳があるかもしれないのでご注意．</p>
+
+<h1 id="section">1. 背景</h1>
+
+<h2 id="a-kaggle">1.a Kaggle</h2>
+
+<p><a href="https://www.kaggle.com/">Kaggle</a>は，データサイエンティストのプラットフォームである．様々なコンペティションを開催しており，データサイエンティストの腕試しの場として広く認知されている．Kaggleへの参加方法については，<a href="http://qiita.com/taka4sato/items/802c494fdebeaa7f43b7">Kaggle事始め</a>が詳しい．</p>
+
+<h2 id="b-zillow">1.b Zillow</h2>
+
+<p><a href="https://www.zillow.com/">Zillow</a>は，オンライン不動産データベースを運営するアメリカの企業である．アメリカ全土の1億件以上の物件情報を有し，Zestimateと呼ばれる価格見積もりサービスを持つ．</p>
+
+<h1 id="zillow-prize">2. Zillow Prize</h1>
+
+<h2 id="a-">2.a 概要</h2>
+
+<p><a href="https://www.kaggle.com/c/zillow-prize-1">Zillow Prize</a>は，Zillowが2017年5月に開始したコンペティションである．課題は不動産価格の予測で，賞金は総額1億円以上（$1,200,000）．本コンペティションは，Qualifying round（第1ラウンド）とPrivate round（第2ラウンド）からなる．Private roundは，Qualifying roundの上位100チームのみに対し2018年1月1日から実施される．</p>
+
+<p><a href="https://www.kaggle.com/c/zillow-prize-1/data">Data</a>や<a href="https://www.kaggle.com/c/zillow-prize-1/rules">Rules</a>等の詳細は以下．</p>
+
+<h2 id="b-data">2.b Data</h2>
+
+<p>本コンペティションの目的は，Zestimate（<script type="math/tex">z</script>）と実際の売値（<script type="math/tex">s</script>）の対数誤差を予測すること．対数誤差は以下で定義される．</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+logerror = log(z) - log(s) \tag{1}
+\end{align*}</script>
+
+<p>具体的には，2017年秋における<script type="math/tex">logerror</script>を予測する．不動産価格は公開情報なので，取引が始まる前に，モデルの提出を打ち切る．</p>
+
+<p>訓練データとして，2016年の三箇所（Los Angeles，Orange and Ventura，California）の全ての不動産データが提供される．訓練データは2016年10月15日以前の全ての取引と，それ以降のいくつかの取引を含む．public leaderboardのテストデータは，2016年10月15日から同年12月31日までのものである．private leader boardのテストデータは，2017年10月15日から同年12月15日まで（この期間をsales tracking periodと呼ぶ）のものである．つまり，参加者は次の６時点における全ての不動産に対して予測を行う必要がある．</p>
+
+<ul>
+  <li>October 2016 (201610)</li>
+  <li>November 2016 (201611)</li>
+  <li>December 2016 (201612)</li>
+  <li>October 2017 (201710)</li>
+  <li>November 2017 (201711)</li>
+  <li>December 2017 (201712)</li>
+</ul>
+
+<p>当該期間において取引が行われなかった不動産は，scoreの計算に利用されない．31日間のうち，複数回の取引があった場合は，最初の適切な取引をscoreの計算に用いる．</p>
+
+<p>以下は各ファイルの概要．</p>
+
+<ul>
+  <li><code class="highlighter-rouge">properties_2016.csv</code>：2016年の全ての不動産情報．</li>
+  <li><code class="highlighter-rouge">properties_2017.csv</code>：2017年の全ての不動産情報．2017年10月2日に公開予定．</li>
+  <li><code class="highlighter-rouge">train_2016.csv</code>：2016年1月1日から2016年12月31日までの取引情報．</li>
+  <li><code class="highlighter-rouge">train_2017.csv</code>：2017年1月1日から2017年9月15日までの取引情報．2017年10月2日に公開予定．</li>
+  <li><code class="highlighter-rouge">sample_submission.csv</code>：提出用のサンプルファイル．</li>
+</ul>
+
+<h2 id="c-rules">2.c Rules</h2>
+<p>重要そうなものだけ抜粋．</p>
+
+<ul>
+  <li>チーム外に，コードを共有してはならない．ただし，全参加者に共有するのはOK．</li>
+  <li>1チーム最大3人まで．</li>
+  <li>1日5回まで提出可能．最終的に，最大2つの予測結果を投稿可能．</li>
+  <li>賞金総額：$1,200,000
+    <ul>
+      <li>第1ラウンド総額：$50,000
+        <ul>
+          <li>1位：$25,000</li>
+          <li>2位：$15,000</li>
+          <li>3位：$10,000</li>
+        </ul>
+      </li>
+      <li>第2ラウンド総額：$1,150,000
+        <ul>
+          <li>1位：$1,000,000</li>
+          <li>2位：$100,000</li>
+          <li>3位：$50,000</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>第1ラウンドでは，Kernel上でのみ，ソースコードを公開できる<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>．これは，MITライセンスのもとでの譲渡とみなされる．</li>
+  <li>第2ラウンドでは，いかなる形でもソースコードを公開できない</li>
+</ul>
+
+<h1 id="section-1">参考</h1>
+
+<ul>
+  <li><a href="https://www.kaggle.com/c/zillow-prize-1">Kaggle，Zillow Prize</a></li>
+  <li><a href="http://qiita.com/taka4sato/items/802c494fdebeaa7f43b7">Qiita，Kaggle事始め</a>：丁寧なKaggle入門記事．</li>
+  <li><a href="http://qiita.com/TomHortons/items/54b2121a4c5eb0908920">Qiita，Kaggleのコンペティションリスト</a>：Kaggleのコンペティションを，データのタイプで分類．</li>
+  <li><a href="http://realestatetechnews.com/">Real estate tech news</a>：不動産関連xテクノロジーに関するニュースサイト．</li>
+  <li><a href="http://blog.kaggle.com/">No Free Hunch</a>：Kaggle公式ブログ．コンテスト優勝者のモデルが公開されている．</li>
+</ul>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>ここで検討過程を公開しようと思っていたが，どうやらルール違反っぽい．一旦Kernelで公開したものを，日本語訳して自分のサイトで公開するのはOKか？ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>

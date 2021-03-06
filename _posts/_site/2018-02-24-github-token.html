@@ -1,0 +1,43 @@
+<p>複数のGitHubアカウントを制御したい．<a href="https://dev.classmethod.jp/tool/github-ssh-sub-account-setting/">SSHの秘密鍵を複数管理する方法</a>もあるが，設定が結構大変で私には荷が重い．いろいろ調べた結果，<a href="https://qiita.com/tq_jappy/items/6e2f81f372e4abaa5139">HTTPSとトークンを使用する方法</a>が手軽で良さそう．毎回検索するのが面倒なので，メモしておく．</p>
+
+<h1 id="section">手順</h1>
+
+<p>全面的に<a href="https://qiita.com/tq_jappy/items/6e2f81f372e4abaa5139">https+アクセストークンを使ってGitHubのアカウントを使い分ける - Qiita</a>に従う．</p>
+
+<h2 id="github">GitHubアクセストークンの作成</h2>
+
+<p>所望のGitHubアカウントにログインし，<a href="https://github.com/settings/developers"><code class="highlighter-rouge">Settings &gt; Developer settings</code></a>から<code class="highlighter-rouge">Personal access tokens</code>を選択する．</p>
+
+<p><img src="/assets/2018-02-24-github-token.png" alt="github" /></p>
+
+<p><code class="highlighter-rouge">Generate new token</code>を押す．</p>
+
+<p><img src="/assets/2018-02-24-github-options.png" alt="github" /></p>
+
+<p><code class="highlighter-rouge">Token description</code>に，用途がわかるような名前をつける．<code class="highlighter-rouge">Select scopes</code>で，アクセス権を指定できる．とりあえず<code class="highlighter-rouge">repo</code>にチェックしとけば良さそう<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>．私の場合，Gistをブログに埋め込むことがあるので，<code class="highlighter-rouge">gist</code>にもチェックを入れる．これでページ下部の<code class="highlighter-rouge">Generate token</code>を押す．表示されるトークンをクリップボードにコピーする．</p>
+
+<h2 id="section-1">リポジトリをクローン</h2>
+
+<p>次のフォーマットで，リポジトリをクローンする．</p>
+
+<script src="https://gist.github.com/haltaro/82a7e2f6628df832e0ba78aca62a9865.js"></script>
+
+<p>アカウント名を使い分ける場合は，以下の設定を忘れずに．</p>
+
+<script src="https://gist.github.com/haltaro/b23267dfbd159ace2178f805380e48ad.js"></script>
+
+<p>あとは，何も考えずに<code class="highlighter-rouge">git</code>を使えば良い．</p>
+
+<h1 id="section-2">参考</h1>
+
+<ul>
+  <li><a href="https://dev.classmethod.jp/tool/github-ssh-sub-account-setting/">【メモ】githubの複数アカウントにSSH接続するための設定手順 - Developers.IO</a>：SSHを使った方法</li>
+  <li><a href="https://qiita.com/tq_jappy/items/6e2f81f372e4abaa5139">https+アクセストークンを使ってGitHubのアカウントを使い分ける - Qiita</a>：HTTPS＋トークンを使った方法</li>
+</ul>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>他のはよくわからない． <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>

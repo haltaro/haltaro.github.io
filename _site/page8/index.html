@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/page8/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/02/27/intro-to-behavioral-economics">多田洋介，行動経済学入門</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p> 更新中：多田洋介，行動経済学入門を読んだ．心理学の発想を経済活動や経済減少の分析に活かす，行動経済学の基本を学ぶことができた．
+
+行動経済学とは何か？
+
+
+  新古典派と呼ばれる標準的な経済学の世界では，以下のような特徴を持つ合理的経済人（homo economicus）を仮定している：
+    
+      超合理的：全ての情報を完璧に処理し，自己の効用を最大化する意思決定を常に行う．
+      超自制的：時間を通じた活動に関して，はじめに決めた計画通りに実行する．
+      超利己的：他者の利益や公平性といった価値基準を持たない．
+    
+  
+  経済学が合理的経済人を利用する理由：
+    
+      数学的な扱いやすさ．
+      合理的でないものは淘汰されるだろうというダーウィニズム．
+      集合的に人間を見た場合に，非合理的な人間が市場に及ぼす影響は小さいという仮定．
+    
+  
+  行動経済学 とは，標準的な経済学が十分に捉えきれていない人間の行動を，心理学あるいは認知科学といった学問分野研究成果を利用して紐解くことで，説明能力を補強しようという試み．
+  ベイズ・ルール，ゲーム理論，期待効用仮説，時間を通じた消費決定モデルは経済学の標準的なツールだが，これらが現実の人間の行動を的確に表現しているかどうかについては疑問がある．
+
+
+人間はどこまで合理的か?
+
+
+  現実の人々は，膨大な量の情報を処理する能力がないため，必ずしも超合理的な行動を取らない．これを限定合理性を持つ、と呼ぶ．
+  最適化を実行するためにもコストがかかる．このコストを見込んで「どの程度で最適化を打ち切るか」という新たな最適化問題を立式できるが，その新たな問題についても計算コストが存在する．このように，最適化コストを最適化問題自体に組み込むと，終わりのない再帰ループが発生するため，実用上は二つ目の最適化問題で打ち切ることが多いみたい．
+  貨幣錯覚：人々が賃金などを評価する際に，実質価格より名目価格に反応した経済行動を取ってしまうこと．
+  相対価格と絶対価格．調べた方がいいかもしれない．
+  ゲーム理論では他者より深読みして競争を勝ち抜くことは理論上ありえないが，現実には他者の行動の合理性の限界を想定して，他者の裏をかくことが可能．
+  オークションでは勝者の呪いにより，落札者が損をする．
+  限定合理的なプレーヤーが存在することで，合理的なプレーヤーの最適戦略が大きく影響を受ける．
+  価格・賃金の硬直性を説明する一つの手段として限定合理性が用いられることがある．
+
+
+近道を選ぶと失敗する
+
+プロスペクト理論
+
+非合理的な投資家は市場を狂わす
+
+人間は「超」自制的か
+
+人間は他人の目を気にするもの
+
+心理学的アプローチの限界と可能性
+</p>-->
+      <p><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="http://amzn.asia/46XW33f">多田洋介，行動経済学入門</a>を読んだ．心理学の発想を経済活動や経済減少の分析に活かす，行動経済学の基本を学ぶことができた．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 27, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#economics">Economics</a>, 
+        
+      
+        
+        <a href="/categories/#books">Books</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/02/24/github-token">HTTPS+トークンで複数のGitHubアカウントを制御する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>複数のGitHubアカウントを制御したい．SSHの秘密鍵を複数管理する方法もあるが，設定が結構大変で私には荷が重い．いろいろ調べた結果，HTTPSとトークンを使用する方法が手軽で良さそう．毎回検索するのが面倒なので，メモしておく．
+
+手順
+
+全面的にhttps+アクセストークンを使ってGitHubのアカウントを使い分ける - Qiitaに従う．
+
+GitHubアクセストークンの作成
+
+所望のGitHubアカウントにログインし，Settings &gt; Developer settingsからPersonal access tokensを選択する．
+
+
+
+Generate new tokenを押す．
+
+
+
+Token descriptionに，用途がわかるような名前をつける．Select scopesで，アクセス権を指定できる．とりあえずrepoにチェックしとけば良さそう1．私の場合，Gistをウェブサイトに埋め込むことがあるので，gistにもチェックを入れる．これでページ下部のGenerate tokenを押す．表示されるトークンをクリップボードにコピーする．
+
+リポジトリをクローン
+
+次のフォーマットで，リポジトリをクローンする．
+
+
+
+アカウント名を使い分ける場合は，以下の設定を忘れずに．
+
+
+
+あとは，何も考えずにgitを使えば良い．
+
+参考
+
+
+  【メモ】githubの複数アカウントにSSH接続するための設定手順 - Developers.IO：SSHを使った方法
+  https+アクセストークンを使ってGitHubのアカウントを使い分ける - Qiita：HTTPS＋トークンを使った方法
+
+
+  
+    
+      他のはよくわからない． &#8617;
+    
+  
+
+</p>-->
+      <p><p>複数のGitHubアカウントを制御したい．<a href="https://dev.classmethod.jp/tool/github-ssh-sub-account-setting/">SSHの秘密鍵を複数管理する方法</a>もあるが，設定が結構大変で私には荷が重い．いろいろ調べた結果，<a href="https://qiita.com/tq_jappy/items/6e2f81f372e4abaa5139">HTTPSとトークンを使用する方法</a>が手軽で良さそう．毎回検索するのが面倒なので，メモしておく．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 24, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#github">Github</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/02/18/effective-python">Brett Slatkin，Effective Python</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>更新中：Brett Slatkin，Effective Python ―Pythonプログラムを改良する59項目を読む．Pythonを効率的に書くための59のヒントが紹介されている． 特に心に残った項目を以下にまとめる．Jupyter notebookはこちら． 1章．Pythonic thinking リスト内包表記には，3つ以上の式を避ける リスト内包表記に毒されすぎて，もとの表記の何がわかりづらいのか，また修正された表記でわかりやすくなったのかピンとこない．気をつけないと． 大きな内包表記にはジェネレータ式を考える イテレータとジェネレータについては，Pythonのイテレータとジェネレータ - Qiitaがわかりやすい． try/except/else/finallyの各ブロックを活用する except：エラーが補足された場合の処理． else：エラーが捕捉されなかった場合の処理． finally：エラーの捕捉にかかわらず，最後に実行される処理． 2章．関数 Noneを返すよりは例外を選ぶ Noneと，0や空白文字などの他の値がすべて条件式においてFalseと評価されるため，エラーを引き起こしやすい．それはそうと，raise from構文がよくわからない．あとで確認しよう． クロージャが変数スコープとどう関わるか知っておく クロージャとは，関数内の変数の名前解決が，その関数が宣言されたときのスコープで行われるもの．Python Tips： Python でクロージャを使いたい - Life with pythonがとてもわかりやすい． ちなみにここで登場した特殊メソッド__call__(self)は，クラスのインスタンスを関数っぽく呼び出したときに動作するもの．Pythonのクラスにおける__call__メソッドの使い方 - Qiitaがわかりやすい． リストを返さずにジェネレータを返すことを考える これはやってしまいがち．例えばtext中の単語のインデックスを返す関数は次のように定義できる．su ジェネレータを使うと，リストで返すよりもコードが明確になる．また，作業メモリに全ての入出力を保持する必要がないので，どのような長さの入力に対しても出力シーケンスを生成できる． 引数に対してイテレータを使うときには確実さを尊ぶ StopIteration例外が起きたあとのジェネレータをもう一度反復した場合，難の例外も発生しない．つまり，出力のないイテレータと，出力があったが尽きてしまったイテレータを区別できない． よって，関数にイテレータを渡した場合，奇妙な振る舞いや欠損値を生む可能性がある．コンテナとイテレータを区別する方法として，組み込み関数iter()に二度突っ込んで同じ結果が出るか確認する方法がある． イテレータとジェネレータとコンテナの関係については，Python: ジェネレータをイテレータから理解する - CUBE SUGAR CONTAINERがわかりやすい． 可変長引数を使って，見た目をすっきりさせる def function(*arg)と定義すると，引数は可変長であり，内部でタプルとして処理される．またdef function(**arg)と定義すると，やはり引数は可変長であり，内部で辞書型として処理される．pythonの引数にある*hogeとか**mapとか...</p>-->
+      <p><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="http://amzn.asia/gDvdj6b">Brett Slatkin，Effective Python ―Pythonプログラムを改良する59項目</a>を読む．<a href="https://www.python.org/">Python</a>を効率的に書くための59のヒントが紹介されている．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 18, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#python">Python</a>, 
+        
+      
+        
+        <a href="/categories/#books">Books</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/02/17/fish">Ubuntu 16.04にFish環境を構築する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Fish（Frendly Interactive SHell）とは，シェルの一種．デフォルトのタブ保管が便利なので，Macでは重宝している．ローカルのUbuntuデスクトップでも使いたくなり，環境を構築することにした． Fish本体に加え，パッケージ管理ツールのFisherman，FishテーマBobthefish，およびPowerlineフォントを導入した．また，ターミナルエミュレータTerminatorのフォントをPowerline系に変更した．慣れてきたら，FishをデフォルトShellに設定しようと思う． 環境 Ubuntu 16.04 Terminator：1.9.1 手順 Fishインストール 自宅のubuntu-16.04マシンのシェルをfishに変更した - takapi86のブログを参考にした．ppaを追加しないと，最新版のFishをインストールできず，後述するBobthefishのインストールでハマるので注意． Fishermanインストール fisherman/fisherman - GitHubを参考にした． Bobthefishインストール fish shell を使いたい人生だった - Developers.IOを参考にした． Powerlineインストール powerline/fonts - GitHubを参考にした． Terminatorのフォント変更 ターミナルエミュレータ “Terminator” の背景を半透明にする - ablogを参考にした． Terminatorのウインドウ上で右クリックして，Preferenceを選択する． Profiles &gt; Fontで任意のフォントを選択する． 結果 こんな感じになった． 感想 想定よりずっと簡単に導入できた．唯一の不満は，FishはBashと文法が違うこと．デフォルトシェルにするためには，設定ファイル.bashrcを翻訳する必要がある…．いつかやる． 参考 自宅のubuntu-16.04マシンのシェルをfishに変更した - takapi86のブログ fisherman/fisherman - GitHub oh-my-fish/theme-bobthefish -...</p>-->
+      <p><p><a href="https://fishshell.com/">Fish</a>（Frendly Interactive SHell）とは，シェルの一種．デフォルトのタブ保管が便利なので，Macでは重宝している．ローカルのUbuntuデスクトップでも使いたくなり，環境を構築することにした．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 17, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#shell">Shell</a>, 
+        
+      
+        
+        <a href="/categories/#linux">Linux</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/02/17/data-driven">マーク・ジェフリー，データ・ドリブン・マーケティング</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>マーク・ジェフリー，データ・ドリブン・マーケティング - 最低限知っておくべき15の指標を読んだ．どうやら原著は2010年1月に発刊されたらしく，古さを感じる部分があるが，勉強のとっかかりとして基本を押さえるには良いと思った． 概要 かつて，マーケティング施策は定量評価が難しいという風潮があったため，行動に対して評価されることが多かった．そこで本書では，マーケティング施策を定量的に評価するための15の指標と，これらを用いた施策管理方法を紹介する． 1. マーケティング格差 フォーチュン100社に含まれる大企業の中でさえ，マーケティング格差が存在する（2010年当時）． 2. 何から始めるべきか？ データ・ドリブン・マーケティングの障壁として，次の5点がある： 何から手を付ければいいかわからない：まずは小さくはじめて，成功事例を積み上げること． 因果関係がわかならい：適切な指標を使うこと．また，対照実験を行うこと． データが足りない：B2B企業は，代理店にデータ共有のメリットを示すこと． 経営資源やツールが足りない：頑張って絞り出すこと． 組織や人に問題がある：小さく仲間づくりを始めること．可能であれば，役員も巻き込むこと． データ・ドリブン・マーケティングを実践するロードマップ： 設計：関係者が理解しやすい明解な実行計画． 診断：事実把握および洞察． 機会：マーケティング機会の特定とアクションプラン． ツール：定期的なレビューを行う組織体制の構築． プロセス：定期的なレビューに基づく意思決定． 3. 10の伝統的なマーケティング指標 ブランド認知率：商品やサービスの想起で計測する．大規模調査をする予算がない場合は，カスタムURLなどを用いてリーチを計測する． 試乗（お試し）：比較検討・評価段階の指標．試乗など，購入前の商品のお試し使用で評価する． 解約（離反）率：ロイヤルティ指標．解約率や離反率．年単位で計算されることが多い． 顧客満足度：CSAT（Customer Satisfaction）．マーケティングの黄金指標．「友人にこの商品を勧めますか」というアンケートで計測される． オファー応諾率：マーケティング施策の運用効率を表す指標． 利益：売上高 - 費用． 正味現在価値：NPV（Net Present Value）．複利割引した将来的な利益の総和．NPVが正になる施策は実行する価値がある． 内部収益率：IRR（Internal Rate of Return）．NVPが正になるための，利益の割引率． 投資回収期間：売上高が費用を上回るまでにかかる期間． 顧客価値指標：CLTV（Customer Lifetime Value）．当該顧客の将来的な価値を複利割引して総和したもの．CLTVが高い顧客は優良顧客である． 4. 5つの重要な非財務系指標 ブランド認知率，試乗（お試し），解約（離反）率，顧客満足度，オファー応諾率を詳説する． 3年間の離反率を1年間の離反率に換算するとき，単純に3で割っていいんだっけ？三乗根とかじゃないの？ ​優れたロイヤルティマーケティングとは，企業の経済的負担が少なく，かつ顧客への価値提供が大きい施策． ​...</p>-->
+      <p><p><a href="http://amzn.asia/6WKHTCO">マーク・ジェフリー，データ・ドリブン・マーケティング - 最低限知っておくべき15の指標</a>を読んだ．<a href="http://marketing-base.jp/books/6204">どうやら原著は2010年1月に発刊されたらしく</a>，古さを感じる部分があるが，勉強のとっかかりとして基本を押さえるには良いと思った．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 17, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#marketing">Marketing</a>, 
+        
+      
+        
+        <a href="/categories/#books">Books</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+			
+			<a class="newer-posts" href="/page7">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			
+		
+		<span class="page-number">Page 8 of 15</span>
+		
+		<a class="newer-posts" href="/page9">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

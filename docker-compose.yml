@@ -1,0 +1,8 @@
+version: "3"
+services:
+    site:
+        image: starefossen/github-pages:latest
+        volumes:
+            - ./:/usr/src/app
+        ports:
+            - 4000:4000

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>チャットボットを作ろう：2．JekyllサイトでBotUI</title>
+  <meta name="description" content="諸事情により，チャットボットを自作したいと思った．paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！を参考にチャットボットを作成し，本サイトのAbout欄に埋め込んだ．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="諸事情により，チャットボットを自作したいと思った．paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！を参考にチャットボットを作成し，本サイトのAbout欄に埋め込んだ．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="チャットボットを作ろう：2．JekyllサイトでBotUI" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2017-12-25-bot.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="チャットボットを作ろう：2．JekyllサイトでBotUI">
+  <meta name="twitter:description" content="諸事情により，チャットボットを自作したいと思った．paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！を参考にチャットボットを作成し，本サイトのAbout欄に埋め込んだ．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2017-12-25-bot.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2017/12/30/chatbot">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2017-12-25-bot.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">チャットボットを作ろう：2．JekyllサイトでBotUI</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">December 30, 2017</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#javascript">Javascript</a>, 
+    
+  
+    
+    <a href="/categories/#jekyll">Jekyll</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>諸事情により，チャットボットを自作したいと思った．<a href="http://paiza.hatenablog.com/entry/2017/09/21/%EF%BB%BFJavaScript%E3%81%A0%E3%81%91%E3%81%A7%E6%9C%AC%E6%A0%BC%E7%9A%84%E3%81%AA%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E3%83%9C%E3%83%83%E3%83%88%E3%82%92%E9%96%8B%E7%99%BA%E3%81%A7%E3%81%8D%E3%82%8B">paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！</a>を参考にチャットボットを作成し，<a href="https://haltaro.github.io/about/">本サイトのAbout欄</a>に埋め込んだ．</p>
+
+<blockquote>
+  <p><strong>2018/02/11追記</strong>：このあと，本サイトの<a href="http://jekyllthemes.org/">Jekyll theme</a>を<a href="https://github.com/laobubu/jekyll-theme-EasyBook">EasyBook</a>から<a href="https://github.com/bencentra/centrarium">Centrarium</a>に変更した．詳細は<a href="https://haltaro.github.io/2018/02/11/theme-change">Jekyll themeをCentrariumに変更する - Memotaro</a>を参照されたい．</p>
+</blockquote>
+
+<iframe width="100%" height="460" src="https://www.youtube.com/embed/-8c8oNbgoOE" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+
+<p>関連記事はこちら：</p>
+<ul>
+  <li><a href="https://haltaro.github.io/2017/12/25/chatbot">チャットボットを作ろう：1．調査</a></li>
+  <li><a href="https://haltaro.github.io/2017/12/30/chatbot">チャットボットを作ろう：2．JekyllサイトでBotUI</a></li>
+  <li><a href="https://haltaro.github.io/2018/02/04/chatbot">チャットボットを作ろう：3．CSS修正</a></li>
+</ul>
+
+<h1 id="環境">環境</h1>
+
+<ul>
+  <li><a href="http://jekyllthemes.org/themes/easybook/">Easybook</a>：本サイトで利用している<a href="https://jekyllrb-ja.github.io/">Jekyll</a>のテーマ．</li>
+  <li><a href="https://github.com/botui/botui">BotUI</a>：JavaScriptだけで動くチャットボットライブラリ．</li>
+</ul>
+
+<h1 id="手順">手順</h1>
+
+<p><a href="http://paiza.hatenablog.com/entry/2017/09/21/%EF%BB%BFJavaScript%E3%81%A0%E3%81%91%E3%81%A7%E6%9C%AC%E6%A0%BC%E7%9A%84%E3%81%AA%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E3%83%9C%E3%83%83%E3%83%88%E3%82%92%E9%96%8B%E7%99%BA%E3%81%A7%E3%81%8D%E3%82%8B">paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！</a>を参考した．</p>
+
+<h2 id="_includesheadhtmlを追記"><code class="highlighter-rouge">_includes/head.html</code>を追記</h2>
+
+<p>BotUI関連のファイルを，CDN経由で読み込む設定を<code class="highlighter-rouge">_includes/head.html</code>に追記した．</p>
+
+<script src="https://gist.github.com/haltaro/1eb351f9a2abe6d2fc31f0c79a45e548.js"></script>
+
+<h2 id="_layoutsbothtmlを作成"><code class="highlighter-rouge">_layouts/bot.html</code>を作成</h2>
+
+<p>BotUI用の新レイアウト<code class="highlighter-rouge">bot.html</code>を<code class="highlighter-rouge">_layouts/</code>に追加した．</p>
+
+<script src="https://gist.github.com/haltaro/e28df2507fb5599dead68683fc9ca3f8.js"></script>
+
+<p>任意の<code class="highlighter-rouge">id</code>を付与可能．チャットボットを表示したい位置に，<code class="highlighter-rouge">&lt;bot-ui&gt;</code>タグを配置した．</p>
+
+<h2 id="jsbotjsを作成"><code class="highlighter-rouge">js/bot.js</code>を作成</h2>
+
+<p>チャットボット本体となる<code class="highlighter-rouge">bot.js</code>を<code class="highlighter-rouge">js/</code>に追加した．</p>
+
+<script src="https://gist.github.com/haltaro/3c1db5f8bdf01c6f8f76bb9684a680b6.js"></script>
+
+<p><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>をベースとしたメソッドチェーンを繋げて，構成するらしい．詳細はよくわからなかったが，ノリで<code class="highlighter-rouge">then</code>を繋げていったら動くものができた．</p>
+<ul>
+  <li><code class="highlighter-rouge">botui.message.add</code>：新規メッセージの表示．<code class="highlighter-rouge">delay</code>で表示までの待ち時間を，<code class="highlighter-rouge">content</code>で表示内容を指定できる．</li>
+  <li><code class="highlighter-rouge">botui.action.text</code>：入力フォームを表示．<code class="highlighter-rouge">res</code>でユーザの回答を取得できる．</li>
+  <li><code class="highlighter-rouge">botui.action.button</code>：ボタンを表示．<code class="highlighter-rouge">res</code>でユーザの回答を取得できる．</li>
+</ul>
+
+<h2 id="_aboutmdを修正"><code class="highlighter-rouge">_about.md</code>を修正</h2>
+
+<p>Markdownで記載していた自己紹介欄を削除し，<code class="highlighter-rouge">layout</code>を<code class="highlighter-rouge">bot</code>に変更した．</p>
+
+<script src="https://gist.github.com/haltaro/d286f37bc2195d2b6797a38e7c2cf468.js"></script>
+
+<h1 id="課題">課題</h1>
+
+<p>時間切れのため，以下の課題を解決できなかった．時間に余裕ができたら解決したい．</p>
+
+<ul>
+  <li>会話が長くなったとき，サイドバーが二重に表示されてダサい．<a href="https://haltaro.github.io/2018/02/04/chatbot">次回</a>で解決する．</li>
+  <li><a href="https://docs.botui.org/guide.html#botui-markup">BotUI, Guide, BotUI Markup</a>を参考にしたが，URLや画像が埋め込めない．</li>
+  <li>If-Thenルールに則っただけの，人工無能．</li>
+</ul>
+
+<h1 id="参考">参考</h1>
+
+<ul>
+  <li><a href="https://github.com/botui/botui">BotUI</a></li>
+  <li><a href="http://paiza.hatenablog.com/entry/2017/09/21/%EF%BB%BFJavaScript%E3%81%A0%E3%81%91%E3%81%A7%E6%9C%AC%E6%A0%BC%E7%9A%84%E3%81%AA%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E3%83%9C%E3%83%83%E3%83%88%E3%82%92%E9%96%8B%E7%99%BA%E3%81%A7%E3%81%8D%E3%82%8B">paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！</a></li>
+</ul>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

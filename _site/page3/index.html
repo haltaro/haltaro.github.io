@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/page3/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/07/20/esl-02">Trevor Hastie，統計的学習の基礎：2章，教師あり学習の基礎</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>夏休みの宿題として，Trevor Hastie，統計的学習の基礎 ―データマイニング・推論・予測―を勉強している．以下は，第2章：教師あり学習の概要 のメモ． 変数の種類と用語 順序付きカテゴリカル変数：値の順序のみに意味があり，計量としての意味がない変数． 記法： ：入力変数． ：量的な出力． ：質的な出力． 変数そのものを指す場合は大文字（），観測値を指す場合は小文字（）． 行列を指す場合は太字の大文字（），ベクトルを指す場合は，単なる大文字（）． ベクトルの番目の要素の個の観測値をまとめてベクトルで表す場合は，太字で表す（）． 予測値を指す場合は，ハットを用いる（）． 予測のための二つの簡単なアプローチ：最近傍法 データ数がの最近傍法において，有効パラメータ数は． 最近傍法の拡張： 最近傍法では各点の重みをで表すが，カーネル平滑化では滑らかな連続変数で表す． 高次元データの場合，距離尺度を特徴づけるカーネルに修正を加える． 最近傍法では近傍領域を定数モデルで表すが，局所重み付け最小二乗法を用いた局所線形モデルでは線形モデルで表す． 入力変数を基底展開して線形モデルを構築すると任意の複雑なモデルを構築できる． 射影追跡法やニューラルネットワークは，非線形変換と線形モデルを構築したもの． 統計的決定理論 期待予測誤差（Expected Prediction Error）： EPEを最小化するのは，条件付き期待値： 条件付け：同時分布をのように分解すること． 十分な大きさの訓練データが得られれば，となり，万能な近似モデルとなる． は，集合の要素数を表す． 高次元での局所的手法 バイアス-分散分解．平均二乗誤差（MSE）を分解すると，次のようになる．．ここで，は訓練データ集合を表す． 制限の強い仮定に基づく線形モデルと，柔軟な最近傍法は両極端な性質を持つ．以降，これらの中間的な性質を持つ方法を学ぶ． 統計モデル，教師あり学習，関数近似 線形基底展開：． は入力ベクトルに関する関数や変換を表す． ニューラルネットワークはこの一種であり，． 残差二乗和（RSS; Sum of Squared Residuals）： 最尤推定：対数尤度関数を最大化するパラメータを採用する． 量的出力：を最小化する．ここで，は，パラメータで特徴づけられたの確率密度関数．加法的誤差モデル（）において，ならば，最尤推定は最小二乗法と等価になる． 質的出力：を最小化する．ここで，．交差エントロピーとも呼ぶ． 構造化回帰モデル 残差二乗和に基づいて関数を推定するとする． データ数が有限の場合，関数を一意に求めるために，学習に対して制約を設ける． 制約の強さ：近傍領域の大きさ． 制約の複雑さ：近傍領域で想定する規則性．...</p>-->
+      <p><p>夏休みの宿題として，<a href="http://amzn.asia/ay0yxvo">Trevor Hastie，統計的学習の基礎 ―データマイニング・推論・予測―</a>を勉強している．以下は，<strong>第2章：教師あり学習の概要</strong> のメモ．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">July 20, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#machine learning">Machine learning</a>, 
+        
+      
+        
+        <a href="/categories/#statistics">Statistics</a>, 
+        
+      
+        
+        <a href="/categories/#books">Books</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/07/18/macos-to-ubuntu">7年もののMacBook ProがUbuntu 16.04に生まれ変わった</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>MacBook Pro（13-inch Early 2011）の動作が怪しくなってきた．かれこれ7年以上使っているので，そろそろ寿命なのかもしれない．Ubuntu 16.04をインストールして，第二の人生を歩んでもらうことにした． MacでubuntuのインストールUSBを作成する方法と手順 - virtualimentで作成したところ，おそらくフォーマッティングに問題があったため，私の環境ではUSBメモリでブートできなかった．結局，Ubuntu公式チュートリアルを参考に作業したらうまくいった． 環境 MacBook Pro（13-inch Early 2011） プロセッサ：2.7 GHz Intel Core i7 メモリ：8 GB 1333 MHz DDR3 グラフィックス：Intel HD Graphics 3000 512 MB USBメモリ：2GB 手順 USBメモリの準備 ディスクユーティリティで，当該USBメモリを初期化する． フォーマット：MS-DOS (FAT) 方式：GUIDパーティションマップ isoファイルのダウンロード Ubuntu 16.04 LTS 日本語 Remix リリース - ubuntu japanese team1より，ubuntu-ja-16.04-desktop-amd64.isoをダウンロード． Etcherによる書き込み Etcherをインストールして，起動する． Select...</p>-->
+      <p><p>MacBook Pro（13-inch Early 2011）の動作が怪しくなってきた．かれこれ7年以上使っているので，そろそろ寿命なのかもしれない．<a href="https://www.ubuntu.com/">Ubuntu 16.04</a>をインストールして，第二の人生を歩んでもらうことにした．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">July 18, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#mac">Mac</a>, 
+        
+      
+        
+        <a href="/categories/#linux">Linux</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/07/15/jupyter-ec2">EC2にJupyter環境を構築する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>AWSのEC2（Ubuntu 16.04 LTS）に，Jupyter notebookの環境を構築する手順をメモしておく．前提として，EC2インスタンスに対してSSH接続済みであり，Jupyterもインストール済みとする．EC2に限らず，リモートサーバ一般に共通する手順だと思う．
+
+リモート表示設定
+
+EC2上で立ち上げたJupyter notebookをブラウザ経由で使えるようにする．なお，以下の方法を使うと毎回パスワードの入力を求められるようになるので注意．
+
+まずは，jupyter notebook --generate-configで設定ファイルを作成する．次に，ipythonを起動して，パスワードを設定する．
+
+
+
+~/.jupyter/jupyter_notebook_config.pyを開いて，以下のように設定する．
+
+
+
+Jupyter notebook extension
+
+これはリモートサーバに限った作業ではないが，Jupyterの拡張機能をインストールする．
+
+
+
+Jupyter起動後によく使うスクリプト
+
+ついでに，Jupyter起動後によく使うスクリプトをメモしておく．
+
+Notebookの初期設定
+
+グラフ表示およびwarning表示について設定変更する．
+
+
+
+よく使うモジュールのインポート
+
+
+
+フォントの設定
+
+デフォルトのフォント設定だと，matplotlibで日本語を表示できない．以下のようにフォント設定を変更する．
+
+
+
+なお，上記はUbuntu用の設定である．他のOSについては，別途対応されたい．
+
+Bokehの設定
+
+デフォルト設定で日本語を表示できるし，ホバー表示がイイ感なので，最近はBokehを使うことも多い．
+
+
+
+参考
+
+
+  リモートサーバでjupyter notebookを起動させローカル環境で使う - Qiita
+  extensionを追加してもっと快適なJupyter環境を構築する - Qiita
+  Jupyter notebook extensions - GitHub
+
+</p>-->
+      <p><p><a href="https://aws.amazon.com/jp/">AWS</a>のEC2（Ubuntu 16.04 LTS）に，<a href="http://jupyter.org/">Jupyter notebook</a>の環境を構築する手順をメモしておく．前提として，EC2インスタンスに対してSSH接続済みであり，Jupyterもインストール済みとする．EC2に限らず，リモートサーバ一般に共通する手順だと思う．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">July 15, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#aws">Aws</a>, 
+        
+      
+        
+        <a href="/categories/#python">Python</a>, 
+        
+      
+        
+        <a href="/categories/#linux">Linux</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/07/15/ec2-s3">EC2にS3をマウントする</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>AWSのEC2（Ubuntu 16.04 LTS）に，S3をマウントする手順をメモしておく．前提として，EC2インスタンスに対して，SSH接続済みとする． 環境 Ubuntu Server 16.04 LTS (HVM), SSD Volume Type 手順 S3 bucketを準備する マウントしたいEC2インスタンスと同じリージョンを選択すること． IAMロールの準備 信頼関係： ロールを利用するサービス：EC2 ユースケースの選択：EC2 アクセス権限 ポリシー名：AmazonS3FullAccess 作成したロールをEC2インスタンスに割り当てる． s3fs-fuseのインストール 以下のコマンドでS3をマウントできる． なお，uidとgidはid ubuntuで確認した値を設定すること． マウントの自動化 ここで結構ハマった．rc.localで設定する方法で実現したかったが，どうしてもうまくいかなかったので，.bashrcで設定した．参考のため，以下に試行錯誤の記録を残す． EC2インスタンスにS3をマウントする - Qiitaを参考に，/etc/rc.localに以下を追記した． Ubuntu 16.04だと，上記の方法では起動時に実行されないようだ．Ubuntu16.04でスクリプトを起動時に自動実行する - Qiitaを参考にサービスファイルを作成したが，何故かうまく動作しなかった． After upgrade to 16.04 LTS rc.local is not executing a command - StackExchangeを参考に，以下のように変更してみた． そして，/etc/rc.localの一行目を#!/bin/sh...</p>-->
+      <p><p><a href="https://aws.amazon.com/jp/">AWS</a>のEC2（Ubuntu 16.04 LTS）に，S3をマウントする手順をメモしておく．前提として，EC2インスタンスに対して，SSH接続済みとする．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">July 15, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#aws">Aws</a>, 
+        
+      
+        
+        <a href="/categories/#linux">Linux</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/07/13/tcp-ns3">ns-3でTCPの輻輳制御を観察する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>ns-3でTCPの輻輳制御アルゴリズムをシミュレートし，その動作をmatplotlibで可視化した．本記事は，2017年2月20日にQiitaに投稿した記事を，本サイト向けに再構成したもの． はじめに インターネット上のほとんどのトラフィックは，TCP（Transmission Control Protocol）によって制御されていると言われています．TCPの特徴の一つとして，送信ノードが各々輻輳1制御アルゴリズム（Congestion control algorithm）に基づき，一度に送信するデータ量を調整する，という点があります．本記事では，ns-3で各アルゴリズムの動作をシミュレートし，NumPy + matplotlibで視覚化します． TCPの輻輳制御アルゴリズムを比較するために，ns-3にはtcp-variants-comparison.ccというサンプルシナリオが用意されています．しかし，このシナリオスクリプトをそのまま使うと，本記事で注目するいくつかの変数をモニタ（ns-3では，トレースと呼びます）できない，という課題がありました．そこで，本記事では，シナリオスクリプトに任意のトレース情報を追加する方法を紹介します． なお，本記事のソースコードは，全てGithubに置いてあります． 環境構築 ns-3 (Network Simulator 3) ns-3は，オープンソースの離散事象ネットワークシミュレータです．研究や教育用途での使用を目的に開発されています．本記事では，下記の記事で構築した環境及びディレクトリ構成を前提とします． ns-3.26で始めるネットワークシミュレーション python 本記事では，データ処理にNumPy，グラフ描画にmatplotlibを利用します．下記の環境で動作を確認しました． Python 2.7.11 NumPy 1.10.4 matplotlib 1.5.1 TCPにおける輻輳制御 概要 下図は，本記事で想定するTCP輻輳制御のイメージです．TCPの送信ノード（TCP Sender）は，受信ノード（TCP Receiver）からの確認応答（Acknowledgement，ACK）23や信号往復時間（Round Trip Time，RTT）に応じて，データ量（DATA）を調整します． 厳密には，データ量の調整は，という式で表現できます．ここで，はTCP SenderがACK無しに送信可能なDATA数の上限値であり，はTCP Senderが自律的に調整するウインドウサイズ（Congestion window）であり，はTCP Receiverから告知されるウインドウサイズ（Advertised window）です．上式の単位はセグメントと呼ばれ，1セグメントの大きさはTCP SenderとReceiverのネゴシエーションで決まります．は非常に大きい値に設定されることが多いため，簡単のため，本記事ではのみに注目します． が大きいほど，たくさんのデータを一度に送ることができます．TCP Senderは，ACKやRTTから，Receiverとの間のネットワークの混み具合を予測して，自律的にの大きさを調整します．の調整戦略を，本記事では輻輳制御と呼びます． 輻輳制御は，輻輳状態4（Congestion state）と，アルゴリズム（Congestion control algorithm）という２つの要素によって決まります．輻輳状態は，OPEN，DISORDER，RECOVER，LOSS等，ネットワークの混雑状態を表します．アルゴリズムは，各輻輳状態におけるの更新方法を表します． 輻輳状態（Congestion state） 　本記事では，ns-3の実装（~/ns-3.26/source/ns-3.26/src/internet/model/tcp-socket-base.cc）に基づき，以下の4種類の輻輳状態を想定します． OPEN：いわゆる正常な状態です．アルゴリズムによっては，Slow...</p>-->
+      <p><p><a href="https://www.nsnam.org/">ns-3</a>でTCPの輻輳制御アルゴリズムをシミュレートし，その動作をmatplotlibで可視化した．本記事は，<a href="https://qiita.com/haltaro/items/d479538345357f08c595">2017年2月20日にQiitaに投稿した記事</a>を，本サイト向けに再構成したもの．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">July 13, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#network">Network</a>, 
+        
+      
+        
+        <a href="/categories/#ns3">Ns3</a>, 
+        
+      
+        
+        <a href="/categories/#c++">C++</a>, 
+        
+      
+        
+        <a href="/categories/#visualization">Visualization</a>, 
+        
+      
+        
+        <a href="/categories/#linux">Linux</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+			
+			<a class="newer-posts" href="/page2">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			
+		
+		<span class="page-number">Page 3 of 15</span>
+		
+		<a class="newer-posts" href="/page4">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

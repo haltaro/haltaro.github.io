@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/page12/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/11/20/skima">SkimaTalk体験レッスン</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，友人から紹介されたSkimaTalk．フィリピン系英会話の二倍の価格帯だが，ネイティブスピーカーと話せるのは嬉しい．予算に余裕があればここで決まりか．
+
+SkimaTalkとは
+
+ネイティブ講師のみで構成されるオンライン英会話．特徴的なのは，講師によって単価が違うこと．受講者は毎月付与されるコインで，授業を購入する．
+
+2017年11月20日時点での料金プランは以下．
+
+
+  
+    
+      プラン名
+      料金 [円]
+      コイン数
+    
+  
+  
+    
+      トライアル
+      9,300
+      80
+    
+    
+      ベーシック
+      18,300
+      160
+    
+    
+      スタンダード
+      26,800
+      240
+    
+    
+      プレミアム
+      34,800
+      320
+    
+  
+
+
+1授業の平均料金は9コイン程度なので，月9,300円で9回弱受講できる計算．フィリピン系オンライン英会話の大手Reajobの体験レッスン．月8回コースは4,200円なので，約2倍の価格である．
+
+予習
+
+今回はフリートークだったため，特に予習はしなかった．
+
+講義内容
+
+先生はスペイン在住のイギリス人だった．以下のようなやり取りがあった．ゆっくり話してくれた．
+
+
+  自己紹介．
+  趣味は何か？：ジョギングと水彩画．
+    
+      好きな作家は？：ゴッホ．ひまわりを見て感動した．
+      何に感動したのか？：重ね塗りがすごすぎて，表面がでこぼこしている（パッとしない答えの上，でこぼこを英語で言えなかった）．
+    
+  
+  仕事は何か？：通信系の研究職．
+    
+      具体的には何をしているのか？：論文や技術文書を読んだり，実験したり，書いたり．
+      通信業界のどこに研究要素があるのか？：スマートフォン等の普及により，今後も継続的に通信量が増加することが予想される．現状の通信インフラだと対応できない可能性があるので，より効率的にデータトラフィックを制御する技術が求められている．
+    
+  
+
+
+先生からのフィードバック
+
+特になし．
+
+学んだこと
+
+
+  captivating：人の心を捉えるような，魅力的な
+  It’s fair to say that：（that以下）と言うのが正しい，言ってもいいだろう．Is that fair? みたいに使ってた．
+
+
+感想
+
+フィリピン系オンライン英会話の二倍の値段だが，ネイティブと話せるのは嬉しい．正しい発音や，こなれた言い回しなど，ここでしか学べないことも多いと思う．予算に余裕があるのなら，SkimaTalk一択と感じた．
+</p>-->
+      <p><p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，友人から紹介された<a href="https://www.skimatalk.com/jp">SkimaTalk</a>．フィリピン系英会話の二倍の価格帯だが，ネイティブスピーカーと話せるのは嬉しい．予算に余裕があればここで決まりか．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">November 20, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/11/18/python-js">Kyran Dale，PythonとJavaScriptではじめるデータビジュアライゼーション</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>更新中：Kyran Dale，PythonとJavaScriptではじめるデータビジュアライゼーションの読書メモ．JavaScript習得の取っ掛かりにしたい． なお，演習ではUbuntu16.04を用いた． 1章．開発環境の準備 本書で扱うコードは著者のGitHubレポジトリで公開されている． Pythonの開発環境を構築．$ conda create --name pyjsviz anaconda． SQLiteをインストール．$ sudo apt-get install sqlite3． MongoDB，Install MongoDB Community Edition on Ubuntuを参考に，MongoDBをインストール． MongoDB用に，ルートディレクトリに/dataおよび/data/dbディレクトリを作成． 上記ディレクトリの所有者を自分に設定．$ sudo chown 'haltaro' /data/db． 2章．PythonとJavaScript間の言語学習の橋渡し Pythonは学習済みなので，JavaScriptを中心にメモを残す． index.htmlのあるディレクトリで$ python -m http.server1して，ブラウザでhttp://localhost:8000にアクセスすると，JavaScriptの実行結果が見られる2． Chromeのショートカット[Ctrl] + [Shift] + [J]で，JavaScriptのコンソールが利用できる． JavaScriptでは，関数やモジュールの先頭で'use strict'を記述することで，厳格なスタイルガイドを利用できる． JavaScriptでは，変数名にキャメルケースを用いることが多い3． Pythonでは，ドット.表記を使って相対パスでimportできる． JavaScriptでは，関数外で宣言した変数やvarキーワードのない変数はグローバルになってしまう． JavaScriptのreduce関数は便利．配列の合計値などが簡単に計算できる． JavaScriptでは，array.forEach(callback)で，効率的に配列arrayに繰り返し処理を実行できる． JavaScriptでは，変数を他のコードより先に処理する．変数を必ず先頭で定義するようにしないと，予期しない動作を招く可能性がある． 続きは24ページから． 参考 あと味，reduce関数は結構有用っていうお話：JavaScriptにおけるreduceの使い方について．...</p>-->
+      <p><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="http://amzn.asia/2saLJcb">Kyran Dale，PythonとJavaScriptではじめるデータビジュアライゼーション</a>の読書メモ．<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript">JavaScript</a>習得の取っ掛かりにしたい．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">November 18, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#javascript">Javascript</a>, 
+        
+      
+        
+        <a href="/categories/#python">Python</a>, 
+        
+      
+        
+        <a href="/categories/#books">Books</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/11/13/reajob">Reajob体験レッスン：Article discussion</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，出国前まで続けていたReajobのArticle discussion．
+
+Reajobとは
+
+フィリピン系オンライン英会話の最大手．2017年11月21日時点の料金プランは以下．
+
+
+  
+    
+      プラン
+      料金[円/月]
+    
+  
+  
+    
+      月8回
+      4,200
+    
+    
+      毎日25分
+      5,800
+    
+  
+
+
+予習
+
+Daily news articleのページで：
+
+  文章を見ずにリスニング１回
+  文章を見ながらシャドウイング6回
+
+
+講義内容
+
+
+  自己紹介．沖縄に行ったことがあるそうなので少し盛り上がる．
+  タイトルを読んだあと，停電に関する質疑応答．
+    
+      大規模な停電を経験したことがあるか？：ある．2013年の大震災のとき．
+      どのくらいの間停電したか？：一日中（うろ覚え）．
+      停電時，どのような活動に影響がでたか？：家電が止まって大変だった．（今思えば，電車が止まって帰宅難民が出たとか言えばよかった）
+    
+  
+  New wordsを音読．
+  Articleを音読．途中で３つほど質問に答える．
+  Articleの即興サマライズ．
+  Viewpoint discussion．
+  少し時間が余ったので逆質問．
+    
+      サマライズが難しかった．何かコツがあったら教えてほしい：記事全体を眺めて，重要そうな部分を抜き出せば良いよ．
+    
+  
+
+
+先生からのフィードバック
+
+特になし．
+
+学んだこと
+
+
+  intermittent：時々とぎれる，断続する，間欠性の．
+  forestall：先んずる，機先を制する，出し抜く，買い占める．
+  operational：操作上の，経営上の；使用できる，運転可能な；作戦上の．
+
+
+感想
+
+サマライズはやっぱり難しい．とりあえず話す習慣をつけることが大事だと思った．
+
+Reajobはリーズナブルで安定しているが，できればネイティブスピーカーの先生に習いたい．もっといろいろ探してみる．
+</p>-->
+      <p><p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，出国前まで続けていた<a href="https://www.rarejob.com">Reajob</a>の<a href="https://www.rarejob.com/dna">Article discussion</a>．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">November 13, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/11/12/marketing-science">古川一郎，マーケティング・サイエンス入門</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>古川一郎，他，マーケティング・サイエンス入門－市場対応の科学的マネジメントを読んだ．マーケティング・サイエンス全体を俯瞰できる良書．ただし，2011年のものなので，最新技術はカバーできていないので，courceraでカバー予定． 序章．マーケティング・サイエンスのすすめ マーケティング・マネジメント・プロセス： 新規事業の発見：Research． マーケティング戦略：Segmentation，Targeting，Positioning． マーケティング戦術：Marketing mix． 実行：Implementation． 制御：Control． 1章．ビジネス・チャンスの発見 プロデジー・モデルとは，顧客の購買行動から競争市場構造を把握する手法の一つ．ある製品を強制的に顧客の選択対象から除外したときに，顧客はどの他のブランドを選択するかを測定することで，競争構造を分析する． 無構造市場仮説とは，既存の製品シェアに比例してシェア変動が起こるという仮説．プロデジー・モデルでは，検定者が想定する構造仮説と，無構造市場仮説を比較する． バス・モデルとは，イノベーションの普及モデル．自発的に購入するイノベーターと，すでに購入者消費者を模倣して購入するイミテーターを想定する．期の売上は，期までの普及割合，市場規模，イノベータ係数，およびイミテーター係数を使って，下式で表現できる． 理論的には，3期以上のデータがあれば，回帰分析で，，およびを推定可能．データ数が足りない場合は，類似製品の値を事前情報として用いたベイズ推定なども提案されている． 2章．消費者行動 知覚マップ（perception map）あるいはプロダクトマップ（product map）とは，様々なブランドに関する消費者の図示したもの．多次元尺度構成法（multi dimensional scaling; MDS）と因子分析（factor analysis）がよく用いられる． 因子分析と主成分分析は異なる． 目的：因子分析は共通因子の抽出を目的としているのに対し，主成分分析は情報の縮約を目的としている．詳細は株式会社リサーチ・アンド・ディベロプメント，新シリーズ第7回「因子分析と主成分分析の混同」を参照されたい． モデル：主成分分析を最尤推定と解釈すると，数理モデルとして，因子分析とどう違うか理解しやすくなる．因子分析では因子毎に異なる分散を持つガウス分布を仮定しているが，主成分分析では等方的な分散を持つガウス分布を仮定している．詳細は，C.M. ビショップ，パターン認識と機械学習 下（ベイズ理論による統計的予測）を参照されたい． MDSで計算した知覚マップからは，軸の直感的な解釈は得られない． 購買履歴データを用いてマップを作成する場合は，消費者の知覚を直接測定したわけではないので，プロダクトマップと呼ばれる． 消費者による製品の評価方法として，補償型と非補償型の２つがある．補償型の評価方法として，以下に示す加算式がある．製品の評価は，その製品の属性に対する評価と，その属性の重要度によって次のように表現できる． 非補償型の評価方法として，連結型，分散型，辞書編纂型がある．ブランド選択モデルとして，補償型の評価方法を仮定することが多い． 消費者がブランド集合から特定のブランドを選択する確率は，そのブランドの効用を用いて次のように表現できる． ここで，は，確定的部分，および確率的部分を用いて，次のように表現できる． ここで，は，ブランド固有の魅力を表すパラメータと，マーケティング変数の影響を表すパラメータと，そのマーケティング変数におけるブランドの値を用いて，次のように表現できる． に​ 正規分布を仮定したモデルを，プロビット・モデルと呼ぶ． プロビット・モデルでは，の積分を解析的に解けない．よって，に二重指数分布（ラプラス分布？）を仮定したロジット・モデルが提案されている． ​ロジット・モデルの課題は，消費者ごとの異質性をどのように取り込むか．アプローチとしては二つある： ​消費者の嗜好性を説明変数(おそらく)として追加する方法． ​パラメータの値が消費者間で異なると仮定する方法．​潜在クラスモデルと，階層ベイズモデルがある．前者は，パラメータの事前分布として離散的分布を仮定するもので，後者は連続的分布を仮定するもの． 階層ベイズモデルについては，六本木で働くデータサイエンティストのブログ，Stanで統計モデリングを学ぶ(4): とりあえず階層ベイズモデルを試してみる（基本編）がわかりやすかった． 説明変数（独立変数）と目的変数（従属変数，外的基準）については，こちらがわかりやすかった． ​パッケージ製品を対象としたロジット・モデル分析では，ブランド・ロイヤルティのような過去の履歴に基づいた変数が使われることがある． ​マーケティング・サイエンスでは，抽象的な議論ではなく，実際のマーケティング活動に活かせるかどうかを常に意識する必要がある． ​本書で説明されるマーケティング・サイエンスの諸モデルは，複雑な消費者行動の中でも，数理モデルが適用可能な範囲に複雑性が限定されていることに注意． 3章．マーケティング情報の収集と活用 1次データとは，消費者調査など，課題に対して新たに実施されることによって得られるデータ． 2次データとは，別の目的によって収集され，社内外にすでに存在しているデータ． マーケティング情報には，以下の三種類がある：...</p>-->
+      <p><p><a href="http://amzn.asia/1QZt1OR">古川一郎，他，マーケティング・サイエンス入門－市場対応の科学的マネジメント</a>を読んだ．マーケティング・サイエンス全体を俯瞰できる良書．ただし，2011年のものなので，最新技術はカバーできていないので，<a href="https://haltaro.github.io/2017/11/08/digital-marketing-1">courcera</a>でカバー予定．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">November 12, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#marketing">Marketing</a>, 
+        
+      
+        
+        <a href="/categories/#books">Books</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/11/08/digital-marketing-1">Courcera，Marketing in a digital world：1. Product</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Courcera，Marketing in a digital worldの受講メモ．本講座は，イリノイ大学主催のオンライン講座であり，全7講座から成るDigital marketing specializationの一つ．四週かけて，デジタル時代のマーケティング・ミックスについて学ぶ．第一週では，Productを取り扱い，Co-creationやDoppelgänger brand imageについて学ぶ． 本講座に関する記事： Courcera，Marketing in a digital world：1. Product Courcera，Marketing in a digital world：2. Promotion Courcera, Marketing in a digital world：3. Placement Courcera, Marketing in a digital world：4. Price CourceraのDigital marketing講座を退会した About the course インターネット，スマートフォン，3Dプリンターに代表される技術革新により，市場のパワーバランスは，企業側から消費者側に傾きつつある． 本講座では，このような激動の時代におけるマーケティング手法を，実例や演習を交えて学習する． 本講座では，教材としてHarvard Business ReviewやMIT Sloan Management Reviewを用いる．また，補助教材としてUnderstanding Digital...</p>-->
+      <p><p><a href="https://www.coursera.org/learn/marketing-digital">Courcera，Marketing in a digital world</a>の受講メモ．本講座は，イリノイ大学主催のオンライン講座であり，全7講座から成る<a href="https://www.coursera.org/specializations/digital-marketing">Digital marketing specialization</a>の一つ．四週かけて，デジタル時代の<a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9">マーケティング・ミックス</a>について学ぶ．第一週では，Productを取り扱い，Co-creationやDoppelgänger brand imageについて学ぶ．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">November 8, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#marketing">Marketing</a>, 
+        
+      
+        
+        <a href="/categories/#moocs">Moocs</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+			
+			<a class="newer-posts" href="/page11">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			
+		
+		<span class="page-number">Page 12 of 15</span>
+		
+		<a class="newer-posts" href="/page13">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

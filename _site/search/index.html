@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Search</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Search" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Search">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/search/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="wrapper">
+<div class="page">
+
+  <header class="post-header">
+    <h1 class="post-title">Search</h1>
+  </header>
+
+  <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+
+
+</div>
+</div>
+
+<div class="wrapper">
+
+  <div id="search-searchbar"></div>
+
+  <div class="post-list" id="search-hits">
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Dec 9, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/12/09/wireshark-on-vagrant">
+            Vagrantで立てたUbuntu 16.04上のWireSharkで遊ぶ
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://qiita.com/advent-calendar/2018/network-engineering">Network engineering Advent Calendar 2018</a>の8日目の記事．諸事情により<a href="https://www.vagrantup.com/">Vagrant</a>で立てたUbuntu 16.04上で<a href="https://www.wireshark.org/">WireShark</a>を操作する必要があったため，環境設定をまとめておく．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Nov 30, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/11/30/ns3-vagrant">
+            VirtualBox+Vagrantでns-3.27環境を構築する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://qiita.com/advent-calendar/2018/network-engineering">Network engineering Advent Calendar 2018</a>の1日目の記事．一年以上前にQiitaで<a href="https://qiita.com/haltaro/items/b474d924f63692c155c8">ns-3.26の環境構築に関する記事</a>を書いた．この一年で私も少しだけ成長して，<a href="https://www.vagrantup.com/">Vagrant</a>を使えるようになった<sup id="fnref:toolate"><a href="#fn:toolate" class="footnote">1</a></sup>ので，コマンド一発でns-3.27の環境を構築できるよう，Vagrantfileを作成した．これからns3で遊びたいという方のお役に立てれば幸い．</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:toolate">
+      <p>いくらなんでも今更すぎるが，ご容赦いただきたい． <a href="#fnref:toolate" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Oct 14, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/10/14/directory">
+            Pythonでディレクトリの有無を確認して自動作成する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>Pythonでディレクトリの有無を確認して，自動生成するスクリプトをメモしておく．例えばCross validationでフォールドごとにデータを分けるときなどに使う．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Oct 14, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/10/14/airbnb-dynamic-pricing">
+            Customized Regression Model for Airbnb Dynamic Pricingを読んだ
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://www.kdd.org/kdd2018/accepted-papers/view/customized-regression-model-for-airbnb-dynamic-pricing">Peng Ye, et al., Customized Regression Model for Airbnb Dynamic Pricing, KDD2018</a>を読んだ．<a href="https://www.airbnb.jp/">Airbnb</a>で実際に使われている価格推奨モデルについて，非常にわかりやすくまとめられている．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Oct 12, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/10/12/plotly-colorpalette">
+            PlotlyでSeabornライクに色指定する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://plot.ly/feed/#/">Plotly</a>はとても便利だが，<a href="https://seaborn.pydata.org/">Seaborn</a>の<a href="https://seaborn.pydata.org/generated/seaborn.color_palette.html">color_palette</a>のように柔軟に色指定ができない．そこで，Plotlyの<code class="highlighter-rouge">color</code>引数として使用可能なRGB値を，Seabornの<code class="highlighter-rouge">color_palette</code>から取得するラッパー関数を作成した．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Sep 17, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/09/17/tsptw">
+            時間制約付き巡回セールスマン問題について調査した
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>時間制約付き巡回セールスマン問題（TSP-TW: Traveling Salesman Problem with Time Window constraint）について調査した．TSP-TWは，各点の訪問時間に制約のある巡回セールスマン問題（TSP: Traveling Salesman Problem）で，NP困難に属する．時間帯指定のある宅配業者の経路最適化など，実応用が期待される研究分野である．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Sep 17, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/09/17/debut">
+            Qiitaで情報発信していたら技術書デビューした
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://qiita.com/haltaro">Qiita</a>で公開していた<a href="https://qiita.com/haltaro/items/d479538345357f08c595">TCPの比較記事</a>（本サイトの<a href="https://haltaro.github.io/2018/07/13/tcp-ns3#undefined">ns-3でTCPの輻輳制御を観察する</a>）の結果を，<a href="https://gihyo.jp/book/2018/978-4-7741-9941-2">中嶋謙互，クラウドゲームをつくる技術―マルチプレイゲーム開発の新戦力，技術評論社</a>に載せたいとオファーがあった．先日，ついに見本版が届いて，とても嬉しかったので経緯をメモしておく．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Aug 31, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/08/31/dmm-english">
+            DMM英会話受講メモ：2018年8月
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://eikaiwa.dmm.com/">DMM英会話</a>の受講メモ．7回/31日なので，1/4以下．先月よりさらに頻度が下がったが，後半は本当に忙しかったのでしょうがない．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Aug 8, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/08/08/dmm-english">
+            DMM英会話受講メモ：2018年7月
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://eikaiwa.dmm.com/">DMM英会話</a>の受講メモ．9回/31日なので，1/3以下．もう少し頑張りたいところ．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jul 22, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/07/22/summer-prophet">
+            あまりに暑いのでProphetで140年分の気温を分析した
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>2018年7月22日，東京の最高気温は36.5度となり，今年最高を更新した．あまりに暑くてムシャクシャしたので，<a href="http://www.data.jma.go.jp/gmd/risk/obsdl/index.php">気象庁</a>から約140年分（1872年1月1日-2018年7月21日）の東京の気温データを入手し，<a href="https://facebook.github.io/prophet/">Prophet</a>で分析した．平均・最高・最低気温の全てに関して，1920年付近から上昇し続けており，そのトレンドを考慮してもなお，ここ数日は特に暑いことを確認できた．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jul 20, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/07/20/esl-02">
+            Trevor Hastie，統計的学習の基礎：2章，教師あり学習の基礎
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>夏休みの宿題として，<a href="http://amzn.asia/ay0yxvo">Trevor Hastie，統計的学習の基礎 ―データマイニング・推論・予測―</a>を勉強している．以下は，<strong>第2章：教師あり学習の概要</strong> のメモ．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jul 18, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/07/18/macos-to-ubuntu">
+            7年もののMacBook ProがUbuntu 16.04に生まれ変わった
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>MacBook Pro（13-inch Early 2011）の動作が怪しくなってきた．かれこれ7年以上使っているので，そろそろ寿命なのかもしれない．<a href="https://www.ubuntu.com/">Ubuntu 16.04</a>をインストールして，第二の人生を歩んでもらうことにした．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jul 15, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/07/15/jupyter-ec2">
+            EC2にJupyter環境を構築する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://aws.amazon.com/jp/">AWS</a>のEC2（Ubuntu 16.04 LTS）に，<a href="http://jupyter.org/">Jupyter notebook</a>の環境を構築する手順をメモしておく．前提として，EC2インスタンスに対してSSH接続済みであり，Jupyterもインストール済みとする．EC2に限らず，リモートサーバ一般に共通する手順だと思う．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jul 15, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/07/15/ec2-s3">
+            EC2にS3をマウントする
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://aws.amazon.com/jp/">AWS</a>のEC2（Ubuntu 16.04 LTS）に，S3をマウントする手順をメモしておく．前提として，EC2インスタンスに対して，SSH接続済みとする．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jul 13, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/07/13/tcp-ns3">
+            ns-3でTCPの輻輳制御を観察する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://www.nsnam.org/">ns-3</a>でTCPの輻輳制御アルゴリズムをシミュレートし，その動作をmatplotlibで可視化した．本記事は，<a href="https://qiita.com/haltaro/items/d479538345357f08c595">2017年2月20日にQiitaに投稿した記事</a>を，本サイト向けに再構成したもの．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jul 12, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/07/12/bokeh-jekyll">
+            JekyllにBokehのグラフを埋め込む
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://bokeh.pydata.org/en/latest/">Bokeh</a>で作成したインタラクティブなグラフを，<a href="https://jekyllrb-ja.github.io/">Jekyll</a>に埋め込みたくなった．<a href="https://p-mckenzie.github.io/python/2017/12/01/embedding-bokeh-with-github-pages/">Embedding Bokeh Plots with Github Pages -
+Paige McKenzie</a>を参考にしたら，簡単にできた．日本語もちゃんと表示されている．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jul 10, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/07/10/kaggle-api">
+            MacでKaggle-apiを使う
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>ものすごく今更ながら，<a href="https://github.com/Kaggle/kaggle-api">kaggle-api</a>をMacBookで使ってみた．簡単だった．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jul 7, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/07/07/time-series">
+            萩原淳一郎，基礎からわかる時系列分析
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://amzn.asia/bTrcjv0">萩原淳一郎，基礎からわかる時系列分析 ―Rで実践するカルマンフィルタ・MCMC・粒子フィルター</a>をざっと読んで状態空間モデルを勉強した．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jun 30, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/06/30/dmm-english">
+            DMM英会話受講メモ：2018年6月
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://eikaiwa.dmm.com/">DMM英会話</a>の受講メモ．12回/30日なので，4割程度の実施率．仕事の忙しさを考えると，このあたりが現実的な数字かもしれない．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jun 22, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/06/22/dead-kernel-lgbm">
+            Light GBMを使うとOMPエラーでカーネルが死ぬ
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>業務でも趣味でもよく<a href="https://github.com/Microsoft/LightGBM">Light GBM</a>にお世話になっているが，この前手元のMacで使おうとしたら<code class="highlighter-rouge">Dead kernel</code>エラーが発生した．<code class="highlighter-rouge">conda</code>で入れたLight GBMを一旦アンインストールして，<a href="https://lightgbm.readthedocs.io/en/latest/Installation-Guide.html">Installation Guide - LightGBM</a>に従って再インストールしたら解決した．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jun 17, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/06/17/intro-to-lightgbm">
+            PythonとLight GBMで遊ぶNotebookを作った
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>知り合いから「プログラミングしたことないけどLight GBMを使ってみたい．2時間くらいで教えてくれ」と言われた．2時間だと理論面をカバーするのは難しいので，とりあえず触ってみることを目標に，Pythonおよび関連ライブラリの基礎（のさらにごく一部）でさくっと遊ぶ<a href="https://github.com/haltaro/intro-to-lightgbm">Notebook</a>を作った．勉強会当日は一緒に動かしながらレクチャーする予定．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jun 16, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/06/16/too-old-openssl">
+            OpenSSLが古すぎてbundle updateできない
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://haltaro.github.io/2018/06/16/jekyll-algolia">Algoliaで全文検索機能を実装</a>するために<code class="highlighter-rouge">Gemfile</code>を書き換えて<code class="highlighter-rouge">$ bundle update</code>したところ，<code class="highlighter-rouge">OpenSSL</code>が古すぎると叱られた．<a href="https://bundler.io/guides/rubygems_tls_ssl_troubleshooting_guide.html#the-solutions">How to troubleshoot RubyGems and Bundler TLS/SSL Issues - Bundler Docs</a>を参考に対応したら解決した．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jun 16, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/06/16/jekyll-algolia">
+            JekyllにAlgoliaで全文検索機能を実装する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>本サイトに待望の<a href="https://haltaro.github.io/search/">全文検索機能を実装</a>した．Algolia社の<a href="https://community.algolia.com/docsearch/">DocSearch</a>の審査に通らなかったので，同社の<a href="https://www.algolia.com/pricing">Free hacker plan</a>を利用した．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jun 15, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/06/15/rename-permalinks">
+            CentrariumのPostsをCategoriesにリネームする
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>近々，全文検索機能を実装し，現在の<code class="highlighter-rouge">Posts</code>ページに配置しようと考えている．とは言え，現在の<code class="highlighter-rouge">Posts</code>ページの<code class="highlighter-rouge">categories</code>一覧は便利なので，できれば残したい．そこで，一旦<code class="highlighter-rouge">Posts</code>ページを<code class="highlighter-rouge">Categories</code>ページとしてリネームして退避することにした．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jun 15, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/06/15/jekyll-archives">
+            Centrariumのjekyll-archives問題を回避する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>このウェブサイトのベーステーマである<a href="https://github.com/bencentra/centrarium">Centrarium</a>は，非常に完成度が高く，使い勝手が良いテーマである．しかし，私の力不足のため，<a href="https://haltaro.github.io/2018/02/11/theme-change">内部で利用されているjekyll-archivesがまともに動作せず</a>，各ポストのカテゴリリンク先が正しく貼れていなかった．いろいろ試した結果，<code class="highlighter-rouge">_config.yml</code>で<code class="highlighter-rouge">jekyll-archives</code>を無効化したら，すべての問題が解決したのでメモしておく．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jun 10, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/06/10/ucom-airmac">
+            UCOMにAirMacを接続してWifi環境を構築する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>引越し先のマンションがUcomに契約していたので，壁付けのコンセントにLANケーブルを繋げばインターネットに接続できる．手持ちのAirMac Time Capsuleで無線LAN環境を構築したかったが，ネット上に情報が少なく，めちゃくちゃ苦戦した．試行錯誤の記録を残しておく．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jun 10, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/06/10/disqus">
+            Jekyll-CentrariumにDisqusを導入する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>このウェブサイトに<a href="https://disqus.com/">Disqus</a>でコメント機能を追加した．<a href="https://github.com/bencentra/centrarium">Centrarium</a>の作り込みが素晴らしいので，Disqus上の登録と，<code class="highlighter-rouge">_config.yml</code>の変更だけで実現できた．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">May 31, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/05/31/dmm-english">
+            DMM英会話受講メモ：2018年5月
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://eikaiwa.dmm.com/">DMM英会話</a>の受講メモ．後半にかけて仕事が非常に忙しくなり，なかなか時間が取れなかった．英語力が日に日に落ちていくのを実感している．だんだん仕事にも慣れてきたので，6月以降はもっと時間が取れると思う．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Apr 24, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/04/24/dmm-english">
+            DMM英会話受講メモ：2018年4月
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://eikaiwa.dmm.com/">DMM英会話</a>の受講メモ．4月末は仕事がバタつき，なかなか時間を取れなかった．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Apr 15, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/04/15/statistics-book-1">
+            東京大学教養学部統計学教室編，統計学入門
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://amzn.asia/8f1AQFC">東京大学教養学部統計学教室編，統計学入門</a>を読んだ．統計学の基礎知識を復習できた．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Apr 15, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/04/15/sort-categories">
+            JekyllのCategories一覧をアルファベット順にする
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://haltaro.github.io/posts/">Posts</a>ページのCategoriesが出現順で使いづらかったので，アルファベット順になるようコードをを修正した．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Mar 29, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/03/29/dmm-english">
+            DMM英会話受講メモ：2018年3月
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>仕事が落ち着いてきたので，<a href="http://eikaiwa.dmm.com/">DMM英会話</a>を再開することにした．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Mar 11, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/03/11/fastai-01-01">
+            Fast.ai，Practical Deep Learning for Coders 2018：1．Dogs and cats
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="http://www.fast.ai/">Fast.ai</a>のMOOC<a href="http://course.fast.ai/">Practical Deep Learning for Coders 2018</a>の受講を開始した．全7回の講座で，KaggleマスターのJeremy Howardから無料でDeep learningを教えてもらえるらしい．第1回は，犬と猫の分類コンペをベースに，CNNのチューニングについて学ぶ．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Mar 5, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/03/05/jupyter-font">
+            Jupyter notebookのフォントを変更する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://jupyter.org/">Jupyter notebook</a>のコードブロックを等幅フォントにしたい．<a href="https://github.com/dunovank/jupyter-themes">Jupytertheme</a>を使っても良いが，拡張機能のボタンが消えてしまうことがあり不便．<code class="highlighter-rouge">~/.jupyter/custom/custom.css</code>をいじって変更した．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Mar 3, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/03/03/kaggle-wikipedia-1st">
+            Kaggle，Web Traffic Time Series Forecasting，1st place solution
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://www.kaggle.com/c/web-traffic-time-series-forecasting">Kaggle，Web Traffic Time Series Forecasting</a>の<a href="https://www.kaggle.com/c/web-traffic-time-series-forecasting/discussion/43795">1st place solution</a>のメモ．Wikipediaのpageviewを予測するコンテスト．解法のポイントは，一年前と四半期前の値を特徴量として追加し，RNN seq2seqを使うこと．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Feb 27, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/02/27/intro-to-behavioral-economics">
+            多田洋介，行動経済学入門
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="http://amzn.asia/46XW33f">多田洋介，行動経済学入門</a>を読んだ．心理学の発想を経済活動や経済減少の分析に活かす，行動経済学の基本を学ぶことができた．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Feb 24, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/02/24/github-token">
+            HTTPS+トークンで複数のGitHubアカウントを制御する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>複数のGitHubアカウントを制御したい．<a href="https://dev.classmethod.jp/tool/github-ssh-sub-account-setting/">SSHの秘密鍵を複数管理する方法</a>もあるが，設定が結構大変で私には荷が重い．いろいろ調べた結果，<a href="https://qiita.com/tq_jappy/items/6e2f81f372e4abaa5139">HTTPSとトークンを使用する方法</a>が手軽で良さそう．毎回検索するのが面倒なので，メモしておく．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Feb 18, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/02/18/effective-python">
+            Brett Slatkin，Effective Python
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="http://amzn.asia/gDvdj6b">Brett Slatkin，Effective Python ―Pythonプログラムを改良する59項目</a>を読む．<a href="https://www.python.org/">Python</a>を効率的に書くための59のヒントが紹介されている．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Feb 17, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/02/17/fish">
+            Ubuntu 16.04にFish環境を構築する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://fishshell.com/">Fish</a>（Frendly Interactive SHell）とは，シェルの一種．デフォルトのタブ保管が便利なので，Macでは重宝している．ローカルのUbuntuデスクトップでも使いたくなり，環境を構築することにした．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Feb 17, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/02/17/data-driven">
+            マーク・ジェフリー，データ・ドリブン・マーケティング
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://amzn.asia/6WKHTCO">マーク・ジェフリー，データ・ドリブン・マーケティング - 最低限知っておくべき15の指標</a>を読んだ．<a href="http://marketing-base.jp/books/6204">どうやら原著は2010年1月に発刊されたらしく</a>，古さを感じる部分があるが，勉強のとっかかりとして基本を押さえるには良いと思った．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Feb 11, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/02/11/theme-change">
+            Jekyll themeをCentrariumに変更する
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>3連休を利用して，本サイトの<a href="http://jekyllthemes.org/">Jekyll theme</a>を<a href="https://github.com/laobubu/jekyll-theme-EasyBook">EasyBook</a>から<a href="https://github.com/bencentra/centrarium">Centrarium</a>に変更した．意識高めのアフィブログみたいになってしまったが，個人的には気に入っている．特にロゴがかわいい．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Feb 4, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/02/04/chatbot">
+            チャットボットを作ろう：3．CSS修正
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://github.com/botui/botui">BotUI</a>を本サイトの<a href="https://haltaro.github.io/about/">Aboutページ</a>に埋め込んだが，会話が長くなると二重にスライドバーが表示されて使いづらい．そこで，BotUIのCSSを修正することにした．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jan 7, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/01/07/digital-marketing-retire">
+            CourceraのDigital marketing講座を退会した
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>2017年10月頃から，<a href="https://www.coursera.org/learn/marketing-digital">Courcera，Marketing in a digital world</a>を受講していたが，退会することにした．転職先の業界の予習のために始めた講座だった．週10時間確保できれば1ヶ月で修了できる予定だったが，転職関連の手続きもあり，60%程度の進捗で時間切れとなった．受講料は11,000円ほどだったが，まだ書籍化されていないような，業界の最新動向の一端を知ることができたため，受講してよかったと思っている．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jan 7, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/01/07/digital-marketing-4">
+            Courcera，Marketing in a digital world：4. Price
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="https://www.coursera.org/learn/marketing-digital">Courcera，Marketing in a digital world</a>の受講メモ．本講座は，イリノイ大学主催のオンライン講座であり，全7講座から成る<a href="https://www.coursera.org/specializations/digital-marketing">Digital marketing specialization</a>の一つ．四週かけて，デジタル時代の<a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9">マーケティング・ミックス</a>について学ぶ．第四週では，Priceを取り扱い，Pay what you wantやPrice comparison toolsについて学ぶ．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jan 2, 2018</span>
+
+        <h2>
+          <a class="post-link" href="/2018/01/02/dmm-english">
+            DMM英会話受講メモ：2018年1月
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://eikaiwa.dmm.com/">DMM英会話</a>を受講している．以下は，2018年1月の受講メモ．バタバタして，なかなか毎日時間を確保できないので，一旦退会することにした．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Dec 30, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/12/30/chatbot">
+            チャットボットを作ろう：2．JekyllサイトでBotUI
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>諸事情により，チャットボットを自作したいと思った．<a href="http://paiza.hatenablog.com/entry/2017/09/21/%EF%BB%BFJavaScript%E3%81%A0%E3%81%91%E3%81%A7%E6%9C%AC%E6%A0%BC%E7%9A%84%E3%81%AA%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E3%83%9C%E3%83%83%E3%83%88%E3%82%92%E9%96%8B%E7%99%BA%E3%81%A7%E3%81%8D%E3%82%8B">paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！</a>を参考にチャットボットを作成し，<a href="https://haltaro.github.io/about/">本サイトのAbout欄</a>に埋め込んだ．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Dec 25, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/12/25/chatbot">
+            チャットボットを作ろう：1．調査
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>諸事情により，チャットボットを自作したいと思った．まずは，どんなことを実現したいのか，またどうやったら実現できそうか整理してみる．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Dec 20, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/12/20/dmm-english">
+            DMM英会話受講メモ：2017年12月
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>結局，<a href="http://eikaiwa.dmm.com/">DMM英会話</a>でセルビア人の先生に習うことにした．以下は，2017年12月の受講記録．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Dec 9, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/12/09/dont-fool-yourself">
+            本田哲也，田端信太郎，広告やメディアで人を動かそうとするのは、もう諦めなさい。
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://amzn.asia/1a2cpaH">本田哲也，田端信太郎，広告やメディアで人を動かそうとするのは、もう諦めなさい。</a>を読んだ．情報爆発により，主導権は消費者にシフトした．このような時代に人を動かすためには，様々なメディアの特性を理解し適切に組み合わせることと，インサイトを掘り出して世の中の空気を作ることが重要．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Dec 3, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/12/03/dmm-english">
+            DMM体験レッスン：2．Article discussion
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．昨日に引き続き，オンライン英会話最大手の<a href="http://eikaiwa.dmm.com/">DMM英会話</a>で，<a href="https://app.eikaiwa.dmm.com/daily-news">Daily news</a>を体験した．今回もセルビア在住の先生に対応してもらったが，とても親切で，英語での議論に慣れている印象を受けた．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Dec 3, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/12/03/digital-marketing-3">
+            Courcera，Marketing in a digital world：3. Placement
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="https://www.coursera.org/learn/marketing-digital">Courcera，Marketing in a digital world</a>の受講メモ．本講座は，イリノイ大学主催のオンライン講座であり，全7講座から成る<a href="https://www.coursera.org/specializations/digital-marketing">Digital marketing specialization</a>の一つ．四週かけて，デジタル時代の<a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9">マーケティング・ミックス</a>について学ぶ．第三週では，Placementを取り扱い，New retailや3D printingについて学ぶ．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Dec 2, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/12/02/next-advertising">
+            佐藤達郎，「これからの広告」の教科書
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://amzn.asia/5fzKuNu">佐藤達郎，「これからの広告」の教科書</a>を読んだ．<a href="https://haltaro.github.io/2017/11/25/digital-marketing-2">Courcera，Marketing in a digital world：2. Promotion</a>でも触れたように，近年の技術革新により，市場のパワーバランスが大きく消費者側に傾き始めた．本書では，具体例を用いてわかりやすく，新たな広告手法を学ぶことができた．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Dec 2, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/12/02/dmm-english">
+            DMM体験レッスン：1．Article discussion
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，<a href="https://www.rarejob.com">Reajob</a>と並ぶオンライン英会話最大手の<a href="http://eikaiwa.dmm.com/">DMM英会話</a>で，<a href="https://app.eikaiwa.dmm.com/daily-news">Daily news</a>を体験した．セルビア在住の先生に対応してもらったが，とても親切で，英語力も高かった．フィリピン人と比べて元気が無いように感じたのは，雇用情勢のせいだろう．とりあえず，あと二回体験してみる．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Nov 28, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/11/28/bizmate">
+            BizMate体験レッスン
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，ビジネス英会話に強みを持つ<a href="https://www.bizmates.jp/">BizMate</a>の体験レッスン．同じくフィリピン系の<a href="https://www.rarejob.com">Reajob</a>の二倍の価格帯だが，講師と教材の質が高く，その価値はあると感じた．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Nov 25, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/11/25/digital-marketing-2">
+            Courcera，Marketing in a digital world：2. Promotion
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://www.coursera.org/learn/marketing-digital">Courcera，Marketing in a digital world</a>の受講メモ．本講座は，イリノイ大学主催のオンライン講座であり，全7講座から成る<a href="https://www.coursera.org/specializations/digital-marketing">Digital marketing specialization</a>の一つ．四週かけて，デジタル時代の<a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9">マーケティング・ミックス</a>について学ぶ．第二週では，Promotionを取り扱い，AuthenticityやUser generated contentについて学ぶ．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Nov 20, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/11/20/skima">
+            SkimaTalk体験レッスン
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，友人から紹介された<a href="https://www.skimatalk.com/jp">SkimaTalk</a>．フィリピン系英会話の二倍の価格帯だが，ネイティブスピーカーと話せるのは嬉しい．予算に余裕があればここで決まりか．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Nov 18, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/11/18/python-js">
+            Kyran Dale，PythonとJavaScriptではじめるデータビジュアライゼーション
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="http://amzn.asia/2saLJcb">Kyran Dale，PythonとJavaScriptではじめるデータビジュアライゼーション</a>の読書メモ．<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript">JavaScript</a>習得の取っ掛かりにしたい．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Nov 13, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/11/13/reajob">
+            Reajob体験レッスン：Article discussion
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，出国前まで続けていた<a href="https://www.rarejob.com">Reajob</a>の<a href="https://www.rarejob.com/dna">Article discussion</a>．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Nov 12, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/11/12/marketing-science">
+            古川一郎，マーケティング・サイエンス入門
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://amzn.asia/1QZt1OR">古川一郎，他，マーケティング・サイエンス入門－市場対応の科学的マネジメント</a>を読んだ．マーケティング・サイエンス全体を俯瞰できる良書．ただし，2011年のものなので，最新技術はカバーできていないので，<a href="https://haltaro.github.io/2017/11/08/digital-marketing-1">courcera</a>でカバー予定．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Nov 8, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/11/08/digital-marketing-1">
+            Courcera，Marketing in a digital world：1. Product
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://www.coursera.org/learn/marketing-digital">Courcera，Marketing in a digital world</a>の受講メモ．本講座は，イリノイ大学主催のオンライン講座であり，全7講座から成る<a href="https://www.coursera.org/specializations/digital-marketing">Digital marketing specialization</a>の一つ．四週かけて，デジタル時代の<a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9">マーケティング・ミックス</a>について学ぶ．第一週では，Productを取り扱い，Co-creationやDoppelgänger brand imageについて学ぶ．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Oct 25, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/10/25/jekyll-drafts">
+            Jekyllで下書き記事管理
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>これまでは下書き記事を<code class="highlighter-rouge">（作成中）</code>と注意書きして公開していたが，見栄えが良くないので，<a href="http://jekyllrb-ja.github.io/docs/drafts/">Jekyllのdrafts機能</a>で一旦非公開<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>にすることにした．ただし，途中経過を公開する意味がありそうな，読書メモや受講メモはそのまま残す．</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>万が一リンクを保存していた方がいたらごめんなさい． <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Oct 22, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/10/22/python-windonws">
+            Windows 7でAnaconda 5.0.0
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://anaconda.org/">Anaconda</a>とは，<a href="https://www.python.org/">Python</a>のライブラリパッケージである．普段はUbuntuでコーディングしているが，<a href="https://haltaro.github.io/2017/10/15/jekyll-windows">以前の記事</a>で述べたように，しばらくWindowsで作業する必要が出てきた．そこで，Windows 7に<a href="https://anaconda.org/">Anaconda 5.0.0</a>環境を構築した．仮想環境のactivateにハマったのでメモしておく．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Oct 15, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/10/15/marketing">
+            コトラー，アームストロング，恩藏のマーケティング原理
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://amzn.asia/eGcRMag">コトラー，アームストロング，恩藏のマーケティング原理</a>の読書メモ．マーケティングの基本を，実例付きでわかりやすく解説してくれる名著．マーケティングとは，意図的に，顧客と良好な関係を築くための手法である．顧客の意識の有り様は，時代の流れに大きく左右されるため，マーケティング理論を常にアップデートし続ける必要がある．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Oct 15, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/10/15/jekyll-windows">
+            Windows7でJekyll+GitHub Pages
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>船便でアメリカから送ったため，2ヶ月ほどLinuxが使えなくなった．そこで，手元のWindowsノートPC（Windows 7 Professional, Service Pack 1, 64 bit）に<a href="https://jekyllrb-ja.github.io/">Jekyll</a>+<a href="https://pages.github.com/">GitHub Pages</a>環境を構築した．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Oct 14, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/10/14/web-buisiness">
+            武井由紀子，ユーザ中心ウェブビジネス戦略
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="http://amzn.asia/0sBIq3B">武井由紀子，三木順哉，ユーザ中心ウェブビジネス戦略</a>を読んだ．インターネットはユーザが能動的に情報を取捨選択可能なメディアであるため，ウェブビジネスにおいては，ターゲットユーザを徹底的に理解する必要がある．ユーザ理解のためのツールとして，ユーザ行動パターン検証ツール（アクセスログ解析等）と，ユーザ行動理由検証ツール（ユーザ行動観察調査等）がある．両者の特徴を理解して，使い分けることが重要である．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Aug 13, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/08/13/udacity-hadoop">
+            Udacity, Intro to Hadoop and MapReduce
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><i class="fa fa-spinner"></i> <strong>更新中</strong>： <a href="https://www.udacity.com/course/intro-to-hadoop-and-mapreduce--ud617">Udacity, Intro to Hadoop and MapReduce</a>の受講メモ．6部構成の無料講座．全ての動画に日本語訳があり，とても助かる．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Aug 10, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/08/10/udacity-rdb">
+            Udacity, Intro to Relational Databases
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="https://www.udacity.com/course/intro-to-relational-databases--ud197">Udacity, Intro to Relational Databases</a>の受講メモ．5部構成の無料講座．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Aug 8, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/08/08/introduction-to-ad-tech">
+            アドテク入門
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>アドテク（Advertising Technology）とは，広告配信の高度化に関する技術を指す．目的は，広告に関わる全プレーヤー（広告主，メディア，消費者）をwin-winの関係にすること．特にReal time bidding（RTB）市場は成長中であり，例えば機械学習で入札額を最適化する技術などが研究されている．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Aug 7, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/08/07/zillow-conpetition">
+            Kaggle，Zillow Prize概要
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://www.kaggle.com/c/zillow-prize-1">KaggleのZillow Prize</a>は，<a href="https://www.zillow.com/">Zillow</a>が2017年5月に開始したコンペティション．課題は不動産価格の予測であり，賞金は総額1億円以上（$1,200,000）．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Aug 4, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/08/04/set-google-analytics">
+            JekyllでGoogle Analytics
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://haltaro.github.io/2017/07/30/first-post">JekyllとGitHub Pagesで立ち上げたウェブサイト</a>に，<a href="https://analytics.google.com/analytics/web/provision/?authuser=0#provision/SignUp/">Google Analytics</a>でトラッキング機能を導入した．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Aug 3, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/08/03/future-work-in-deep-learning">
+            機械学習のプロジェクト計画
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>くだらないものばかりだけど，今後やりたいことをメモしておく．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Aug 2, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/08/02/future-study-in-deep-learning">
+            機械学習の学習計画
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p><a href="https://www.udacity.com/">Udacity</a>の<a href="https://www.udacity.com/course/deep-learning-nanodegree-foundation--nd101">Deep learning foundations nanodegree</a>を修了して，基本はある程度押さえられたし，論文も読めるようになった．やりたいことをメモしておく．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Aug 2, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/08/02/english-phrases-in-international-labs">
+            外資系研究所で使う便利な英会話表現
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>縁あって一年ほど，情報通信系の外資系研究所で働いている．世界各国から研究者が集まっており，公用語は英語．ほとんどネイティブスピーカーはいない．忘れないように，よく使われる/使う英語表現をまとめておく．</p>
+
+</div>
+      </div>
+    
+      <div class="post-item">
+        
+        <span class="post-meta">Jul 30, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/07/30/first-post">
+            JekyllとGitHub Pagesでウェブサイト自作
+          </a>
+        </h2>
+
+        <div class="post-snippet"><p>それなりに技術的なメモが溜まってきたが，<a href="http://qiita.com/">Qiita</a>に投稿するほどではない．これまでは<a href="https://evernote.com/intl/jp/">evernote</a>で管理していたが，数式やソースコードを書きづらい．<a href="http://hatenablog.com/">はてなブログ</a>等で<a href="https://ja.wikipedia.org/wiki/Markdown">Markdown</a>を書いても良いが，手元にコンテンツが残らないのが嫌だし，<code class="highlighter-rouge">haltaro</code>ドメインが取れなかった．そこで，<a href="https://jekyllrb-ja.github.io/">Jekyll</a>と<a href="https://pages.github.com/">GitHub Pages</a>で，ウェブサイトを立ち上げた．</p>
+
+</div>
+      </div>
+    
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+const search = instantsearch({
+  appId: 'W1ZQ0FTVG1',
+  apiKey: '2aa4cae0d629ee50410d4fc8afa6b788',
+  indexName: 'memotaro'
+});
+
+const hitTemplate = function(hit) {
+  let date = '';
+  if (hit.date) {
+    date = moment.unix(hit.date).format('MMM D, YYYY');
+  }
+
+  let url = `${hit.url}#${hit.anchor}`;
+
+  const title = hit._highlightResult.title.value;
+
+  let breadcrumbs = '';
+  if (hit._highlightResult.headings) {
+    breadcrumbs = hit._highlightResult.headings.map(match => {
+      return `<span class="post-breadcrumb">${match.value}</span>`
+    }).join(' > ')
+  }
+
+  const content = hit._highlightResult.html.value;
+
+  return `
+    <div class="post-item">
+      <span class="post-meta">${date}</span>
+      <h2><a class="post-link" href="${url}">${title}</a></h2>
+      <a href="${url}" class="post-breadcrumbs">${breadcrumbs}</a>
+      <div class="post-snippet">${content}</div>
+    </div>
+  `;
+}
+
+
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-searchbar',
+    placeholder: '        Search into posts...',
+    poweredBy: true // This is required if you're on the free Community plan
+  })
+);
+
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits',
+    templates: {
+      item: hitTemplate
+    }
+  })
+);
+
+search.start();
+</script>
+
+<style>
+.ais-search-box {
+  max-width: 100%;
+  margin-bottom: 15px;
+}
+.post-item {
+  margin-bottom: 30px;
+}
+.post-link .ais-Highlight {
+  color: #111;
+  font-style: normal;
+  text-decoration: underline;
+}
+.post-breadcrumbs {
+  color: #424242;
+  display: block;
+}
+.post-breadcrumb {
+  font-size: 18px;
+  color: #424242;
+}
+.post-breadcrumb .ais-Highlight {
+  font-weight: bold;
+  font-style: normal;
+}
+.post-snippet .ais-Highlight {
+  color: #2a7ae2;
+  font-style: normal;
+  font-weight: bold;
+}
+.post-snippet img {
+  display: none;
+}
+</style>
+
+
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

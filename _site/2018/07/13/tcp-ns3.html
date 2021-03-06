@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ns-3でTCPの輻輳制御を観察する</title>
+  <meta name="description" content="ns-3でTCPの輻輳制御アルゴリズムをシミュレートし，その動作をmatplotlibで可視化した．本記事は，2017年2月20日にQiitaに投稿した記事を，本サイト向けに再構成したもの．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="ns-3でTCPの輻輳制御アルゴリズムをシミュレートし，その動作をmatplotlibで可視化した．本記事は，2017年2月20日にQiitaに投稿した記事を，本サイト向けに再構成したもの．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="ns-3でTCPの輻輳制御を観察する" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2018-07-13-flow.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ns-3でTCPの輻輳制御を観察する">
+  <meta name="twitter:description" content="ns-3でTCPの輻輳制御アルゴリズムをシミュレートし，その動作をmatplotlibで可視化した．本記事は，2017年2月20日にQiitaに投稿した記事を，本サイト向けに再構成したもの．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2018-07-13-flow.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2018/07/13/tcp-ns3">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2018-07-13-flow.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">ns-3でTCPの輻輳制御を観察する</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">July 13, 2018</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#network">Network</a>, 
+    
+  
+    
+    <a href="/categories/#ns3">Ns3</a>, 
+    
+  
+    
+    <a href="/categories/#c++">C++</a>, 
+    
+  
+    
+    <a href="/categories/#visualization">Visualization</a>, 
+    
+  
+    
+    <a href="/categories/#linux">Linux</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p><a href="https://www.nsnam.org/">ns-3</a>でTCPの輻輳制御アルゴリズムをシミュレートし，その動作をmatplotlibで可視化した．本記事は，<a href="https://qiita.com/haltaro/items/d479538345357f08c595">2017年2月20日にQiitaに投稿した記事</a>を，本サイト向けに再構成したもの．</p>
+
+<h1 id="はじめに">はじめに</h1>
+
+<p>インターネット上のほとんどのトラフィックは，<strong>TCP（Transmission Control Protocol）</strong>によって制御されていると言われています．TCPの特徴の一つとして，送信ノードが各々<strong>輻輳<sup id="fnref:congestion"><a href="#fn:congestion" class="footnote">1</a></sup>制御アルゴリズム（Congestion control algorithm）</strong>に基づき，一度に送信するデータ量を調整する，という点があります．本記事では，<a href="https://www.nsnam.org/">ns-3</a>で各アルゴリズムの動作をシミュレートし，<a href="http://www.numpy.org/">NumPy</a> + <a href="http://matplotlib.org/">matplotlib</a>で視覚化します．</p>
+
+<p>TCPの輻輳制御アルゴリズムを比較するために，ns-3には<a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-variants-comparison_8cc.html"><code class="highlighter-rouge">tcp-variants-comparison.cc</code></a>というサンプルシナリオが用意されています．しかし，このシナリオスクリプトをそのまま使うと，本記事で注目するいくつかの変数をモニタ（ns-3では，<strong>トレース</strong>と呼びます）できない，という課題がありました．そこで，本記事では，シナリオスクリプトに任意のトレース情報を追加する方法を紹介します．</p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/c67dba4f-93ce-0618-c980-22c888d3afc7.png" alt="TcpAll20.0-cwnd.png" /></p>
+
+<p>なお，本記事のソースコードは，全て<a href="https://github.com/haltaro/comparing-tcp-algorithms">Github</a>に置いてあります．</p>
+
+<h1 id="環境構築">環境構築</h1>
+
+<h2 id="ns-3-network-simulator-3">ns-3 (Network Simulator 3)</h2>
+
+<p><a href="https://www.nsnam.org/">ns-3</a>は，オープンソースの離散事象ネットワークシミュレータです．研究や教育用途での使用を目的に開発されています．本記事では，下記の記事で構築した環境及びディレクトリ構成を前提とします．</p>
+
+<ul>
+  <li><a href="http://qiita.com/haltaro/items/b474d924f63692c155c8">ns-3.26で始めるネットワークシミュレーション</a></li>
+</ul>
+
+<h2 id="python">python</h2>
+
+<p>本記事では，データ処理に<a href="http://www.numpy.org/">NumPy</a>，グラフ描画に<a href="http://matplotlib.org/">matplotlib</a>を利用します．下記の環境で動作を確認しました．</p>
+
+<ul>
+  <li>Python 2.7.11</li>
+  <li>NumPy 1.10.4</li>
+  <li>matplotlib 1.5.1</li>
+</ul>
+
+<h1 id="tcpにおける輻輳制御">TCPにおける輻輳制御</h1>
+
+<h2 id="概要">概要</h2>
+
+<p>下図は，本記事で想定するTCP輻輳制御のイメージです．TCPの送信ノード（TCP Sender）は，受信ノード（TCP Receiver）からの確認応答（Acknowledgement，ACK）<sup id="fnref:delayedACK"><a href="#fn:delayedACK" class="footnote">2</a></sup><sup id="fnref:ACKnumber"><a href="#fn:ACKnumber" class="footnote">3</a></sup>や信号往復時間（Round Trip Time，RTT）に応じて，データ量（DATA）を調整します．</p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/ea523d49-c229-2d46-a3c5-7290b3f82dff.png" alt="model.png" /></p>
+
+<p>厳密には，データ量の調整は，<script type="math/tex">swnd=min(awnd, cwnd)</script>という式で表現できます．ここで，<script type="math/tex">swnd</script>はTCP SenderがACK無しに送信可能なDATA数の上限値であり，<script type="math/tex">cwnd</script>はTCP Senderが自律的に調整するウインドウサイズ（Congestion window）であり，<script type="math/tex">awnd</script>はTCP Receiverから告知されるウインドウサイズ（Advertised window）です．上式の単位はセグメントと呼ばれ，1セグメントの大きさはTCP SenderとReceiverのネゴシエーションで決まります．<script type="math/tex">awnd</script>は非常に大きい値に設定されることが多いため，簡単のため，本記事では<script type="math/tex">cwnd</script>のみに注目します．</p>
+
+<p><script type="math/tex">cwnd</script>が大きいほど，たくさんのデータを一度に送ることができます．TCP Senderは，ACKやRTTから，Receiverとの間のネットワークの混み具合を予測して，自律的に<script type="math/tex">cwnd</script>の大きさを調整します．<script type="math/tex">cwnd</script>の調整戦略を，本記事では<strong>輻輳制御</strong>と呼びます．</p>
+
+<p>輻輳制御は，<strong>輻輳状態<sup id="fnref:state"><a href="#fn:state" class="footnote">4</a></sup></strong>（Congestion state）と，<strong>アルゴリズム</strong>（Congestion control algorithm）という２つの要素によって決まります．輻輳状態は，<em>OPEN</em>，<em>DISORDER</em>，<em>RECOVER</em>，<em>LOSS</em>等，ネットワークの混雑状態を表します．アルゴリズムは，各輻輳状態における<script type="math/tex">cwnd</script>の更新方法を表します．</p>
+
+<h2 id="輻輳状態congestion-state">輻輳状態（Congestion state）</h2>
+<p>　本記事では，ns-3の実装（<a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-socket-base_8cc.html"><code class="highlighter-rouge">~/ns-3.26/source/ns-3.26/src/internet/model/tcp-socket-base.cc</code></a>）に基づき，以下の4種類の輻輳状態を想定します．</p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/29f58349-b23e-636f-64f9-2798a899eb34.png" alt="state.png" /></p>
+
+<ul>
+  <li><em>OPEN</em>：いわゆる正常な状態です．アルゴリズムによっては，Slow start（SS）とCongestion avoidance（CA）という二種類のフェーズを持ちます．<script type="math/tex">cwnd</script>が閾値（Slow start threshold, <script type="math/tex">ssth</script>）より小さいときはSlow startフェーズに，大きいときはCongestion avoidanceフェーズに該当します．</li>
+  <li><em>DISORDER</em>：重複ACK（Duplicate ACK）を受信した状態です．パケットロスや受信順序の乱れ等の可能性があります．</li>
+  <li><em>RECOVERY</em>：3度重複ACK（Triple duplicate ACK）を受信した状態です．パケットロスを確信し，再送を開始します．</li>
+  <li><em>LOSS</em>：RTTが再送タイムアウト時間（Retransmission Time Out, RTO）より大きくなる，つまりACKのタイムアウトを検知した状態です．深刻な輻輳が生じている可能性があります．</li>
+</ul>
+
+<h2 id="輻輳制御アルゴリズムcongestion-control-algorithm">輻輳制御アルゴリズム（Congestion control algorithm）</h2>
+
+<p>本記事では，ns-3の<a href="https://www.nsnam.org/docs/models/html/tcp.html">実装</a>に基づき，以下の輻輳制御アルゴリズムを想定します．<code class="highlighter-rouge">TypeId</code>とは，ns-3におけるアルゴリズムの呼び名のようなものです．ソースコードは，それぞれ<code class="highlighter-rouge">~/ns-3.26/source/ns-3.26/src/internet/model</code>に格納されています．</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">アルゴリズム</th>
+      <th style="text-align: left"><code class="highlighter-rouge">TypeId</code></th>
+      <th style="text-align: left">ソースコード</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="https://tools.ietf.org/html/rfc6582">NewReno</a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpNewReno</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-congestion-ops_8cc.html"><code class="highlighter-rouge">tcp-congestion-ops.cc</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://tools.ietf.org/html/rfc3649">HighSpeed</a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpHighSpeed</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-highspeed_8cc.html"><code class="highlighter-rouge">tcp-highspeed.cc</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="http://www.mathcs.emory.edu/~cheung/Courses/558/Syllabus/Papers/TCP-Hybla.pdf">Hybla</a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpHybla</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-hybla_8cc.html"><code class="highlighter-rouge">tcp-hybla.cc</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://pdfs.semanticscholar.org/d3f0/a499906d7821cf204d9ca26900c11179777e.pdf">Westwood</a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpWestwood</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-westwood_8cc.html"><code class="highlighter-rouge">tcp-westwood.cc</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Westwood+</td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpWestwoodPlus</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-westwood_8cc.html"><code class="highlighter-rouge">tcp-westwood.cc</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="http://cseweb.ucsd.edu/~rbraud/jsac.pdf">Vegas</a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpVegas</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-vegas_8cc.html"><code class="highlighter-rouge">tcp-vegas.cc</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.5330&amp;rep=rep1&amp;type=pdf">Scalable</a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpScalable</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-scalable_8cc.html"><code class="highlighter-rouge">tcp-scalable.cc</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="http://ieeexplore.ieee.org/document/1177186/">Veno</a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpVeno</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-veno_8cc.html"><code class="highlighter-rouge">tcp-veno.cc</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="http://infocom2004.ieee-infocom.org/Papers/52_4.PDF">Bic</a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpBic</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-bic_8cc.html"><code class="highlighter-rouge">tcp-bic.cc</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="http://infocom.uniroma1.it/~vacirca/yeah/yeah.pdf">YeAH</a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpYeah</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-yeah_8cc.html"><code class="highlighter-rouge">tcp-yeah.cc</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="http://dl.acm.org/citation.cfm?id=1190166">Illinois</a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpIllinois</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-illinois_8cc.html"><code class="highlighter-rouge">tcp-illinois.cc</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.3.7816&amp;rep=rep1&amp;type=pdf">H-TCP</a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">TcpHtcp</code></td>
+      <td style="text-align: left"><a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-htcp_8cc.html"><code class="highlighter-rouge">tcp-htcp.cc</code></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>例えば，最もメジャーな輻輳制御アルゴリズムの１つである<a href="https://tools.ietf.org/html/rfc6582">NewReno</a>（Reno）は，各輻輳状態において次のように<script type="math/tex">cwnd</script>を更新します．</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">更新契機</th>
+      <th style="text-align: left">更新式</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><em>OPEN</em>（SS）状態で，ACKを受信したとき</td>
+      <td style="text-align: left"><script type="math/tex">cwnd \gets cwnd + 1</script></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><em>OPEN</em>（CA）状態で，ACKを受信したとき</td>
+      <td style="text-align: left"><script type="math/tex">\displaystyle cwnd \gets cwnd + \frac{1}{cwnd}</script></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><em>RECOVERY</em>状態に遷移したとき</td>
+      <td style="text-align: left"><script type="math/tex">ssth \gets max(\mathit{inflight} /2, 2 \cdot smss)</script>, <bf> $$cwnd \gets ssth +3$$</bf></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><em>RECOVERY</em>状態で，重複ACKを受信したとき</td>
+      <td style="text-align: left"><script type="math/tex">\displaystyle cwnd \gets cwnd + 1</script></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><em>RECOVERY</em>状態で，新規ACKを受信し，<em>OPEN</em>状態に遷移したとき</td>
+      <td style="text-align: left"><script type="math/tex">cwnd \gets ssth</script></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><em>LOSS</em>状態に遷移したとき</td>
+      <td style="text-align: left"><script type="math/tex">cwnd \gets smss</script>，<bf> $$ssth \gets max(\mathit{inflight} /2, 2 \cdot smss)$$</bf></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>ここで，<script type="math/tex">\mathit{inflight}</script>は，ACKが返っていないDATAの総量を表し，<script type="math/tex">smss</script>は最小セグメントサイズを表します．また，簡単のためPartial ACKやFull ACK等は考慮していません．NewRenoの動作の詳細は，<a href="https://tools.ietf.org/html/rfc6582">RFC6582</a>等をご参照ください．</p>
+
+<p>NewRenoは，輻輳の可能性が低いと思われるSlow startフェーズにおいては，<script type="math/tex">cwnd</script>を高速に増加させることでDATAを効率的に送信し，一方で輻輳の可能性が高いと思われるCongestion avoidanceフェーズにおいては，徐々に<script type="math/tex">cwnd</script>を上げることで急激な輻輳を回避する，という戦略を採用しています．</p>
+
+<p>ACK受信を契機とする更新式は，<strong>1セグメント分のACKに対する更新式</strong>という点にご注意ください（私はここでハマりました）．例えば，<script type="math/tex">cwnd=4</script>のとき，TCP Senderは4セグメント分のDATAに対するACKを受信するため，上記の更新を<strong>4回</strong>行います．</p>
+
+<p>なお，<a href="https://www.nsnam.org/docs/models/html/tcp.html">ns-3におけるTCPの実装</a>は以下の3種類がありますが，本記事ではns-3ネイティブ（<code class="highlighter-rouge">src/internet/model</code>）で実装されているアルゴリズムのみを対象とします．つまり，Linuxでメジャーな<a href="http://dl.acm.org/citation.cfm?id=1400105">CUBIC</a>や，Windowsでメジャーな<a href="http://www.dcs.gla.ac.uk/~lewis/CTCP.pdf">CTCP</a>は対象外です．これらについては，別途ご紹介できればと思っています．</p>
+
+<ul>
+  <li>ns-3ネイティブ（<code class="highlighter-rouge">src/internet/</code>）</li>
+  <li><a href="http://www.wand.net.nz/~stj2/nsc/">NSC（Network Simulation Cradle）</a></li>
+  <li><a href="https://www.nsnam.org/overview/projects/direct-code-execution/">DCE（Direct Code Execution）</a></li>
+</ul>
+
+<h1 id="シナリオスクリプトの作成">シナリオスクリプトの作成</h1>
+
+<p>本章では，もとにするサンプルシナリオ<code class="highlighter-rouge">tcp-variants-comparison.cc</code>の解説と，その課題，そして修正版の<code class="highlighter-rouge">my-tcp-variants-comparison.cc</code>をご紹介します．</p>
+
+<h2 id="もとにするサンプルシナリオ">もとにするサンプルシナリオ</h2>
+
+<p>ns-3は，TCPの輻輳制御アルゴリズムの比較用に，<a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-variants-comparison_8cc.html"><code class="highlighter-rouge">tcp-variants-comparison.cc</code></a>
+というサンプルシナリオを用意しています（<code class="highlighter-rouge">~/ns-3.26/source/ns-3.26/examples/tcp/</code>にあります）．本シナリオスクリプトは，以下の変数の時変化をトレースし，ファイルに出力することが可能です．</p>
+
+<ul>
+  <li>Cwnd：前記<script type="math/tex">cwnd</script>．ただし単位はバイトです．</li>
+  <li>SsThresh：前記<script type="math/tex">ssth</script>．ただし単位はバイトです．</li>
+  <li>Rtt：前記RTT．単位は[s]です．</li>
+  <li>Rto：前記RTO．単位は[s]です．</li>
+  <li>NextTx：TCP Senderが次に送信する予定のSequence numberです．</li>
+  <li>NextRx：TCP Receiverが次に受信する予定のSequence numberです．</li>
+  <li>InFlight：前記<script type="math/tex">\mathit{inflight}</script>．ただし，単位はバイトです．TCPの原理上，必ず<script type="math/tex">cwnd</script>以下になります．</li>
+</ul>
+
+<p>以下では，本記事のテーマである<strong>トレース</strong>に特にスポットを当て，ソースコードを解説します．</p>
+
+<h3 id="トレース用変数">トレース用変数</h3>
+
+<p>58行目から70行目で，トレースに用いる変数の定義を行います．<code class="highlighter-rouge">bool first*</code>は，それぞれトレース対象の初期値を出力するか否かを表し，<code class="highlighter-rouge">Ptr&lt;OutputStreamWrapper&gt; *Stream</code>は，それぞれトレース対象をファイル出力するためのストリームを表し，<code class="highlighter-rouge">uint32_t *Value</code>は，それぞれトレース対象の初期値を取り扱う際に一時的に使用される変数を表します．</p>
+
+<script src="https://gist.github.com/haltaro/37d8d7e137ce2490b0269658f357dd54.js"></script>
+
+<h3 id="トレース用コールバック関数の設定">トレース用コールバック関数の設定</h3>
+
+<p>73行目から145行目ではトレース用コールバック関数<code class="highlighter-rouge">*Tracer()</code>の定義を，147行目から202行目ではコールバック関数をトレース対象と紐付ける関数<code class="highlighter-rouge">Trace*()</code>の定義を行います．ここでは，トレース対象の１つである<code class="highlighter-rouge">BytesInFlight</code>を例に解説します．</p>
+
+<script src="https://gist.github.com/haltaro/44d3d4dd1e11c0f580958b7ed550303a.js"></script>
+
+<p>ns-3においては，ソースファイル（<code class="highlighter-rouge">ns-3.26/source/ns-3.26/src/*/model/</code>）中で<code class="highlighter-rouge">AddTraceSource()</code>された全ての変数を，シナリオスクリプト中でトレース対象として設定することができます．例えば，上記の<code class="highlighter-rouge">BytesInFlight</code>は，<a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-socket-base_8cc.html"><code class="highlighter-rouge">~/ns-3.26/source/ns-3.26/src/internet/model/tcp-socket-base.cc</code></a>において<code class="highlighter-rouge">AddTraceSource()</code>されています．ns-3は，トレース対象となった変数が更新される度に，その変数に紐付けられたコールバック関数を呼び出します．よって，トレース対象の設定には，<strong>コールバック関数の定義</strong>と，<strong>トレース対象とコールバック関数の紐付け</strong>が必要です．</p>
+
+<p>コールバック関数として，上記<code class="highlighter-rouge">InFlightTracer()</code>のような関数がよく使われます．<code class="highlighter-rouge">InFlightTracer()</code>は，現在時刻（<code class="highlighter-rouge">Simulator::Now ().GetSeconds ()</code>）と，更新後の値（<code class="highlighter-rouge">inFlight</code>）を，都度出力する関数です．</p>
+
+<p>トレース対象とコールバック関数の紐付け時には，上記<code class="highlighter-rouge">TraceInFlight()</code>にあるように，<code class="highlighter-rouge">Config::ConnectWithoutContext(variable, MakeCallback(&amp;func))</code>という構文を使うことができます．ここで，<code class="highlighter-rouge">variable</code>は，トレース対象のObjectのパスを記載する必要があります．<code class="highlighter-rouge">/NodeList/1/$$ns3::TcpL4Protocol/SocketList/0/BytesInFlight</code>は，<code class="highlighter-rouge">NodeList</code>1番のノードにぶら下がる，<code class="highlighter-rouge">SocketList</code>0番のソケットの，変数<code class="highlighter-rouge">BytesInFlight</code>を意味します．</p>
+
+<p>ns-3におけるトレース方法の詳細は，<a href="https://www.nsnam.org/docs/release/3.26/manual/ns-3-manual.pdf">公式マニュアル</a>の1.10節をご参照ください．</p>
+
+<h3 id="ネットワーク構成">ネットワーク構成</h3>
+
+<p>204行目以降の<code class="highlighter-rouge">main()</code>で，ネットワーク構成の設定を行います．詳細は<a href="https://www.nsnam.org/docs/release/3.26/manual/ns-3-manual.pdf">公式マニュアル</a>に譲り，ここではポイントのみ記載します．</p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/e2b6da86-4058-3ef1-7bba-952887c1d415.png" alt="network.png" /></p>
+
+<p>上の図は，本シナリオのイメージ図です．TCP SenderとReceiverがそれぞれ１つずつの，簡単な構成を想定します．FTPライクな大量のデータ送信を模擬する，<code class="highlighter-rouge">BulkSendHelper</code>を利用します．IPパケットサイズは400バイトです．シミュレーション時間は，デフォルトで100秒間です．</p>
+
+<h3 id="コマンドライン引数">コマンドライン引数</h3>
+
+<p>224行目から243行目で，コマンドライン引数を設定します．<a href="http://qiita.com/haltaro/items/b474d924f63692c155c8">前回の記事</a>でご紹介したように，<code class="highlighter-rouge">CommandLine.AddValue()</code>することで，コマンドライン引数を設定できます．</p>
+
+<script src="https://gist.github.com/haltaro/f6e8069fd35859f0555a95c40f6536f3.js"></script>
+
+<p>本記事では，特に下記のコマンドライン引数を利用します．</p>
+
+<ul>
+  <li><code class="highlighter-rouge">transport_prot</code>：輻輳制御アルゴリズムを指定できます．本記事では，シェルスクリプトを使って12種類全てを順番に指定します．</li>
+  <li><code class="highlighter-rouge">tracing</code>：トレーシングの有無を指定できます．デフォルトで<code class="highlighter-rouge">False</code>なので，<code class="highlighter-rouge">True</code>を指定します．</li>
+  <li><code class="highlighter-rouge">duration</code>：シミュレーション時間を指定できます．デフォルトの100秒は長すぎるので，本記事では20秒に設定します．</li>
+  <li><code class="highlighter-rouge">prefix_name</code>：出力ファイル名のプレフィックスを指定できます．デフォルト設定だと，<code class="highlighter-rouge">~/ns-3.26/source/ns-3.26/</code>直下に大量のファイルを吐いてしまうので，<code class="highlighter-rouge">data</code>ディレクトリ配下に吐くよう修正します．</li>
+</ul>
+
+<h3 id="トレース設定のスケジューリング">トレース設定のスケジューリング</h3>
+
+<p>460行目から476行目で，上記<code class="highlighter-rouge">TraceInFlight()</code>等のトレース設定関数（コールバック関数と，トレース対象を紐付ける関数）をスケジューリングします．</p>
+
+<script src="https://gist.github.com/haltaro/98c58febaadb21dce5713f4014a772d5.js"></script>
+
+<p>ns-3では，<code class="highlighter-rouge">Simulator::Schedule(time, &amp;func, args,...)</code>という構文で，<code class="highlighter-rouge">time</code>時に<code class="highlighter-rouge">func(args,...)</code>を実行するようスケジューリングできます．</p>
+
+<p>しかし，なぜ地の文で<code class="highlighter-rouge">Trace*()</code>してはいけないのか，イマイチよくわからないです．おそらくオブジェクト生成のタイミングの問題の気がするのですが…．</p>
+
+<h2 id="tcp-variants-comparisonccの課題"><code class="highlighter-rouge">tcp-variants-comparison.cc</code>の課題</h2>
+
+<p><code class="highlighter-rouge">tcp-variants-comparison.cc</code>は，非常によくできたシナリオスクリプトで，コマンドライン引数をいじるだけでかなり遊べます．しかし，我々が興味のある，ACKや輻輳状態をトレースできません！</p>
+
+<p>幸いにも，最新のACKを表す変数<code class="highlighter-rouge">HighestRxAck</code>と，輻輳状態を表す変数<code class="highlighter-rouge">CongState</code>は，それぞれ<a href="https://www.nsnam.org/docs/release/3.26/doxygen/tcp-socket-base_8cc.html"><code class="highlighter-rouge">tcp-socket-base.cc</code></a>で<code class="highlighter-rouge">AddTraceSource()</code>されています．よって，シナリオスクリプトに少し変更を加えるだけで，これらをトレース対象に追加することができます．以下では，その方法をご紹介します．</p>
+
+<h2 id="新シナリオスクリプトmy-tcp-variants-comparisoncc">新シナリオスクリプト<code class="highlighter-rouge">my-tcp-variants-comparison.cc</code></h2>
+
+<p>まず，もとにする<code class="highlighter-rouge">tcp-variants-comparison.cc</code>を<code class="highlighter-rouge">~/ns-3.26/source/ns-3.26/scratch</code>にコピーし，名前を<code class="highlighter-rouge">my-tcp-variants-comparison.cc</code>に変更します．</p>
+
+<script src="https://gist.github.com/haltaro/7d80b2d4702ca15df1983c5813274a0c.js"></script>
+
+<p>ACKと輻輳状態をトレース対象に追加するため，トレース用変数の追加，トレース用コールバック関数の設定，およびトレース設定のスケジューリングを行います．</p>
+
+<h3 id="トレース用変数の追加">トレース用変数の追加</h3>
+
+<p>ACKトレース用のストリーム<code class="highlighter-rouge">ackStream</code>と，輻輳状態トレース用のストリーム<code class="highlighter-rouge">congStateStream</code>を追加します．</p>
+
+<script src="https://gist.github.com/haltaro/584452072b9ae54f9ee13e49bc22b0b8.js"></script>
+
+<h3 id="トレース用コールバック関数の設定-1">トレース用コールバック関数の設定</h3>
+
+<p>ACKトレース用のコールバック関数<code class="highlighter-rouge">AckTrace()</code>と，輻輳状態トレース用のコールバック関数<code class="highlighter-rouge">CongStateTracer()</code>をそれぞれ追加します．なお，輻輳状態は，<code class="highlighter-rouge">tcp-socket-base.h</code>で定義される列挙型<code class="highlighter-rouge">TcpSocketState::TcpCongState_t</code>です．また，上記のコールバック関数とトレース対象の変数を紐付ける関数<code class="highlighter-rouge">TraceAck()</code>および<code class="highlighter-rouge">TraceCongState()</code>も，それぞれ追加します．</p>
+
+<script src="https://gist.github.com/haltaro/54113ecb7e3825218f2825c6f4063687.js"></script>
+
+<h3 id="トレース設定のスケジューリング-1">トレース設定のスケジューリング</h3>
+
+<p>最後に，上記<code class="highlighter-rouge">TraceAck()</code>および<code class="highlighter-rouge">TraceCongState()</code>をスケジューリングします．</p>
+
+<script src="https://gist.github.com/haltaro/abfec9ad1f5ad2d836b90bf898af2da4.js"></script>
+
+<h2 id="my-tcp-variants-comparisonccのコンパイル"><code class="highlighter-rouge">my-tcp-variants-comparison.cc</code>のコンパイル</h2>
+
+<p><code class="highlighter-rouge">~/ns-3.26/source/ns-3.26</code>ディレクトリで<code class="highlighter-rouge">./waf</code>することで，<code class="highlighter-rouge">my-tcp-variants-comparison.cc</code>をコンパイルできます．</p>
+
+<script src="https://gist.github.com/haltaro/0c57395712366ea23e2a2e4e5d2c39cb.js"></script>
+
+<h1 id="実験">実験</h1>
+
+<h2 id="シナリオスクリプトの実行">シナリオスクリプトの実行</h2>
+
+<p>まず，データ格納用ディレクトリ<code class="highlighter-rouge">data</code>を作成します．</p>
+
+<script src="https://gist.github.com/haltaro/a925e27e9c66d64e305f05b3604ef560.js"></script>
+
+<p>以下のシェルスクリプトを実行して，全12種類のアルゴリズムについて実験を行います．<a href="http://qiita.com/haltaro/items/b474d924f63692c155c8">前回の記事</a>でもご紹介した通り，<code class="highlighter-rouge">--arg=value</code>によりコマンドライン引数<code class="highlighter-rouge">arg</code>に値<code class="highlighter-rouge">value</code>を渡すことができます．<code class="highlighter-rouge">transport_prot</code>は輻輳制御アルゴリズム，<code class="highlighter-rouge">prefix_name</code>は出力ファイル名のプレフィックス，<code class="highlighter-rouge">tracing</code>はトレースの有無，そして<code class="highlighter-rouge">duration</code>はシミュレーション時間[s]を表します．</p>
+
+<script src="https://gist.github.com/haltaro/9a12ca3b89e92fe0b8d94595fdc049df.js"></script>
+
+<h2 id="全アルゴリズムの輻輳制御を観察">全アルゴリズムの輻輳制御を観察</h2>
+
+<p>ひとまず，下記の<code class="highlighter-rouge">plot_cwnd_all_algorithms()</code>で，全アルゴリズムの<script type="math/tex">cwnd</script>と，<script type="math/tex">ssth</script>と，輻輳状態の変化をプロットしてみます．</p>
+
+<script src="https://gist.github.com/haltaro/8627edf3ad2403b82f1c36e059a26d59.js"></script>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/cac2dc4a-34fa-5dfd-773e-3dbdb5db7d1e.png" alt="TcpAll20.0-cwnd.png" /></p>
+
+<p>横軸は時間[s]，縦軸は<script type="math/tex">cwnd</script>および<script type="math/tex">ssth</script>[segment]です．<script type="math/tex">cwnd</script>は実線，<script type="math/tex">ssth</script>は点線です．輻輳状態に応じて，色を塗り分けています．<script type="math/tex">OPEN</script>は青，<script type="math/tex">DISORDER</script>は緑，<script type="math/tex">RECOVERY</script>は黄色，そして<script type="math/tex">LOSS</script>は赤です．当初の想定以上に，各アルゴリズムの個性が色濃く出てくれました．</p>
+
+<h2 id="各アルゴリズムのcwndackrttの関係を観察">各アルゴリズムのcwnd，ACK，RTTの関係を観察</h2>
+
+<p>次は，下記の<code class="highlighter-rouge">plot_cwnd_ack_rtt_each_algorithm()</code>で，各アルゴリズムの<script type="math/tex">cwnd</script>，ACK，およびRTTをプロットします．</p>
+
+<script src="https://gist.github.com/haltaro/9ca7433733a535dbb752b244a5d92a24.js"></script>
+
+<p>以下では，NewRenoを例に，結果を分析します．また，ご参考までに，他のアルゴリズムの結果も載せておきます．</p>
+
+<h3 id="newreno">NewReno</h3>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/52b01249-6e2d-33e1-59e6-2de913c81130.png" alt="TcpNewReno020-cwnd-ack-rtt.png" /></p>
+
+<p>1.93[s]付近で，三重複ACKを受信し，<script type="math/tex">RECOVERY</script>状態に遷移しています．このときのスループットを概算すると：</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+\frac{cwnd}{RTT} \simeq
+\frac{321\rm{[segment]} \cdot 340 \rm{[byte/segment] \cdot 8 \rm{[bit/byte]}}}{0.33[s]} \simeq 2.3 \rm{[Mbps]}
+\end{align*}</script>
+
+<p>ここで，ボトルネックリンクの帯域は2.0Mbps（4.1節参照）でしたので，輻輳が発生するタイミングとして不自然ではないです<sup id="fnref:queue"><a href="#fn:queue" class="footnote">5</a></sup>．<script type="math/tex">RECOVERY</script>に遷移後，ACKおよびRTTの更新が止まっていることがわかります．また，<script type="math/tex">cwnd</script>や<script type="math/tex">ssth</script>の更新が3.3節と整合していることが確認できます．</p>
+
+<p>3.26[s]付近で，新規ACKを受信することがないままタイムアウトし，<script type="math/tex">LOSS</script>状態に遷移しています．<script type="math/tex">cwnd</script>や<script type="math/tex">ssth</script>の更新が3.3節と整合していることが確認できます．4.69[s]付近で，ついに新規ACKを受信し，<script type="math/tex">OPEN</script>状態に遷移しています．</p>
+
+<h3 id="その他のアルゴリズム">その他のアルゴリズム</h3>
+
+<p>ご参考までに，他のアルゴリズムの結果も掲載しておきます．</p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/de2ae85a-f79f-0d7a-b98a-90c43e7c97e3.png" alt="TcpHighSpeed020-cwnd-ack-rtt.png" /></p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/36055b18-bf49-0a50-791e-42929d2c0938.png" alt="TcpHybla020-cwnd-ack-rtt.png" /></p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/3d41b246-a42d-936e-a3d4-11363c65697c.png" alt="TcpWestwood020-cwnd-ack-rtt.png" /></p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/400ec59a-a6df-bbe1-9b8f-2ea6c63ee815.png" alt="TcpWestwoodPlus020-cwnd-ack-rtt.png" /></p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/4ffc8ff4-823f-1aec-3ac1-81eb9469ff76.png" alt="TcpVegas020-cwnd-ack-rtt.png" /></p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/93ae3515-e91e-92e1-d466-7d800069d95b.png" alt="TcpScalable020-cwnd-ack-rtt.png" /></p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/6122a656-cd75-c408-6e1a-96cc99573182.png" alt="TcpVeno020-cwnd-ack-rtt.png" /></p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/e48f2ee4-3aa4-0913-e8d4-bf76a814e439.png" alt="TcpBic020-cwnd-ack-rtt.png" /></p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/9ed7a220-96ef-7e02-9fff-c9988cfe5a67.png" alt="TcpYeah020-cwnd-ack-rtt.png" /></p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/f8b06f1b-bee0-9739-0c7d-8a8a0f7ebbfe.png" alt="TcpIllinois020-cwnd-ack-rtt.png" /></p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/151195/387a0df2-a07b-e756-114d-8a57cdfa761f.png" alt="TcpHtcp020-cwnd-ack-rtt.png" /></p>
+
+<h1 id="おわりに">おわりに</h1>
+
+<p>本記事では，ns-3を使ってTCPの輻輳制御をシミュレートし，pythonで可視化してみました．初心者なりに，TCPの雰囲気を掴むことができました．また，ns-3のサンプルシナリオの優秀さを再認識しました．
+　今後は，<a href="http://dl.acm.org/citation.cfm?id=1400105">CUBIC</a>や<a href="http://www.dcs.gla.ac.uk/~lewis/CTCP.pdf">CTCP</a>のようなメジャーなアルゴリズムの実装や，<a href="http://web.mit.edu/remy/">Remy</a>のような最新のアルゴリズムの実装に挑戦したいと思っています．あるいは，異なるアルゴリズム同士の競合を観察してみるのもいいかなと思っています．</p>
+
+<p>最後まで読んでくださり，ありがとうございました！</p>
+
+<h1 id="参考">参考</h1>
+
+<p>本記事の作成にあたっては，下記を参考にさせて頂きました．ありがとうございました！</p>
+
+<ul>
+  <li><a href="http://www.net.c.dendai.ac.jp/~yutaro/">TCP各バージョンの輻輳制御の比較</a></li>
+  <li><a href="http://www5e.biglobe.ne.jp/aji/3min/42.html">3分間ネットワーキング，第42回レイヤ４ TCP 輻輳制御</a></li>
+</ul>
+<div class="footnotes">
+  <ol>
+    <li id="fn:congestion">
+      <p>ネットワークにおける混雑，的なイメージの言葉です． <a href="#fnref:congestion" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:delayedACK">
+      <p>説明をシンプルにするため，本記事では遅延ACK（delayed acknowledgement）は考慮しません．遅延ACKは，複数のACKをまとめて送信することでネットワークの利用効率を向上させる方式です． <a href="#fnref:delayedACK" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:ACKnumber">
+      <p>Acknowledgement numberは，厳密には受信したSequence number + Segment sizeです．本記事では，説明を直感的にするため，DATAのセグメント番号をそのままACKするようなイメージ図を用いています． <a href="#fnref:ACKnumber" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:state">
+      <p>いわゆるTCPの状態遷移図（Finite state machine）とは異なります．状態遷移図は，コネクションの確立から切断までを対象としていますが，輻輳状態はコネクション確立（ESTABLISHED）中の輻輳の状態を対象としています． <a href="#fnref:state" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:queue">
+      <p>たぶん．キューの分析等，もっと詳細な分析が必要だと思いますが力尽きました…． <a href="#fnref:queue" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

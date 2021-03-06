@@ -1,0 +1,49 @@
+<p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="http://amzn.asia/2saLJcb">Kyran Dale，PythonとJavaScriptではじめるデータビジュアライゼーション</a>の読書メモ．<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript">JavaScript</a>習得の取っ掛かりにしたい．</p>
+
+<p>なお，演習ではUbuntu16.04を用いた．</p>
+
+<h1 id="section">1章．開発環境の準備</h1>
+<ul>
+  <li>本書で扱うコードは<a href="https://github.com/Kyrand/dataviz-with-python-and-js">著者のGitHubレポジトリ</a>で公開されている．</li>
+  <li><a href="https://www.python.org/">Python</a>の開発環境を構築．<code class="highlighter-rouge">$ conda create --name pyjsviz anaconda</code>．</li>
+  <li><a href="https://www.sqlite.org/">SQLite</a>をインストール．<code class="highlighter-rouge">$ sudo apt-get install sqlite3</code>．</li>
+  <li><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/">MongoDB，Install MongoDB Community Edition on Ubuntu</a>を参考に，<a href="https://www.mongodb.com/?_ga=2.209021842.1022727536.1511017438-1207852474.1511017438">MongoDB</a>をインストール．</li>
+  <li>MongoDB用に，ルートディレクトリに<code class="highlighter-rouge">/data</code>および<code class="highlighter-rouge">/data/db</code>ディレクトリを作成．</li>
+  <li>上記ディレクトリの所有者を自分に設定．<code class="highlighter-rouge">$ sudo chown 'haltaro' /data/db</code>．</li>
+</ul>
+
+<h1 id="pythonjavascript">2章．PythonとJavaScript間の言語学習の橋渡し</h1>
+
+<ul>
+  <li>Pythonは学習済みなので，JavaScriptを中心にメモを残す．</li>
+  <li><code class="highlighter-rouge">index.html</code>のあるディレクトリで<code class="highlighter-rouge">$ python -m http.server</code><sup id="fnref:2"><a href="#fn:2" class="footnote">1</a></sup>して，ブラウザで<code class="highlighter-rouge">http://localhost:8000</code>にアクセスすると，JavaScriptの実行結果が見られる<sup id="fnref:3"><a href="#fn:3" class="footnote">2</a></sup>．</li>
+  <li><a href="https://www.google.co.jp/chrome/browser/desktop/index.html">Chrome</a>のショートカット<code class="highlighter-rouge">[Ctrl] + [Shift] + [J]</code>で，JavaScriptのコンソールが利用できる．</li>
+  <li>JavaScriptでは，関数やモジュールの先頭で<code class="highlighter-rouge">'use strict'</code>を記述することで，厳格なスタイルガイドを利用できる．</li>
+  <li>JavaScriptでは，変数名に<a href="https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%A1%E3%83%AB%E3%82%B1%E3%83%BC%E3%82%B9">キャメルケース</a>を用いることが多い<sup id="fnref:1"><a href="#fn:1" class="footnote">3</a></sup>．</li>
+  <li>Pythonでは，ドット<code class="highlighter-rouge">.</code>表記を使って相対パスで<code class="highlighter-rouge">import</code>できる．</li>
+  <li>JavaScriptでは，関数外で宣言した変数や<code class="highlighter-rouge">var</code>キーワードのない変数はグローバルになってしまう．</li>
+  <li>JavaScriptの<a href="http://taiju.hatenablog.com/entry/20110331/1301535208">reduce</a>関数は便利．配列の合計値などが簡単に計算できる．</li>
+  <li>JavaScriptでは，<code class="highlighter-rouge">array.forEach(callback)</code>で，効率的に配列<code class="highlighter-rouge">array</code>に繰り返し処理を実行できる．</li>
+  <li>JavaScriptでは，変数を他のコードより先に処理する．変数を必ず先頭で定義するようにしないと，予期しない動作を招く可能性がある．</li>
+  <li>続きは24ページから．</li>
+</ul>
+
+<h1 id="section-1">参考</h1>
+
+<ul>
+  <li><a href="http://taiju.hatenablog.com/entry/20110331/1301535208">あと味，reduce関数は結構有用っていうお話</a>：JavaScriptにおける<code class="highlighter-rouge">reduce</code>の使い方について．</li>
+  <li><a href="https://www.sejuku.net/blog/20257">侍エンジニア塾，【JavaScript入門】「forEach文」の使い方を基本から応用まで徹底解説！</a>：JavaScriptにおける<code class="highlighter-rouge">array.forEach</code>の使い方について．</li>
+</ul>
+<div class="footnotes">
+  <ol>
+    <li id="fn:2">
+      <p>Python3の場合．Python2の場合は<code class="highlighter-rouge">$ python -m SimpleHTTPServer</code>． <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p><code class="highlighter-rouge">index.html</code>に具体的に何を書くかについては，本書では割愛． <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:1">
+      <p>諸説ある．<a href="https://qiita.com/takayukishmz@github/items/f833744f43958a3a9ea9">Qiita，React(Javascript)でファイルの命名規則をどうするかという問題</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>

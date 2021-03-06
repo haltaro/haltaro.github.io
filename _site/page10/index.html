@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/page10/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/12/30/chatbot">チャットボットを作ろう：2．JekyllサイトでBotUI</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>諸事情により，チャットボットを自作したいと思った．paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！を参考にチャットボットを作成し，本サイトのAbout欄に埋め込んだ．
+
+
+  2018/02/11追記：このあと，本サイトのJekyll themeをEasyBookからCentrariumに変更した．詳細はJekyll themeをCentrariumに変更する - Memotaroを参照されたい．
+
+
+
+
+関連記事はこちら：
+
+  チャットボットを作ろう：1．調査
+  チャットボットを作ろう：2．JekyllサイトでBotUI
+  チャットボットを作ろう：3．CSS修正
+
+
+環境
+
+
+  Easybook：本サイトで利用しているJekyllのテーマ．
+  BotUI：JavaScriptだけで動くチャットボットライブラリ．
+
+
+手順
+
+paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！を参考した．
+
+_includes/head.htmlを追記
+
+BotUI関連のファイルを，CDN経由で読み込む設定を_includes/head.htmlに追記した．
+
+
+
+_layouts/bot.htmlを作成
+
+BotUI用の新レイアウトbot.htmlを_layouts/に追加した．
+
+
+
+任意のidを付与可能．チャットボットを表示したい位置に，&lt;bot-ui&gt;タグを配置した．
+
+js/bot.jsを作成
+
+チャットボット本体となるbot.jsをjs/に追加した．
+
+
+
+Promiseをベースとしたメソッドチェーンを繋げて，構成するらしい．詳細はよくわからなかったが，ノリでthenを繋げていったら動くものができた．
+
+  botui.message.add：新規メッセージの表示．delayで表示までの待ち時間を，contentで表示内容を指定できる．
+  botui.action.text：入力フォームを表示．resでユーザの回答を取得できる．
+  botui.action.button：ボタンを表示．resでユーザの回答を取得できる．
+
+
+_about.mdを修正
+
+Markdownで記載していた自己紹介欄を削除し，layoutをbotに変更した．
+
+
+
+課題
+
+時間切れのため，以下の課題を解決できなかった．時間に余裕ができたら解決したい．
+
+
+  会話が長くなったとき，サイドバーが二重に表示されてダサい．次回で解決する．
+  BotUI, Guide, BotUI Markupを参考にしたが，URLや画像が埋め込めない．
+  If-Thenルールに則っただけの，人工無能．
+
+
+参考
+
+
+  BotUI
+  paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！
+
+</p>-->
+      <p><p>諸事情により，チャットボットを自作したいと思った．<a href="http://paiza.hatenablog.com/entry/2017/09/21/%EF%BB%BFJavaScript%E3%81%A0%E3%81%91%E3%81%A7%E6%9C%AC%E6%A0%BC%E7%9A%84%E3%81%AA%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E3%83%9C%E3%83%83%E3%83%88%E3%82%92%E9%96%8B%E7%99%BA%E3%81%A7%E3%81%8D%E3%82%8B">paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！</a>を参考にチャットボットを作成し，<a href="https://haltaro.github.io/about/">本サイトのAbout欄</a>に埋め込んだ．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 30, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#javascript">Javascript</a>, 
+        
+      
+        
+        <a href="/categories/#jekyll">Jekyll</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/12/25/chatbot">チャットボットを作ろう：1．調査</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>諸事情により，チャットボットを自作したいと思った．まずは，どんなことを実現したいのか，またどうやったら実現できそうか整理してみる．
+
+関連記事はこちら：
+
+  チャットボットを作ろう：1．調査
+  チャットボットを作ろう：2．JekyllサイトでBotUI
+  チャットボットを作ろう：3．CSS修正
+
+
+実現したいもの
+
+
+  ウェブサイトに埋め込む形で，自己紹介風のチャットを行うこと．つまり，LINEボットのように，アプリケーション依存ではないこと．
+  会話のログを，統計解析可能な形で保存できること．
+  回答に応じて，ウェブサイトのデザインを変更できること．例えば，好きな色を聞いて「赤」と回答されたら，赤をベースとしたデザインに変更するなど．
+
+
+上から順番に優先順位が高い．
+
+使えそうなもの
+
+いろいろ調べた結果，JavaScriptだけで動くBotUIがよさ気な気がする．以下は参考になりそうな記事：
+
+
+  darudaru，JavaScriptだけで作るチャットボット「BotUI」
+  paiza開発日誌，JavaScriptだけで本格的なチャットボットを開発できるライブラリ「BotUI」を使ってみた！
+
+
+今後の予定
+そもそもJavaScriptの基礎知識が皆無なので，そこから勉強する．11月末にUdemyのセールで購入したフルスタックWebエンジニア講座を使おう．
+</p>-->
+      <p><p>諸事情により，チャットボットを自作したいと思った．まずは，どんなことを実現したいのか，またどうやったら実現できそうか整理してみる．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 25, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#javascript">Javascript</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/12/20/dmm-english">DMM英会話受講メモ：2017年12月</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>結局，DMM英会話でセルビア人の先生に習うことにした．以下は，2017年12月の受講記録．
+
+20171220
+
+Daily newsのInternet at Risk as US Scraps Net Neutrality Rulesを受講．ISPの規制緩和に関する話題．
+
+学んだこと：
+
+
+  scrap：廃棄する，廃止する．
+  light tough (regulation)：軽微な規制，的な意味？
+  norm：標準，規範．
+
+
+20171224
+
+Daily newsのWhere Do Christmas Traditions Come From?を受講．クリスマスの起源に関する話題．
+
+学んだこと：
+
+
+  festive：お祭りの．
+  peasant：農民，百姓．
+  christianity：キリスト教．
+  merchant：商人．
+  edible：食べられる．
+
+
+20170226
+
+Daily newsのHas the Human Race Reached Its Peak?を受講．人類の生物学的限界が発見された，という話題．
+</p>-->
+      <p><p>結局，<a href="http://eikaiwa.dmm.com/">DMM英会話</a>でセルビア人の先生に習うことにした．以下は，2017年12月の受講記録．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 20, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/12/09/dont-fool-yourself">本田哲也，田端信太郎，広告やメディアで人を動かそうとするのは、もう諦めなさい。</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>本田哲也，田端信太郎，広告やメディアで人を動かそうとするのは、もう諦めなさい。を読んだ．情報爆発により，主導権は消費者にシフトした．このような時代に人を動かすためには，様々なメディアの特性を理解し適切に組み合わせることと，インサイトを掘り出して世の中の空気を作ることが重要．
+
+1. 「たくさんの人に見てもらえるほどよい」は本当か？
+
+
+  情報爆発時代に主導権を持つのは「受け手」．
+  事前に全てをコントロールしようとする発想をあきらめる．アンコントロールを受け入れる．例えばソーシャルメディアや口コミは完全にコントロールはできないもの．
+  メディアの特性を理解し，最適に組み合わせることが重要．例えば，マスに働きかけるならテレビCMが最適だが，個々人に働きかけるならインターネット広告が良い．
+
+
+2. なぜ，人は「動く」のか？
+
+
+  1000人から10億人まで，スケールごとにポイントを整理する．詳細は本書を参照．
+
+
+3. 「人を動かす」ことをあきらめない
+
+
+  人を動かす新しい方法論戦略PR．製品を大々的に売り出すのではなく，その製品が必要とされるような世の中の空気を作る．
+  現代人は一日に4000もの広告メッセージを受けている．
+  コントロールできない広告手段の対応用に，20%を対応予算として残しておく．
+  3割は，コントロールできないものとして，社会や消費者に委ねる勇気も必要．
+
+</p>-->
+      <p><p><a href="http://amzn.asia/1a2cpaH">本田哲也，田端信太郎，広告やメディアで人を動かそうとするのは、もう諦めなさい。</a>を読んだ．情報爆発により，主導権は消費者にシフトした．このような時代に人を動かすためには，様々なメディアの特性を理解し適切に組み合わせることと，インサイトを掘り出して世の中の空気を作ることが重要．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 9, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#marketing">Marketing</a>, 
+        
+      
+        
+        <a href="/categories/#books">Books</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/12/03/dmm-english">DMM体験レッスン：2．Article discussion</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．昨日に引き続き，オンライン英会話最大手のDMM英会話で，Daily newsを体験した．今回もセルビア在住の先生に対応してもらったが，とても親切で，英語での議論に慣れている印象を受けた．
+
+DMM英会話とは
+
+オンライン英会話の最大手．同じく大手のReajobとの違いは，講師の出身国の多様性．DMM英会話では，フィリピンだけでなく，セルビアやボスニア・ヘルツェゴビナ等出身の先生も在籍している．
+
+2017年12月2日時点の料金プランは以下．
+
+
+  
+    
+      プラン
+      料金[円/月]
+    
+  
+  
+    
+      スタンダード（毎日25分）
+      5,500
+    
+    
+      プラスネイティブ（毎日25分）
+      15,800
+    
+  
+
+
+他にも毎日2レッスン（計50分）や3レッスン（計75分）のプランがある．
+
+予習
+
+Daily newsを受講すると決めていたので，一回記事を音読した．
+
+講義内容
+
+
+  自己紹介．
+  Daily news discussion．
+    
+      Vocabularyを先生に続けて読む．
+      Articleを先生に続けて読む．
+      Questionsに回答．
+      Discussion．
+    
+  
+
+
+先生からのフィードバック
+
+特に問題ないとのこと．
+
+学んだこと
+
+
+  dictatorship：独裁制．
+
+
+感想
+
+今回も先生のレベルが高かった．北朝鮮のインターネット政策に関する話題だったが，芯の通った考えをお持ちで，会話していてとても楽しかった．このレベルの授業を毎日受けられるのであれば，DMM英会話で間違いないと思った．
+</p>-->
+      <p><p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．昨日に引き続き，オンライン英会話最大手の<a href="http://eikaiwa.dmm.com/">DMM英会話</a>で，<a href="https://app.eikaiwa.dmm.com/daily-news">Daily news</a>を体験した．今回もセルビア在住の先生に対応してもらったが，とても親切で，英語での議論に慣れている印象を受けた．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 3, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+			
+			<a class="newer-posts" href="/page9">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			
+		
+		<span class="page-number">Page 10 of 15</span>
+		
+		<a class="newer-posts" href="/page11">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

@@ -1,0 +1,64 @@
+<p><a href="http://amzn.asia/8f1AQFC">東京大学教養学部統計学教室編，統計学入門</a>を読んだ．統計学の基礎知識を復習できた．</p>
+
+<h1 id="section">大数の法則と中心極限定理</h1>
+
+<ul>
+  <li>大数の法則：標本平均<script type="math/tex">\bar{X}</script>は母平均<script type="math/tex">\mu</script>に確率収束する．</li>
+  <li>中心極限定理：母集団分布がなんであっても，標本和<script type="math/tex">\sum_{i}^{n} X_{i}</script>は十分大きな<script type="math/tex">n</script>に対して大略正規分布に収束する．モーメント母関数を用いて証明できる．</li>
+  <li>累積密度分布の逆関数が陽に求まる場合は，一様分布に従う<script type="math/tex">U</script>を逆関数で変換することで，もとの確率密度関数に従う乱数を生成できる．</li>
+</ul>
+
+<h1 id="section-1">標本分布</h1>
+
+<ul>
+  <li>統計的推測とは，標本から母集団について推測すること．</li>
+  <li>母集団分布のパラメータを母数と呼ぶ．</li>
+  <li>標本平均のように，標本を要約し，母集団の母数の推測に使われるものを統計量と呼ぶ．</li>
+  <li>標本分散は，<script type="math/tex">s^2 = \frac{1}{n-1} \sum_i^n (X_i - \bar{X})</script>で計算できる．計算に母平均<script type="math/tex">\mu</script>でなく標本平均<script type="math/tex">\bar{X}</script>を使っているため，自由度が1下がり，分母は<script type="math/tex">n-1</script>となることに注意．</li>
+  <li>母集団が再生性を持つ分布に従うとき，標本和の分布は簡単に求まる．再生性とは，独立な複数の確率変数が同一の分布族に属する場合，その和もそれに属すること．二項分布，ポアソン分布，正規分布など．</li>
+  <li>母集団が有限<script type="math/tex">N</script>のとき，<script type="math/tex">V(\bar{x}) = \frac{N-n}{N-1}\cdot \frac{\sigma^2}{n}</script>となる．このとき<script type="math/tex">\frac{N-n}{N-1}</script>を有限母集団修正と呼ぶ．</li>
+</ul>
+
+<h1 id="section-2">正規分布からの標本</h1>
+
+<ul>
+  <li><script type="math/tex">\chi^{2}</script>分布：<script type="math/tex">Z_1, Z_2, \dots, Z_k</script>を独立な，標準正規分布<script type="math/tex">N(0, 1)</script>に従う確率変数とするとき，<script type="math/tex">\chi^{2} = Z_1^2 + Z_2^2 + \dots + Z_k^2</script>を自由度<script type="math/tex">k</script>の<script type="math/tex">\chi^{2}</script>分布と呼ぶ．ちなみに，<script type="math/tex">\chi^{2} = (n-1) s^2 / \sigma^{2}</script>は自由度<script type="math/tex">n-1</script>の<script type="math/tex">\chi^{2}</script>分布である．</li>
+  <li>分散が未知のときの標本平均の標本分布として，スチューデントの<script type="math/tex">t</script>分布が用いられる．<script type="math/tex">Z</script>が標準正規分布<script type="math/tex">N(0, 1)</script>に従い，<script type="math/tex">Z</script>と独立な<script type="math/tex">Y</script>が自由度<script type="math/tex">k</script>の<script type="math/tex">\chi^2</script>分布に従うとき，<script type="math/tex">t = \frac{Z}{\sqrt{Y/k}}</script>は自由度<script type="math/tex">k</script>の<script type="math/tex">t</script>分布である．つまり，<script type="math/tex">t = \frac{\bar{x} - \mu}{s / \sqrt{n}}</script>は自由度<script type="math/tex">n-1</script>の<script type="math/tex">t</script>分布．</li>
+  <li>二標本問題．標本平均の差の標本分布は，条件により分布が異なる：
+    <ul>
+      <li>母分散が既知のとき：正規分布</li>
+      <li>母分散が未知だが等しいとき：t分布</li>
+      <li>母分散が未知で，かつ等しいとは限らないとき：ウェルチの近似法を用いたt分布．</li>
+    </ul>
+  </li>
+  <li>標本相関係数の標本分布．フィッシャーのz変換を使うらしい．詳細は不明．</li>
+</ul>
+
+<h1 id="section-3">推定</h1>
+
+<ul>
+  <li>推定量（estimator）：母数を推定するために標本から求めた統計量．標本平均や標本分散．</li>
+  <li>点推定（point estimation）：母数をある一つの値で指定する．</li>
+  <li>区間推定（interval estimation）：母数の値が入る確率がある値<script type="math/tex">1 - \alpha</script>以上と保証される区間を求める．</li>
+  <li>モーメント法による点推定は，母集団モーメント関数と標本モーメント関数が等しいと仮定する方法．モーメント法で標本分散を点推定すると不偏推定量とはならない．より洗練された手法として，最尤法がある．</li>
+  <li>点推定の基準：不偏性．一致性．漸近正規性．有効性．</li>
+</ul>
+
+<h1 id="section-4">統計的検定</h1>
+
+<ul>
+  <li>母平均の差の検定は，<script type="math/tex">t</script>検定を用いる．</li>
+  <li>母分散の検定は，<script type="math/tex">\chi^2</script>検定を用いる．</li>
+  <li>母分散の比の検定は，<script type="math/tex">F</script>検定を用いる．</li>
+  <li>適合度の<script type="math/tex">\chi^2</script>検定．<script type="math/tex">\chi^2=\frac{\sum (O - E)^2}{E}</script>．ここで，<script type="math/tex">O</script>は観測された値，<script type="math/tex">E</script>は理論的に予測された値を表す．この考え方を使うと，分割表の独立性の検定などが実施できる．</li>
+  <li>第一種の誤り：帰無仮説を誤って棄却してしまうこと．有意水準<script type="math/tex">\alpha</script>の確率で発生しうる．</li>
+  <li>第二種の誤り：帰無仮説を誤って棄却しないこと．確率<script type="math/tex">\beta</script>で発生し得る．このとき，<script type="math/tex">1-\beta</script>を検出力と呼ぶ．</li>
+  <li>棄却域の調整により<script type="math/tex">\alpha</script>と<script type="math/tex">\beta</script>を調整できるが，療法を小さくすることは出来ない．</li>
+</ul>
+
+<h1 id="section-5">回帰分析</h1>
+
+<ul>
+  <li>決定係数<script type="math/tex">\eta^2</script>は，<script type="math/tex">Y_{i}</script>の変動のうち<script type="math/tex">X_{i}</script>で説明できる変動の割合を示す．0から1の値を取り，1に近いほど良い．</li>
+  <li>偏回帰係数<script type="math/tex">\beta_2</script>（傾き）の検定するときは，<script type="math/tex">\frac{\hat{\beta} - \beta}{s.e. \left(\hat{\beta}\right)}</script>をt検定にかける．重回帰の場合はF検定にかける．詳細は3巻2章で．</li>
+</ul>

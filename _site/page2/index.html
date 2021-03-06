@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/page2/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/09/17/tsptw">時間制約付き巡回セールスマン問題について調査した</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>時間制約付き巡回セールスマン問題（TSP-TW: Traveling Salesman Problem with Time Window constraint）について調査した．TSP-TWは，各点の訪問時間に制約のある巡回セールスマン問題（TSP: Traveling Salesman Problem）で，NP困難に属する．時間帯指定のある宅配業者の経路最適化など，実応用が期待される研究分野である． 近似解法としては，アントコロニー法を始めとするメタヒューリスティクスが提案されている．厳密解法としては，整数線形計画問題による定式化が提案されている． 巡回セールスマン問題 まず，TSP-TWのベースとなる，TSPについてまとめる． 定義 TSPは，個のノードを一度ずつ訪れて最初のノードに戻ってくる1，最短の巡回路を求める問題である．対称TSP（任意の二ノード間の距離が対称）の場合，巡回路の総数はであり，ノード数が30以上になると最適解を求めるのは現実的に困難である． 厳密解法 TSPを整数計画問題として定式化すれば，小規模な問題であれば厳密解を求められる．定式化のバリエーションとして，以下の三種類を見つけた2ので，それぞれ紹介する．なお，以下では簡単のため無向グラフ，つまり対称TSPを想定するが，それぞれ容易に非対称TSPに拡張可能である． 接続行列を用いた定式化 まずは，参考文献[1]で紹介されていたもの． ただし，はエッジ，は各要素がエッジの距離に対応する所与のベクトル，は所与の接続行列である．ここで接続行列の各行はノードに，各列はエッジに対応しており，ノードがエッジの端点なら，そうでなければとなる．は各要素がエッジが巡回路に含まれるかどうかを表す変数であり，TSPではこれを最適化する． 式(1.3)は部分巡回路除去制約と呼ばれ，全点を通らない部分的な巡回路を防ぐためのものである． 距離行列を用いた定式化 次に，参考文献[2]で紹介されていたもの． ただし，はノード，はノード-間の所与の距離，は十分大きな数であれば何でも良い．また，はノード-間を結ぶエッジが巡回路に含まれるかどうかを表す変数，はノードの訪問順序を表す変数であり，TSPではこれらを最適化する． 式(2.4)は，式(1.3)と同様に部分巡回路を除去するための制約式であり，ポテンシャル制約と呼ばれる． 到着時刻を用いた定式化 最後に，参考文献[3]で提案されていた，TSP-TW向けの定式化から，時間帯制約を抜いて単純化したもの3． ここで，はノードのインデックス，は始点と終点を除いたノード数，はノード-間の所与の移動時間，は十分大きな数であれば何でも良い．また，はノードへの到着時刻を表す変数，はダミー変数であり，TSPではこれらを最適化する． 式(3.4)および式(3.5)は，以下の非線形制約条件を無理やり線形化したものである． 近似解法 参考文献[1]によると，切除平面法で一旦TSPをLPに緩和し，次に変数が整数条件を満たすように，有効な一次不等式を加えていくらしい． メタヒューリスティクスとしては，遺伝的アルゴリズムや量子アニーリングなどが使われているみたい．必要があれば，別途記事にするかもしれない． 時間制約付き巡回セールスマン問題 定義 TSP-TWは，TSPの各ノードに到着時刻の制約を付けて拡張したものである． 厳密解法 線形な定式化は，私の調べたところ，参考文献[3]しか見つからなかった． ここで，はノードのインデックス，は始点と終点を除いたノード数，はノード-間の所与の移動時間，はノードの所与の訪問可能開始時刻，はノードの所与の訪問可能終了時刻，は十分大きな数であれば何でも良い．また，はノードへの到着時刻を表す変数，はダミー変数であり，TSPではこれらを最適化する． 式(3.1)-(3.6)との違いは，時間帯制約を表す式(4.4)および式(4.5)である． 近似解法 参考文献[4]によると，主に動的計画法（参考文献[5]，[8]，[10]），Compressed annealing法（参考文献[6]，[9]），Ant colony法（参考文献[7]，[9]）などを使ったアプローチが提案されているようだ． 感想 実用上，非常に面白い問題だが，意外と論文数は多くなかった4． 参考文献 藤澤克樹，他，応用に役立つ50の最適化問題，2009 Qiita，巡回セールスマン問題から始まる数理最適化 I....</p>-->
+      <p><p>時間制約付き巡回セールスマン問題（TSP-TW: Traveling Salesman Problem with Time Window constraint）について調査した．TSP-TWは，各点の訪問時間に制約のある巡回セールスマン問題（TSP: Traveling Salesman Problem）で，NP困難に属する．時間帯指定のある宅配業者の経路最適化など，実応用が期待される研究分野である．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">September 17, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#mathematics">Mathematics</a>, 
+        
+      
+        
+        <a href="/categories/#optimization">Optimization</a>, 
+        
+      
+        
+        <a href="/categories/#papers">Papers</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/09/17/debut">Qiitaで情報発信していたら技術書デビューした</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Qiitaで公開していたTCPの比較記事（本サイトのns-3でTCPの輻輳制御を観察する）の結果を，中嶋謙互，クラウドゲームをつくる技術―マルチプレイゲーム開発の新戦力，技術評論社に載せたいとオファーがあった．先日，ついに見本版が届いて，とても嬉しかったので経緯をメモしておく．
+
+背景
+
+転職活動の一環として，Qiitaアカウントを作成し，趣味でやっていたNetwork engineeringやMachine learningの結果を垂れ流していた．これだけのおかげとは言い切れない1が，異業種・異職種への転職が無事成功した．
+
+経緯
+
+新しい仕事にも慣れ始めた2018年7月中旬，技術評論社の編集部の方からメールを頂いた．9月に出版予定の中嶋謙互，クラウドゲームをつくる技術―マルチプレイゲーム開発の新戦力，技術評論社に，Qiita，ns-3でTCPの輻輳制御を観察するの下図を掲載したいとのこと．
+
+
+
+こんな機会はめったにないので，ぜひ載せてほしいと返事をした．掲載時のリンクを自由に指定できるようなので，どうせなら本サイトに誘導しようということで，ns-3でTCPの輻輳制御を観察するを作成した．また，本名が出るとかえって面倒なので，haltaroのまま掲載して頂いた．
+
+見本版
+
+2018年9月13日，自宅に見本版が届いた．
+
+
+
+私のグラフは，図6.10として掲載されていた．見やすく整形されていて嬉しい2．
+
+
+
+感想
+
+研究者として論文が公開されることはあっても，書籍として発行されたことは無かったので，新鮮で嬉しい経験だった．本書の中身自体は，別途記事にしたい．
+
+  
+    
+      相談に乗ってくださった皆様，本当にありがとうございました． &#8617;
+    
+    
+      .png形式で送ったので，かなり加工が面倒だったと思う． &#8617;
+    
+  
+
+</p>-->
+      <p><p><a href="https://qiita.com/haltaro">Qiita</a>で公開していた<a href="https://qiita.com/haltaro/items/d479538345357f08c595">TCPの比較記事</a>（本サイトの<a href="https://haltaro.github.io/2018/07/13/tcp-ns3#undefined">ns-3でTCPの輻輳制御を観察する</a>）の結果を，<a href="https://gihyo.jp/book/2018/978-4-7741-9941-2">中嶋謙互，クラウドゲームをつくる技術―マルチプレイゲーム開発の新戦力，技術評論社</a>に載せたいとオファーがあった．先日，ついに見本版が届いて，とても嬉しかったので経緯をメモしておく．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">September 17, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#life">Life</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/08/31/dmm-english">DMM英会話受講メモ：2018年8月</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>DMM英会話の受講メモ．7回/31日なので，1/4以下．先月よりさらに頻度が下がったが，後半は本当に忙しかったのでしょうがない． 20180802 Some Colleges Now Offer Scholarships to Gamers slacker: a person who is lazy and has no desire to be successful glued to (something): to focus on something and not pay attention to anything else unwind: to relax on board with: to agree with or support something 20180807 The...</p>-->
+      <p><p><a href="http://eikaiwa.dmm.com/">DMM英会話</a>の受講メモ．7回/31日なので，1/4以下．先月よりさらに頻度が下がったが，後半は本当に忙しかったのでしょうがない．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">August 31, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/08/08/dmm-english">DMM英会話受講メモ：2018年7月</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>DMM英会話の受講メモ．9回/31日なので，1/3以下．もう少し頑張りたいところ． 20180702 First Ever Live Computer-Human Debate: Who Won? outsmart: to defeat someone by being more clever persuasive: able to make people believe in what you say ネット接続が不安定すぎて，全然会話が続かない．そろそろ本気でルーターの設定を見直すべき． 20180705 忙しかったので，10分だけフリートークしてもらった． 20180707 Artificial Intelligence Used to Track World’s Wildlife mate: to breed and produce young breeding ground: a place where animals...</p>-->
+      <p><p><a href="http://eikaiwa.dmm.com/">DMM英会話</a>の受講メモ．9回/31日なので，1/3以下．もう少し頑張りたいところ．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">August 8, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/07/22/summer-prophet">あまりに暑いのでProphetで140年分の気温を分析した</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>2018年7月22日，東京の最高気温は36.5度となり，今年最高を更新した．あまりに暑くてムシャクシャしたので，気象庁から約140年分（1872年1月1日-2018年7月21日）の東京の気温データを入手し，Prophetで分析した．平均・最高・最低気温の全てに関して，1920年付近から上昇し続けており，そのトレンドを考慮してもなお，ここ数日は特に暑いことを確認できた． なお，分析に用いたNotebookはこちら． 環境 macOS Sierra, 10.12.6 Python, 3.6.6 Prophet, 0.3 Prophet 特徴 Prophetとは，Facebookが開発したオープンソースの時系列解析ライブラリ．Prophetで想定するモデルを以下に示す： ここで，は時点における予測値，は時点におけるトレンド成分，は時点における周期成分，は時点における週末などのイレギュラーな成分，そしては時点における誤差を表す．各成分のパラメータをStanで推定し，モデルを学習する．詳細なモデルは，原論文（Sean J. Taylor and Benjamin Letham, Forecasting at Scale）を参照されたい． Prophetに関する日本語の記事としては，以下のようなものがある．とても参考になる． Prophet: forecasting at scale - Facebook Prophet入門【Python編】Facebookの時系列予測ツール - SlideShare Facebookの予測ライブラリProphetを用いたトレンド抽出と変化点検知 - Gunosyデータ分析ブログ Prophetの特徴は，時系列解析の前提知識がなくても，誰でも簡単に一定水準の分析をできること． インストール 今回はPythonからProphetを使う．pipでインストールする場合は，pip install fbprophet，condaでインストールする場合は，conda install -c conda-forge fbprophet． 準備 データの入手 過去の気象データ・ダウンロード - 気象庁からcsvデータをダウンロードする． 地点：東京...</p>-->
+      <p><p>2018年7月22日，東京の最高気温は36.5度となり，今年最高を更新した．あまりに暑くてムシャクシャしたので，<a href="http://www.data.jma.go.jp/gmd/risk/obsdl/index.php">気象庁</a>から約140年分（1872年1月1日-2018年7月21日）の東京の気温データを入手し，<a href="https://facebook.github.io/prophet/">Prophet</a>で分析した．平均・最高・最低気温の全てに関して，1920年付近から上昇し続けており，そのトレンドを考慮してもなお，ここ数日は特に暑いことを確認できた．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">July 22, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#statistics">Statistics</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+			
+			<a class="newer-posts" href="/">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-square fa-stack-2x"></i>
+          <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+			
+		
+		<span class="page-number">Page 2 of 15</span>
+		
+		<a class="newer-posts" href="/page3">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

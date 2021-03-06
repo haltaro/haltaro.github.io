@@ -1,0 +1,123 @@
+<p><a href="https://www.kaggle.com/c/web-traffic-time-series-forecasting">Kaggle，Web Traffic Time Series Forecasting</a>の<a href="https://www.kaggle.com/c/web-traffic-time-series-forecasting/discussion/43795">1st place solution</a>のメモ．Wikipediaのpageviewを予測するコンテスト．解法のポイントは，一年前と四半期前の値を特徴量として追加し，RNN seq2seqを使うこと．</p>
+
+<h1 id="section">概要</h1>
+
+<h2 id="tldr">TL;DR</h2>
+
+<p>予測には２つの情報を用いた：</p>
+<ul>
+  <li>ローカルな特徴量．自己相関モデル，移動平均モデル，季節性モデルなど．</li>
+  <li>グローバルな特徴量．年周期，四半期周期のトレンド．</li>
+</ul>
+
+<p><img src="/assets/2018-03-04-autoregression.png" alt="autoregression" /></p>
+
+<p>RNN seq2seqを利用した理由は：</p>
+<ol>
+  <li>RNNはARIMAの自然な拡張と考えられるし，柔軟で表現力が高い．</li>
+  <li>RNNはノンパラメトリック．</li>
+  <li>RNNはどんな特徴量も簡単に扱える．</li>
+  <li>seq2seqはこのタスクに適していると考えた．直前の時系列の予測値を入力として使うため，誤差が蓄積されやすいため，結果として極端な予測は避けるようになる<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>．</li>
+  <li>Deep learningは流行っている．</li>
+</ol>
+
+<h2 id="feature-engineering">Feature engineering</h2>
+
+<p>利用した特徴量は：</p>
+<ul>
+  <li><strong>pageviews</strong>：<code class="highlighter-rouge">log1p()</code>で変換したビュー数．</li>
+  <li><strong>agent</strong>，<strong>country</strong>，<strong>site</strong>：ページのURLから抽出．</li>
+  <li><strong>year-to-year autocorrelation</strong>，<strong>quarter-to-quarter autocorrelation</strong>：年周期や四半期周期のトレンドを捉えるため．</li>
+  <li><strong>page popularity</strong>：人気のページとそうでないものは，動きが異なるため．</li>
+  <li><strong>lagged pageviews</strong>：365日前と90日前のpageview．</li>
+</ul>
+
+<h2 id="feature-preprocessing">Feature preprocessing</h2>
+
+<p>One-hot encodingしたカテゴリカル変数を含む，全ての特徴量をそれぞれ独立に正規化した．時不変な特徴量（<code class="highlighter-rouge">country</code>など）を時系列データ長に<code class="highlighter-rouge">tf.tile()</code>で変換した．</p>
+
+<p>学習用データは，固定長でランダムに抽出した．</p>
+
+<h2 id="model-core">Model core</h2>
+
+<p><img src="/assets/2018-03-04-model-core.png" alt="model-core" /></p>
+
+<p>Encoderとして<a href="https://www.tensorflow.org/versions/master/api_docs/python/tf/contrib/cudnn_rnn/CudnnGRU">cuDNN GRU</a>を使った．cuDNN GRUはドキュメントが貧弱だが，通常のTensorFlowの<code class="highlighter-rouge">RNNCells</code>より5倍から10倍ほど高速だ．</p>
+
+<p>Decoderとして<a href="https://www.tensorflow.org/api_docs/python/tf/contrib/rnn/GRUBlockCell">GRUBlockCell</a>を<a href="https://www.tensorflow.org/api_docs/python/tf/while_loop">tf.while_loop()</a>でラップして使った．ループの中で，直前の時系列の予測結果を次のセルに入力する．</p>
+
+<h2 id="working-with-long-timeseries">Working with long timeseries</h2>
+
+<p>LSTM/GRUはせいぜい100から300アイテム前の情報しか保持できないため，700日分のpageviewを使用する今回のタスクには，直接利用できない．</p>
+
+<p>最初は<a href="https://distill.pub/2016/augmented-rnns/">attention</a>的な考え方で，一年前と四半期前のEncoderの出力をDecoderの入力に使うことを考えた．しかし，処理が重い割に性能が出なかった．</p>
+
+<p><img src="/assets/2018-03-04-attention.png" alt="attention" /></p>
+
+<p>結局，一年前と四半期前のpageviewをそのまま特徴量として使うことに決めた．Attentionより良い性能を得た．また，これによりEncoder長をむやみに長くする必要がなくなった．過去60から90日のアイテムを利用する場合でさえ，上記のモデルより高速に優れた予測が可能だった．</p>
+
+<p><img src="/assets/2018-03-04-lagged.png" alt="lagged" /></p>
+
+<h2 id="losses-and-regularization">Losses and regularization</h2>
+
+<p>コンペの評価で用いられる<a href="https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error">SMAPE</a>は0付近で微分不可能な動きをするため，学習に利用しなかった．代わりに微分可能なSAMPE関数を独自に実装して利用した．</p>
+
+<p>最終的な出力は整数値に丸めた．負の出力値は0に修正した．</p>
+
+<p><a href="https://arxiv.org/abs/1511.08400">Regularizing RNNs by Stabilizing Activations</a>を参考にRNNの正規化を試みたが，改善効果は微々たるものだった．</p>
+
+<h2 id="training-and-validation">Training and validation</h2>
+
+<p>学習時は，<a href="https://arxiv.org/abs/1705.07795">Training Deep Networks without Learning Rates Through Coin Betting</a>のCOCOB optimizerと，Gradient clippingを合わせて使った．COCOBは自動で学習率を調整してくれるから便利だし，従来のモーメントベースのoptimizerより高速だ．</p>
+
+<p>TrainingとValidationの分け方として，次の二つが考えられる．</p>
+<ol>
+  <li><strong>Walk-forward split</strong>：厳密にはSplitではない．TrainingとValidationでタイムフレームをずらす方法．</li>
+  <li><strong>Side-by-side split</strong>：王道のSplit．データセットを独立な集合に分割し，それぞれTrainingとValidationに利用する．</li>
+</ol>
+
+<p><img src="/assets/2018-03-04-split.png" alt="split" /></p>
+
+<p>今回は両方共利用した．Walk-forward splitは今回のタスクと親和性が高いが，Validation用に新しい日付のデータセットを残しておく必要があるため，古い日付のデータセットしか学習に使えない．一方でSide-by-sideは新しい日付のデータセットも学習に使えるが，Validationの性能がTrainingデータに大きく依存してしまう．</p>
+
+<p>ハイパーパラメータのチューニングにのみSplitを利用し，全てのデータを使って再度学習したモデルで，最終的な予測を行った．</p>
+
+<h2 id="reducing-model-variance">Reducing model variance</h2>
+
+<p>今回の入力データ（Wikipediaのpageview）は非常にノイジーなので，Varianceを下げる工夫が必要だった．</p>
+
+<p><img src="/assets/2018-03-04-variance.png" alt="variance" /></p>
+
+<ol>
+  <li>過学習直前（と思われる）前後1000エポックで，10個のチェックポイントを作成．</li>
+  <li>サンプルを分割し，三つの独立なモデルを作成し，それぞれチェックポイントを作成．</li>
+  <li>合計30のチェックポイントに対して，SGD averaging（ASGD）を適用する．つまり学習結果のパラメータを平均して，予測に使う．</li>
+</ol>
+
+<h2 id="hyperparameter-tuning">Hyperparameter tuning</h2>
+
+<p><a href="https://automl.github.io/SMAC3/stable/">SMAC3</a>を使ってチューニングした．SMAC3は：</p>
+
+<ul>
+  <li>条件付きチューニングが可能．例えば，<code class="highlighter-rouge">n_layer &gt; 1</code>のときのみ，第二層を<code class="highlighter-rouge">dropout</code>するなど．</li>
+  <li>モデルのVarianceを考慮可能．</li>
+</ul>
+
+<h1 id="section-1">感想</h1>
+
+<p>大筋は理解できた（気になった）．学習時のDecoderの扱いなど，<a href="https://github.com/Arturus/kaggle-web-traffic">ソースコード</a>を確認した方が良いかもしれない．</p>
+
+<h1 id="section-2">参考</h1>
+
+<ul>
+  <li><a href="https://www.kaggle.com/c/web-traffic-time-series-forecasting/discussion/43795">Kaggle，Web Traffic Time Series Forecasting，1st place solution</a></li>
+  <li><a href="https://github.com/Arturus/kaggle-web-traffic">Arturus/kaggle-web-traffic - GitHub</a></li>
+  <li><a href="https://automl.github.io/SMAC3/stable/">SMAC3 documentation</a></li>
+</ul>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>seq2seqのDecoderの学習時って，普通，直前の時系列の予測結果は使わずに，ターゲットデータを使うんじゃなかったっけ？ソースコードを確認した方が良いかもしれない． <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Jekyll themeをCentrariumに変更する</title>
+  <meta name="description" content="3連休を利用して，本サイトのJekyll themeをEasyBookからCentrariumに変更した．意識高めのアフィブログみたいになってしまったが，個人的には気に入っている．特にロゴがかわいい．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="3連休を利用して，本サイトのJekyll themeをEasyBookからCentrariumに変更した．意識高めのアフィブログみたいになってしまったが，個人的には気に入っている．特にロゴがかわいい．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Jekyll themeをCentrariumに変更する" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2017-11-18-vis.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jekyll themeをCentrariumに変更する">
+  <meta name="twitter:description" content="3連休を利用して，本サイトのJekyll themeをEasyBookからCentrariumに変更した．意識高めのアフィブログみたいになってしまったが，個人的には気に入っている．特にロゴがかわいい．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2017-11-18-vis.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2018/02/11/theme-change">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2017-11-18-vis.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">Jekyll themeをCentrariumに変更する</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">February 11, 2018</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#jekyll">Jekyll</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>3連休を利用して，本サイトの<a href="http://jekyllthemes.org/">Jekyll theme</a>を<a href="https://github.com/laobubu/jekyll-theme-EasyBook">EasyBook</a>から<a href="https://github.com/bencentra/centrarium">Centrarium</a>に変更した．意識高めのアフィブログみたいになってしまったが，個人的には気に入っている．特にロゴがかわいい．</p>
+
+<h1 id="環境">環境</h1>
+
+<p>以下の記事で構築した環境を想定する．</p>
+
+<ul>
+  <li><a href="https://haltaro.github.io/2017/07/30/first-post">JekyllとGitHub Pagesでウェブサイト自作 - Memotaro</a></li>
+  <li><a href="https://haltaro.github.io/2017/08/04/set-google-analytics">JekyllでGoogle Analytics - Memotaro</a></li>
+  <li><a href="https://haltaro.github.io/2017/10/15/jekyll-windows">Windows7でJekyll+GitHub Pages - Memotaro</a></li>
+  <li><a href="https://haltaro.github.io/2017/10/25/jekyll-drafts">Jekyllで下書き記事管理 - Memotaro</a></li>
+</ul>
+
+<p>つまり：</p>
+
+<ul>
+  <li><a href="https://www.ruby-lang.org/ja/">Ruby</a></li>
+  <li><a href="http://bundler.io/">Bundler</a></li>
+  <li><a href="https://jekyllrb-ja.github.io/">Jekyll</a>：インストールについては<a href="https://haltaro.github.io/2017/07/30/first-post">JekyllとGitHub Pagesでウェブサイト自作 - Memotaro</a>を参照されたい．</li>
+  <li><a href="https://github.com/">GitHub</a>：<code class="highlighter-rouge">haltaro.github.io</code>レポジトリを作成済み．</li>
+  <li><a href="https://www.google.com/intl/ja_jp/analytics">Google Analytics</a>：トラッキングコードを取得済み．詳細は<a href="https://haltaro.github.io/2017/08/04/set-google-analytics">JekyllでGoogle Analytics - Memotaro</a>を参照されたい．</li>
+  <li><a href="https://github.com/botui/botui">BotUI</a>：<code class="highlighter-rouge">botui.min.css</code>，<code class="highlighter-rouge">botui-theme-default.css</code>，<code class="highlighter-rouge">botui.min.css</code>，<code class="highlighter-rouge">botui.min.js</code>をダウンロードし，<code class="highlighter-rouge">botui.min.css</code>を修正済み．詳細は<a href="https://haltaro.github.io/2018/02/04/chatbot">チャットボットを作ろう：3．CSS修正 - Memotaro</a>を参照されたい．</li>
+</ul>
+
+<h1 id="手順">手順</h1>
+
+<h2 id="centrariumをダウンロード"><a href="https://github.com/bencentra/centrarium">Centrarium</a>をダウンロード</h2>
+
+<p><a href="https://github.com/bencentra/centrarium">レポジトリ</a>から任意のディレクトリにダウンロードする．</p>
+
+<h2 id="bundlerで環境構築">Bundlerで環境構築</h2>
+
+<p>以下のコマンドで環境を整える．エラーが出た場合はその都度対処する．</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cd </span>centrarium
+<span class="nv">$ </span>bundle install</code></pre></figure>
+
+<h2 id="_configymlの設定変更"><code class="highlighter-rouge">_config.yml</code>の設定変更</h2>
+
+<p>個人設定（<code class="highlighter-rouge">title</code>，<code class="highlighter-rouge">subtitle</code>，<code class="highlighter-rouge">email</code>，<code class="highlighter-rouge">name</code>，<code class="highlighter-rouge">description</code>，<code class="highlighter-rouge">url</code>，<code class="highlighter-rouge">cover</code>，<code class="highlighter-rouge">logo</code>）を変更する．本ウェブサイトは<code class="highlighter-rouge">https://haltaro.github.io</code>直下に展開されるため，<code class="highlighter-rouge">baseurl</code>を<code class="highlighter-rouge">""</code>に変更する．また，これまでと一貫したURL構成にするため，<code class="highlighter-rouge">permalink: "/:year/:month/:day/:title"</code>を追記する．</p>
+
+<script src="https://gist.github.com/haltaro/1029f646107109a94fb4c43ee2f146b2.js"></script>
+
+<p><code class="highlighter-rouge">highlightjs_theme</code>を<code class="highlighter-rouge">zenburn</code>に変更する．テーマの詳細は<a href="https://highlightjs.org/static/demo/">こちら</a>．</p>
+
+<script src="https://gist.github.com/haltaro/b958eb3bd1c7516158c41da09648e2bf.js"></script>
+
+<p><code class="highlighter-rouge">descriptions</code>に，各カテゴリの説明文を追加することもできる<sup id="fnref:desc"><a href="#fn:desc" class="footnote">1</a></sup>．</p>
+
+<p><code class="highlighter-rouge">social</code>に<code class="highlighter-rouge">GitHub</code>と<code class="highlighter-rouge">Qiita</code>と<code class="highlighter-rouge">Kaggle</code>を設定．<code class="highlighter-rouge">icon</code>では<a href="https://fontawesome.com/icons?d=gallery">Font awesomeのicon</a>を指定できる．残念ながらQiitaとKaggleは無かったため，それっぽいもので代用する．</p>
+
+<script src="https://gist.github.com/haltaro/d456ac11f4f1cb2f88a52b2b9fef32cb.js"></script>
+
+<h2 id="_postsに記事を移動"><code class="highlighter-rouge">_posts/</code>に記事を移動</h2>
+
+<p>これまで作成した全ての記事を<code class="highlighter-rouge">_posts/</code>に保存する．</p>
+
+<h2 id="assetsに画像を移動"><code class="highlighter-rouge">assets</code>に画像を移動</h2>
+
+<p>これまでは<code class="highlighter-rouge">images/</code>に配置していた画像を，<code class="highlighter-rouge">assets/</code>に保存する．これに伴い，全記事中の画像参照を，<code class="highlighter-rouge">/images/*</code>から<code class="highlighter-rouge">/assets/*</code>に変更する．また，<code class="highlighter-rouge">cover_image.jpg</code>として，自分で撮影したこちらを利用する．</p>
+
+<p><img src="/assets/cover_image.jpg" alt="cover" /></p>
+
+<p>サイト左上に表示されるロゴとして，<a href="http://icooon-mono.com/">ICOON MONO</a>から柴犬感のあるものをダウンロードして，<code class="highlighter-rouge">logo.png</code>として保存する．</p>
+
+<p><img src="/assets/logo_small.png" alt="logo" /></p>
+
+<p>オリジナルでは，解像度に合わせて複数の<code class="highlighter-rouge">icon</code>，<code class="highlighter-rouge">favicon</code>，<code class="highlighter-rouge">apple-touch-icon</code>を用意しているが，面倒なので<code class="highlighter-rouge">logo.png</code>を使いまわす．<code class="highlighter-rouge">_includes/head.html</code>を次のように修正する．</p>
+
+<script src="https://gist.github.com/haltaro/b9faabdc247ff1af3b57702f3a14bba3.js"></script>
+
+<p><code class="highlighter-rouge">about</code>のプロフィール画像<code class="highlighter-rouge">profile.jpg</code><sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>を保存する．</p>
+
+<p><img src="/assets/profile.jpg" alt="cover" /></p>
+
+<p>各記事のヘッダー画像として，<a href="https://pixabay.com/ja/">Pixabay</a>から意識高めの写真をダウンロードして保存する<sup id="fnref:1"><a href="#fn:1" class="footnote">3</a></sup>．フロントマタ―で，<code class="highlighter-rouge">cover: "assets/*.jpg"</code>のように指定できる．</p>
+
+<p><img src="/assets/2017-11-18-vis.jpg" alt="image" /></p>
+
+<h2 id="フォントサイズを調整">フォントサイズを調整</h2>
+
+<p>本ウェブサイトでは，書籍名など，タイトルが長くなる場合がある．デフォルトのフォントサイズだと，モバイル表示で非常に見づらいため，<code class="highlighter-rouge">_sass/_layout.scss</code>を変更する．</p>
+
+<script src="https://gist.github.com/haltaro/b5c37a771f8b2fb64f1c5217bccb7cec.js"></script>
+
+<p>見出しのフォントも大きい気がするので，<code class="highlighter-rouge">_sass/base/_typography.scss</code>を変更する．</p>
+
+<script src="https://gist.github.com/haltaro/8b0eb9a74a1aebf9aaf8bcf640670cf5.js"></script>
+
+<h2 id="_layoutsposthtmlを変更"><code class="highlighter-rouge">_layouts/post.html</code>を変更</h2>
+
+<p>どうせ自分しか書かないので，著者表示をコメントアウトする．</p>
+
+<script src="https://gist.github.com/haltaro/ee88390b901c5aabc58e48abea6062b3.js"></script>
+
+<p>SNS共有もコメントアウトする．</p>
+
+<script src="https://gist.github.com/haltaro/a7c0169e575a970ded4bc5ed5da35fe3.js"></script>
+
+<h2 id="mathjaxを導入">MathJaxを導入</h2>
+
+<p>記事中に数式を表示するため，<a href="https://www.mathjax.org/">MathJax</a>を導入する．<code class="highlighter-rouge">_includes/head.html</code>に<code class="highlighter-rouge">&lt;script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;</code>を追記する．</p>
+
+<h2 id="indexhtmlのサマリ表示を変更"><code class="highlighter-rouge">index.html</code>のサマリ表示を変更</h2>
+
+<p>日本語で記事を書くと，<code class="highlighter-rouge">index.html</code>のサマリ部分に全文表示されてしまう．おそらく<code class="highlighter-rouge">&lt;ul class="post-list"&gt;</code>部分の<code class="highlighter-rouge">truncatewords: 50</code>が<a href="https://github.com/Shopify/liquid/issues/166">英語以外で動作しない</a>せいだと考えられる．無難に<code class="highlighter-rouge">post.excerpt</code>で一行目だけ抽出する設定に変更する．</p>
+
+<script src="https://gist.github.com/haltaro/5918a210a41127356a2a71abba316fe9.js"></script>
+
+<h2 id="projectsページを追加"><code class="highlighter-rouge">Projects</code>ページを追加</h2>
+
+<p><a href="https://haltaro.github.io/2017/07/30/first-post">JekyllとGitHub Pagesでウェブサイト自作 - Memotaro</a>と同様，自分の成果をまとめた<code class="highlighter-rouge">Projects</code>ページを作成したい．以下のフロントマターを持つ<code class="highlighter-rouge">projects.md</code>を配置するだけでOK．</p>
+
+<script src="https://gist.github.com/haltaro/d5b09a3e5648ad6e8bb8d91ebc46af13.js"></script>
+
+<h2 id="google-analyticsを導入">Google analyticsを導入</h2>
+
+<p><a href="https://haltaro.github.io/2017/08/04/set-google-analytics">JekyllでGoogle Analytics - Memotaro</a>で作成した<code class="highlighter-rouge">analytics.html</code>を<code class="highlighter-rouge">_includes/</code>に格納する．なお，<code class="highlighter-rouge">'UA-*********-*'</code>は各自取得したトラッキングコード．</p>
+
+<script src="https://gist.github.com/haltaro/45500c3c134f5c48b549408b02c312c3.js"></script>
+
+<p><code class="highlighter-rouge">_layouts/default.html</code>に以下を追記．</p>
+
+<script src="https://gist.github.com/haltaro/c9d454635b5304cdb2163c5f38490f3b.js"></script>
+
+<p>ここで，<code class="highlighter-rouge">jekyll.environment == 'production'</code>は，ローカル環境での動作テスト（<code class="highlighter-rouge">$ bundle exec jekyll serve</code>）をトラッキング対象から除外するためのもの．</p>
+
+<h2 id="aboutにbotuiを導入">AboutにBotUIを導入</h2>
+
+<p><a href="https://haltaro.github.io/2018/02/04/chatbot">チャットボットを作ろう：3．CSS修正 - Memotaro</a>で用意した<code class="highlighter-rouge">botui.min.css</code>と<code class="highlighter-rouge">botui-theme-default.css</code>を<code class="highlighter-rouge">css/</code>に保存する．同様に，<code class="highlighter-rouge">bot.js</code>と<code class="highlighter-rouge">bot.min.js</code>を<code class="highlighter-rouge">js/</code>に保存する．</p>
+
+<p>以下の<code class="highlighter-rouge">bot.html</code>を作成し，<code class="highlighter-rouge">_layouts/</code>に保存する．</p>
+
+<script src="https://gist.github.com/haltaro/e7ea6215b2518f94df935e055de54b77.js"></script>
+
+<p><code class="highlighter-rouge">about.md</code>のフロントマターの<code class="highlighter-rouge">layout</code>を<code class="highlighter-rouge">bot</code>に変更する．</p>
+
+<h2 id="ローカルテスト">ローカルテスト</h2>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve</code></pre></figure>
+
+<p>ブラウザで<code class="highlighter-rouge">localhost:4000</code>にアクセスして動作を確認する．</p>
+
+<h1 id="感想">感想</h1>
+
+<p>思っていたより時間はかからなかった．実は<a href="https://github.com/bencentra/centrarium">Jekyll-archivesがまともに動作していない</a>し，<code class="highlighter-rouge">highlight.js</code>がうまく動作していないので，追って修正しようと思う．</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:desc">
+      <p>キリがないのでやめた． <a href="#fnref:desc" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>キュート． <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:1">
+      <p>ヘッダー画像がつくと，一気に胡散臭くなる不思議． <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

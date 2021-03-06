@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JekyllにAlgoliaで全文検索機能を実装する</title>
+  <meta name="description" content="本サイトに待望の全文検索機能を実装した．Algolia社のDocSearchの審査に通らなかったので，同社のFree hacker planを利用した．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="本サイトに待望の全文検索機能を実装した．Algolia社のDocSearchの審査に通らなかったので，同社のFree hacker planを利用した．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="JekyllにAlgoliaで全文検索機能を実装する" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2018-06-16-algolia.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="JekyllにAlgoliaで全文検索機能を実装する">
+  <meta name="twitter:description" content="本サイトに待望の全文検索機能を実装した．Algolia社のDocSearchの審査に通らなかったので，同社のFree hacker planを利用した．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2018-06-16-algolia.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2018/06/16/jekyll-algolia">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2018-06-16-algolia.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">JekyllにAlgoliaで全文検索機能を実装する</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">June 16, 2018</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#jekyll">Jekyll</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>本サイトに待望の<a href="https://haltaro.github.io/search/">全文検索機能を実装</a>した．Algolia社の<a href="https://community.algolia.com/docsearch/">DocSearch</a>の審査に通らなかったので，同社の<a href="https://www.algolia.com/pricing">Free hacker plan</a>を利用した．</p>
+
+<iframe width="100%" height="480" src="https://www.youtube.com/embed/iBIoajzYWGE?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+
+<h1 id="algolia">Algolia</h1>
+
+<p>Algoliaは，リアルタイム検索をSaaSで提供するサービス群．今回は，<a href="https://community.algolia.com/docsearch/">DocSearch</a>および<a href="https://www.algolia.com/pricing">Free hacker plan</a>の利用を検討した．</p>
+
+<h2 id="docsearch">DocSearch</h2>
+
+<p><a href="https://community.algolia.com/docsearch/">DocSearch申請用ページ</a>で登録したURLが審査に通ると，Algoliaのクローラが自動でインデックスファイルを構築し，検索用APIを公開してくれるという，ゆとりには嬉しいサービス．何を隠そう<a href="https://jekyllrb.com/">Jekyll</a>の検索システムもこれで実装されている．今回は残念ながら審査に通らなかった<sup id="fnref:japanese"><a href="#fn:japanese" class="footnote">1</a></sup>ので，<a href="https://www.algolia.com/pricing">Free hacker plan</a>を利用することにした．</p>
+
+<p><img src="/assets/2018-06-16-docsearch.png" alt="docsearch" /></p>
+
+<h2 id="free-hacker-plan">Free hacker plan</h2>
+
+<p>自力で作成したインデックスファイルをAlgoliaにアップロードし，検索用APIを利用するプラン．マスターデータは1万件まで登録でき，APIを月10万回まで利用できる．<a href="https://blog.leko.jp/post/implement-site-search-with-algolia/">Algoliaを利用してサイト内検索機能を実装する - WEB EGG</a>によると，上限をオーバーすると検索もコンテンツの追加もできなくなるみたい．月1万PV程度のブログでギリギリ足りない感じらしいので，本ウェブサイトなら余裕である<sup id="fnref:sad"><a href="#fn:sad" class="footnote">2</a></sup>．</p>
+
+<p><img src="/assets/2018-06-16-hacker.png" alt="hacker" /></p>
+
+<p>幸い，<a href="https://community.algolia.com/jekyll-algolia/">Jekyll向けのプラグイン</a>があるため，私でも簡単に実装できた．以下に手順を示す．</p>
+
+<h1 id="手順">手順</h1>
+
+<p>以下は基本的に<a href="https://community.algolia.com/jekyll-algolia/">Algolia for Jekyll - Algolia</a>および<a href="https://community.algolia.com/jekyll-algolia/blog.html">Blog search -  Algolia for Jekyll</a>に則っているが，ウェブサイトの一貫性を保つために一部のコードを修正している．</p>
+
+<h2 id="algoliaのユーザ登録">Algoliaのユーザ登録</h2>
+
+<p><a href="https://www.algolia.com/">Algolia</a>からサインアップする．以降の処理で，ダッシュボードの<code class="highlighter-rouge">Application ID</code>，<code class="highlighter-rouge">Search-Only API Key</code>，および<code class="highlighter-rouge">Admin API Key</code>が必要なのでメモしておく．</p>
+
+<h2 id="jekyll-algliaの設定"><code class="highlighter-rouge">jekyll-alglia</code>の設定</h2>
+
+<p><code class="highlighter-rouge">Gemfile</code>に以下を追記し，<code class="highlighter-rouge">$ bundle update</code>する．</p>
+
+<script src="https://gist.github.com/haltaro/bc3a34adff021f762373f452f2aad4e7.js"></script>
+
+<p><code class="highlighter-rouge">_config.yml</code>に<code class="highlighter-rouge">jekyll-algolia</code>の設定を追加する．</p>
+
+<script src="https://gist.github.com/haltaro/af5b24ac877c78a8d2230f903f429b8c.js"></script>
+
+<h2 id="インデックスの作成とアップロード">インデックスの作成とアップロード</h2>
+
+<p>シェルで以下を実行する．</p>
+
+<script src="https://gist.github.com/haltaro/7602fed4d47e0062ed2779fc5070e4f9.js"></script>
+
+<p>ここで，<code class="highlighter-rouge">Admin API Key</code>はローカルで保管する必要がある．間違ってGitHub等にアップしないように注意．以降は，検索窓の実装に入る．</p>
+
+<h2 id="_layoutssearchhtml"><code class="highlighter-rouge">_layouts/search.html</code></h2>
+
+<p><a href="https://community.algolia.com/jekyll-algolia/blog.html">Blog search -  Algolia for Jekyll</a>の<code class="highlighter-rouge">search.html</code>を参考にした．ただし，本ウェブサイトのベーステーマである<a href="https://github.com/bencentra/centrarium">Centrarium</a>と整合するよう，一部に手を加えた．</p>
+
+<script src="https://gist.github.com/haltaro/1c1f54a75dff0ce897373d2d6450310c.js"></script>
+
+<h2 id="_includesalgoliahtml"><code class="highlighter-rouge">_includes/algolia.html</code></h2>
+
+<p><a href="https://community.algolia.com/jekyll-algolia/blog.html">Blog search -  Algolia for Jekyll</a>の<code class="highlighter-rouge">algolia.html</code>を参考にした．</p>
+
+<script src="https://gist.github.com/haltaro/17c7d07fdd56f07c80735e0328ecfbe0.js"></script>
+
+<h2 id="searchmd"><code class="highlighter-rouge">search.md</code></h2>
+
+<p>全文検索用の<a href="https://haltaro.github.io/search/">Search</a>ページを作成するために，以下の<code class="highlighter-rouge">search.md</code>ファイルを作成した．</p>
+
+<script src="https://gist.github.com/haltaro/c30ebf72374a701767ebc55fe33a898a.js"></script>
+
+<h1 id="感想">感想</h1>
+
+<p>これで，本ウェブサイトに欲しかった機能はあらかた実装してしまった．結構書きたい（書かないと忘れてしまいそうな）ことが溜まってきたので，しばらくは統計・機械学習のノウハウや理論を書いていきたい．</p>
+
+<h1 id="参考">参考</h1>
+
+<ul>
+  <li><a href="https://www.algolia.com/">Algolia - Algolia</a></li>
+  <li><a href="https://community.algolia.com/docsearch/">DocSearch - Algolia</a></li>
+  <li><a href="https://community.algolia.com/jekyll-algolia/">Algolia for Jekyll - Algolia</a></li>
+  <li><a href="https://blog.leko.jp/post/implement-site-search-with-algolia/">Algoliaを利用してサイト内検索機能を実装する - WEB EGG</a></li>
+  <li><a href="http://rs.luminousspice.com/hugo-site-search/">Hugo に全文検索を取り付けた - the Right Stuff</a></li>
+</ul>
+<div class="footnotes">
+  <ol>
+    <li id="fn:japanese">
+      <p>Algolia社が定める”technical documentation site”ではないと，丁寧なお祈りメールが来た．そもそも日本語だと通りづらいんじゃないか． <a href="#fnref:japanese" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:sad">
+      <p>月1000PVくらい． <a href="#fnref:sad" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

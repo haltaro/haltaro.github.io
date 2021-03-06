@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/page11/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/12/03/digital-marketing-3">Courcera，Marketing in a digital world：3. Placement</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>更新中：Courcera，Marketing in a digital worldの受講メモ．本講座は，イリノイ大学主催のオンライン講座であり，全7講座から成るDigital marketing specializationの一つ．四週かけて，デジタル時代のマーケティング・ミックスについて学ぶ．第三週では，Placementを取り扱い，New retailや3D printingについて学ぶ． …予定だったが，途中退会してしまった．再入会するかもしれないので，その際は追記する． 本講座に関する記事： Courcera，Marketing in a digital world：1. Product Courcera，Marketing in a digital world：2. Promotion Courcera, Marketing in a digital world：3. Placement Courcera, Marketing in a digital world：4. Price CourceraのDigital marketing講座を退会した Module 3 overview 以下は，事前に読む必要がある資料． Rigby, D. (2011). The future of shopping....</p>-->
+      <p><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="https://www.coursera.org/learn/marketing-digital">Courcera，Marketing in a digital world</a>の受講メモ．本講座は，イリノイ大学主催のオンライン講座であり，全7講座から成る<a href="https://www.coursera.org/specializations/digital-marketing">Digital marketing specialization</a>の一つ．四週かけて，デジタル時代の<a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9">マーケティング・ミックス</a>について学ぶ．第三週では，Placementを取り扱い，New retailや3D printingについて学ぶ．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 3, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#marketing">Marketing</a>, 
+        
+      
+        
+        <a href="/categories/#moocs">Moocs</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/12/02/next-advertising">佐藤達郎，「これからの広告」の教科書</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>佐藤達郎，「これからの広告」の教科書を読んだ．Courcera，Marketing in a digital world：2. Promotionでも触れたように，近年の技術革新により，市場のパワーバランスが大きく消費者側に傾き始めた．本書では，具体例を用いてわかりやすく，新たな広告手法を学ぶことができた． 広告業界は流行り廃りが激しいため，今回学んだ手法が，将来ずっと有効であるとは限らない．重要なのは，表面的な流行だけを追うのではなく，その社会的背景を理解することだと感じた． 1. 差別化よりもウィル（意思）やインサイトで勝負せよ 従来は，USP（Unique Selling Proposition）に基づき，機能的特徴を全面に出す広告戦略が取られていた． しかし，今やモノが溢れる時代．そもそもUSPとなるような機能的特徴を見つけることは難しいし，あったとしてもすぐに真似されてしまう． そこで，消費者のインサイトを考慮した価値や，ブランドメッセージを訴える． インサイトとは，心の奥底にある（本人すら気付いていないような）意見． あるインサイトが売り上げにつながるか証明するのは非常に難しい．調査やデータに基づいた理論武装が必要． インサイトは，その製品固有のものではなく，製品カテゴリー全体のものであることが見受けられる． 2. 消費者との接点によって見せ方を変える 従来は，IMC（Integrated Marketing Communication）の代表的概念である，ワンルック・ワンボイスが実施されていた． しかし，上記の手法は受動的な消費者を対象としたメディアで有効とされるもの．インターネットの登場により，能動的な消費者を対象とした新たな戦略が必要となる． そこで，根本的なメッセージは統一しつつも，メディアによってアプローチを変化させる顧客接点マネジメントが重要になる．統一よりも連動させる． 今まで考慮していなかった顧客接点を，360度再検討する． 3. 消費者に謎をかけて突っ込ませる 従来は，わかりやすさを重視していた． しかし，広告が氾濫する現在では，わかりやすいだけの広告は消費者の目に止まらない． そこで，あえてわかりにくくすることで消費者の注目を集める方法が，今メジャーになりつつある． 4. 「商品の良さ」より「イイ時間」を提供する 従来は，わかりやすさを重視していた． しかし，広告が氾濫する現在では，わかりやすいだけの広告は消費者の目に止まらない． ​広告により良い時間を提供し，関係構築を目指す． 5. １本の広告より全体の仕掛けで効果を狙う 従来は，限られた予算の中で，できるだけクオリティを高めるよう努力していた． しかし，広告が溢れる現在においては，中途半端なクオリティの広告は目に止まらない． そこで，広告のクオリティを重視する代わりに，全体の仕掛け作りに注力する． 6. 送り届けるのではなく広がる経路を作る 従来は，ターゲットに直接購買を働きかけるのうなメッセージを乗せていた． しかし，広告が氾濫する現在では，直接的なメッセージは消費者から否定的な反応を受ける可能性がある． そこで，伝播性を重視して，拡散しやすい内容の広告を作る． 7. ライブ感こそ人の心を動かす時代である 従来は，作り込んで，手間暇をかけて，演出に凝って一本の広告を作っていた． しかし，作り込まれた演出に拒否感を示す消費者が増えてきた． そこで，一回性と真正性のある内容で，消費者やの中に盛り上がりを生むリアルタイム・マーケティングが注目されている．...</p>-->
+      <p><p><a href="http://amzn.asia/5fzKuNu">佐藤達郎，「これからの広告」の教科書</a>を読んだ．<a href="https://haltaro.github.io/2017/11/25/digital-marketing-2">Courcera，Marketing in a digital world：2. Promotion</a>でも触れたように，近年の技術革新により，市場のパワーバランスが大きく消費者側に傾き始めた．本書では，具体例を用いてわかりやすく，新たな広告手法を学ぶことができた．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 2, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#marketing">Marketing</a>, 
+        
+      
+        
+        <a href="/categories/#books">Books</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/12/02/dmm-english">DMM体験レッスン：1．Article discussion</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，Reajobと並ぶオンライン英会話最大手のDMM英会話で，Daily newsを体験した．セルビア在住の先生に対応してもらったが，とても親切で，英語力も高かった．フィリピン人と比べて元気が無いように感じたのは，雇用情勢のせいだろう．とりあえず，あと二回体験してみる．
+
+DMM英会話とは
+
+オンライン英会話の最大手．同じく大手のReajobとの違いは，講師の出身国の多様性．DMM英会話では，フィリピンだけでなく，セルビアやボスニア・ヘルツェゴビナ等出身の先生も在籍している．
+
+2017年12月2日時点の料金プランは以下．
+
+
+  
+    
+      プラン
+      料金[円/月]
+    
+  
+  
+    
+      スタンダード（毎日25分）
+      5,500
+    
+    
+      プラスネイティブ（毎日25分）
+      15,800
+    
+  
+
+
+他にも毎日2レッスン（計50分）や3レッスン（計75分）のプランがある．
+
+予習
+
+特に予習しなかった．
+
+講義内容
+
+
+  自己紹介．
+  Daily news discussion．
+    
+      Vocabularyを先生に続けて読む．
+      Articleを一人で一通り読む．
+      Questionsに回答．
+      Discussion．
+    
+  
+
+
+先生からのフィードバック
+
+発音や文法を気にしていたようだが，特に問題ない．
+
+学んだこと
+
+
+  ominous：不吉な，不気味な．
+  rumble：ゴロゴロ鳴る．
+  of all stripes：of all types．
+
+
+感想
+
+セルビア人の先生と初めて話したが，英語は上手だし，親切だし，申し分なかった．フィリピン人と比べて暗く感じるのは，国内の雇用状況が非常に悪いためだろう（「オランダ在住ｘセルビア脱線」系こーたろーの社会派ブログ，格安オンライン英会話にセルビア人講師が多いのはなぜか？）．
+
+先生の話し方は，アメリカの研究所にいた頃によく聞いたものと似ていた（ネイティブスピーカーがほとんどいない職場だった）．料金も安いし，毎日話せるのであれば，DMM英会話で良いような気がしてきた．あと二回体験できるので，もう少し考えてみる．
+</p>-->
+      <p><p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，<a href="https://www.rarejob.com">Reajob</a>と並ぶオンライン英会話最大手の<a href="http://eikaiwa.dmm.com/">DMM英会話</a>で，<a href="https://app.eikaiwa.dmm.com/daily-news">Daily news</a>を体験した．セルビア在住の先生に対応してもらったが，とても親切で，英語力も高かった．フィリピン人と比べて元気が無いように感じたのは，雇用情勢のせいだろう．とりあえず，あと二回体験してみる．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 2, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/11/28/bizmate">BizMate体験レッスン</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，ビジネス英会話に強みを持つBizMateの体験レッスン．同じくフィリピン系のReajobの二倍の価格帯だが，講師と教材の質が高く，その価値はあると感じた．
+
+BizMateとは
+
+ビジネスユーザに特化したフィリピン系のオンライン英会話．2017年11月28日時点の料金プランは以下．
+
+
+  
+    
+      プラン
+      月額料金
+    
+  
+  
+    
+      毎日25分プラン
+      12,000円
+    
+    
+      毎日50分プラン
+      18,000円
+    
+  
+
+
+なお，2017年12月18日まで入会初月半額キャンペーン中．
+
+予習
+
+今回はレベルチェックだったため，特に予習はしなかった．
+
+講義内容
+
+
+  自己紹介．
+  レベルチェック．
+  お試しレッスン．
+
+
+先生からのフィードバック
+
+
+  リスニングに関しては問題なし．
+  スピーキングに関しては，発音と文法に注意する必要がある．
+
+
+感想
+
+ビジネス英会話に特化しているだけあって，ビジネス系のコンテンツが非常に充実している．同じくフィリピン系のReajobの二倍の価格帯だが，ビジネスユーザにとっては使い勝手がよいかもしれない1．指導はとても丁寧で，好感が持てた．
+
+2017年12月18日まで，初月半額キャンペーン中なので，申し込むなら今かもしれない．
+
+
+  
+    
+      うちの会社も法人契約したら良いのに…． &#8617;
+    
+  
+
+</p>-->
+      <p><p>帰国してから英語力が落ちまくっているので，オンライン英会話を再開することにした．とにかく選択肢が多いので，無料体験をはしごして決める．今回は，ビジネス英会話に強みを持つ<a href="https://www.bizmates.jp/">BizMate</a>の体験レッスン．同じくフィリピン系の<a href="https://www.rarejob.com">Reajob</a>の二倍の価格帯だが，講師と教材の質が高く，その価値はあると感じた．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">November 28, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/11/25/digital-marketing-2">Courcera，Marketing in a digital world：2. Promotion</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Courcera，Marketing in a digital worldの受講メモ．本講座は，イリノイ大学主催のオンライン講座であり，全7講座から成るDigital marketing specializationの一つ．四週かけて，デジタル時代のマーケティング・ミックスについて学ぶ．第二週では，Promotionを取り扱い，AuthenticityやUser generated contentについて学ぶ． 本講座に関する記事： Courcera，Marketing in a digital world：1. Product Courcera，Marketing in a digital world：2. Promotion Courcera, Marketing in a digital world：3. Placement Courcera, Marketing in a digital world：4. Price CourceraのDigital marketing講座を退会した Module 2 overview 第二週では，新技術によって，消費者が市場でどのように能動的な役割を演じるようになったかを学ぶ．以下は事前に読んでおくべき記事． Edelman, D. C. (2010). Branding in the digital...</p>-->
+      <p><p><a href="https://www.coursera.org/learn/marketing-digital">Courcera，Marketing in a digital world</a>の受講メモ．本講座は，イリノイ大学主催のオンライン講座であり，全7講座から成る<a href="https://www.coursera.org/specializations/digital-marketing">Digital marketing specialization</a>の一つ．四週かけて，デジタル時代の<a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9">マーケティング・ミックス</a>について学ぶ．第二週では，Promotionを取り扱い，AuthenticityやUser generated contentについて学ぶ．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">November 25, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#marketing">Marketing</a>, 
+        
+      
+        
+        <a href="/categories/#moocs">Moocs</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+			
+			<a class="newer-posts" href="/page10">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			
+		
+		<span class="page-number">Page 11 of 15</span>
+		
+		<a class="newer-posts" href="/page12">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

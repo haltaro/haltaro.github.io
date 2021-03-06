@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>UCOMにAirMacを接続してWifi環境を構築する</title>
+  <meta name="description" content="引越し先のマンションがUcomに契約していたので，壁付けのコンセントにLANケーブルを繋げばインターネットに接続できる．手持ちのAirMac Time Capsuleで無線LAN環境を構築したかったが，ネット上に情報が少なく，めちゃくちゃ苦戦した．試行錯誤の記録を残しておく．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="引越し先のマンションがUcomに契約していたので，壁付けのコンセントにLANケーブルを繋げばインターネットに接続できる．手持ちのAirMac Time Capsuleで無線LAN環境を構築したかったが，ネット上に情報が少なく，めちゃくちゃ苦戦した．試行錯誤の記録を残しておく．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="UCOMにAirMacを接続してWifi環境を構築する" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2018-06-02-web.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="UCOMにAirMacを接続してWifi環境を構築する">
+  <meta name="twitter:description" content="引越し先のマンションがUcomに契約していたので，壁付けのコンセントにLANケーブルを繋げばインターネットに接続できる．手持ちのAirMac Time Capsuleで無線LAN環境を構築したかったが，ネット上に情報が少なく，めちゃくちゃ苦戦した．試行錯誤の記録を残しておく．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2018-06-02-web.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2018/06/10/ucom-airmac">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2018-06-02-web.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">UCOMにAirMacを接続してWifi環境を構築する</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">June 10, 2018</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#network">Network</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>引越し先のマンションがUcomに契約していたので，壁付けのコンセントにLANケーブルを繋げばインターネットに接続できる．手持ちのAirMac Time Capsuleで無線LAN環境を構築したかったが，ネット上に情報が少なく，めちゃくちゃ苦戦した．試行錯誤の記録を残しておく．</p>
+
+<blockquote>
+  <p><strong>2018年6月19日追記</strong>：接続がめちゃくちゃ不安定で，Skype英会話がまともにできない．おそらくNAT設定が原因だと思う．</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>2018年7月7日追記</strong>：<code class="highlighter-rouge">AirMacユーティリティ</code>&gt;<code class="highlighter-rouge">ネットワーク</code>&gt;<code class="highlighter-rouge">ルーターモード</code>で<code class="highlighter-rouge">切（ブリッジモード</code>に変更したら，すべての問題が解決した．ややこしいのは，最初にブリッジモードにしたときは複数台のデバイスを接続できなかったこと．</p>
+</blockquote>
+
+<h1 id="環境">環境</h1>
+
+<ul>
+  <li>UCOM光レジデンス LAN配線方式</li>
+  <li>AirMac Time Capsule 7.6.9</li>
+  <li>MacBook Pro，macOS Sierra（10.12.6）</li>
+</ul>
+
+<p><img src="/assets/2018-06-10-lan.png" alt="lan" /></p>
+
+<h1 id="設定">設定</h1>
+
+<p><code class="highlighter-rouge">AirMacユーティリティ &gt; AirMac Time Capsule &gt; 編集</code>を押す．</p>
+
+<p><img src="/assets/2018-06-10-utility.png" alt="utility" /></p>
+
+<p><code class="highlighter-rouge">インターネット</code>タブを選択して，<a href="https://help.ucom.ne.jp/type002/internet/dnsip/index.html">インターネット接続の設定 - UCOM</a>をもとに最寄りのDNSサーバアドレスを設定する．</p>
+
+<p><img src="/assets/2018-06-10-internet.png" alt="internet" /></p>
+
+<p><code class="highlighter-rouge">ワイヤレス</code>タブを選択して，設定を確認する．私の場合は，特に設定を変更する必要は無かった．</p>
+
+<p><img src="/assets/2018-06-10-wireless.png" alt="wireless" /></p>
+
+<p><code class="highlighter-rouge">ネットワーク</code>タブを選択して，<code class="highlighter-rouge">ルーターモード</code>として<code class="highlighter-rouge">DHCPとNAT</code>を選択する．</p>
+
+<ul>
+  <li><a href="https://support.ucom.ne.jp/downloads/manual/100tebiki.pdf">UCOM 光 レジデンス ご利用の手引き- UCOM</a>等によると，ブリッジモードでないとうまく接続できないとのことだったが，これだと設定用のMacBookと他の端末（iPhone）を同時に接続できなかった．</li>
+  <li><a href="https://discussionsjapan.apple.com/thread/10170959">一台しか接続できない - Apple コミュニティ</a>によると，MacBookがグローバルIPアドレスを専有してるのが原因っぽい．ネットワークが不安定なるリスクがあった<sup id="fnref:stable"><a href="#fn:stable" class="footnote">1</a></sup>が，今回は<code class="highlighter-rouge">DHCPとNAT</code>を選択した．</li>
+</ul>
+
+<p><img src="/assets/2018-06-10-network.png" alt="network" /></p>
+
+<p>これで<code class="highlighter-rouge">アップデート</code>を押す．<code class="highlighter-rouge">システム環境設定 &gt; ネットワーク</code>では，「Wi-Fiに自己割り当てIPアドレス<script type="math/tex">\blacksquare</script>.<script type="math/tex">\blacksquare</script>.<script type="math/tex">\blacksquare</script>.<script type="math/tex">\blacksquare</script>が設定されているためインターネットに接続できません。」と叱られるが，MacBookもiPhoneも同時に接続できている．もう疲れたので無視することにした．</p>
+
+<p><img src="/assets/2018-06-10-warning.png" alt="warning" /></p>
+
+<h1 id="それでも繋がらないときは">それでも繋がらないときは</h1>
+
+<p>実際，以上の設定を行っても一発では繋がらなかった．以下をいろいろ試すうちにいつの間にか繋がったので，ご参考までに．</p>
+
+<ul>
+  <li>AirMacを再起動する．</li>
+  <li>LANの接続口を変更する．どうやら，口ごとにIPアドレスが割り振られているっぽい．上位NW装置でどのような制御が行われているか不明だが，口を変えると一発で認証が通ることがあった．</li>
+</ul>
+
+<h1 id="参考">参考</h1>
+
+<ul>
+  <li><a href="https://discussionsjapan.apple.com/thread/10170959">一台しか接続できない - Apple コミュニティ</a></li>
+  <li><a href="http://fmmzk.hateblo.jp/entry/2014/07/10/120654">“Wi-Fi”に自己割り当てのIP アドレスが設定されており、インターネットに接続できない可能性がありましたら - Jaì³üÉ&gt;L(î)</a></li>
+  <li><a href="https://support.ucom.ne.jp/downloads/manual/simple_tebiki.pdf">UCOM光 レジデンス【シンプルタイプ】ご利用の手引き -UCOM </a></li>
+  <li><a href="https://support.ucom.ne.jp/downloads/manual/100tebiki.pdf">UCOM 光 レジデンス ご利用の手引き- UCOM</a></li>
+  <li><a href="https://help.ucom.ne.jp/type002/internet/dnsip/index.html">インターネット接続の設定 - UCOM</a></li>
+</ul>
+<div class="footnotes">
+  <ol>
+    <li id="fn:stable">
+      <p>実際昼間は何回か途切れているみたい <a href="#fnref:stable" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

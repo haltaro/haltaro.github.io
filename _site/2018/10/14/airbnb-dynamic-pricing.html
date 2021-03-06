@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Customized Regression Model for Airbnb Dynamic Pricingを読んだ</title>
+  <meta name="description" content="Peng Ye, et al., Customized Regression Model for Airbnb Dynamic Pricing, KDD2018を読んだ．Airbnbで実際に使われている価格推奨モデルについて，非常にわかりやすくまとめられている．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Peng Ye, et al., Customized Regression Model for Airbnb Dynamic Pricing, KDD2018を読んだ．Airbnbで実際に使われている価格推奨モデルについて，非常にわかりやすくまとめられている．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Customized Regression Model for Airbnb Dynamic Pricingを読んだ" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2018-09-22-room.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Customized Regression Model for Airbnb Dynamic Pricingを読んだ">
+  <meta name="twitter:description" content="Peng Ye, et al., Customized Regression Model for Airbnb Dynamic Pricing, KDD2018を読んだ．Airbnbで実際に使われている価格推奨モデルについて，非常にわかりやすくまとめられている．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2018-09-22-room.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2018/10/14/airbnb-dynamic-pricing">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2018-09-22-room.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">Customized Regression Model for Airbnb Dynamic Pricingを読んだ</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">October 14, 2018</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#machine learning">Machine learning</a>, 
+    
+  
+    
+    <a href="/categories/#papers">Papers</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p><a href="http://www.kdd.org/kdd2018/accepted-papers/view/customized-regression-model-for-airbnb-dynamic-pricing">Peng Ye, et al., Customized Regression Model for Airbnb Dynamic Pricing, KDD2018</a>を読んだ．<a href="https://www.airbnb.jp/">Airbnb</a>で実際に使われている価格推奨モデルについて，非常にわかりやすくまとめられている．</p>
+
+<p>この分野で初めて読んだ論文．時間はかかったが，読み通すことができた．実装しろと言われてすぐ実装できるとは言えないが，大筋は理解できたと思う．心理的なハードルは下がったので，他の論文もどんどん読んでいきたい．</p>
+
+<h1 id="abstract">Abstract</h1>
+
+<ul>
+  <li>Airbnbの商品は基本的に過去にない唯一のもの．よって，過去の実績をもとに需要曲線を予測するのが非常に難しい．</li>
+  <li>Airbnbが提案するシステムは３つのモデルで構成される．
+    <ul>
+      <li>特定の日にちの予約確率を予測するモデル．</li>
+      <li>特定の日にちの最適な売値を予測するモデル．</li>
+      <li>二番目の予測値を，さらにパーソナライズして売値をサジェストするモデル．</li>
+    </ul>
+  </li>
+  <li>本論文では，二番目の売値予測モデルについて述べる．このモデルは，Price TipsとSmart Pricing toolとして実際にAirbnbのシステムに組み込まれている．A/Bテストでこのモデルの効果を確認した．</li>
+</ul>
+
+<h1 id="introduction">Introduction</h1>
+
+<ul>
+  <li>プラットフォーマーとして，Airbnbは，ホストが設定する価格を直接的に制御していないが，ツールを使って適正値をアドバイスしている．
+    <ul>
+      <li>Price Tips：暦情報をもとに，適正価格をサジェストする機能．</li>
+      <li>Smart Pricing：ユーザが設定した希望価格の下限と上限をもとに，自動的に適正価格を計算する機能．</li>
+    </ul>
+  </li>
+  <li>適正価格は機械学習で算出されており，モデルは日々更新されている．</li>
+</ul>
+
+<h2 id="related-works">Related works</h2>
+
+<ul>
+  <li>Airbnbの値付けに関して，いくつかの論文が公開されている[8, 9, 11, 16]．</li>
+</ul>
+
+<h2 id="dynamic-pricing-at-airbnb">Dynamic pricing at airbnb</h2>
+
+<ul>
+  <li>AirbnbでDynamic Pricingするにあたり，大きく２つの課題がある．</li>
+  <li>Demand Estimation
+    <ul>
+      <li>従来は，大量生産品に対するDemand estimationが研究されてきた．この領域では，需要曲線<script type="math/tex">F(P)</script>を予測することが最大の目的である．ここで，<script type="math/tex">P</script>は価格．近年では，機械学習を用いて<script type="math/tex">F(P)</script>を予測するモデルも提案されている[2, 15]．一方で，Airbnbにおける需要曲線は価格<script type="math/tex">P</script>だけでなく，時間<script type="math/tex">t</script>や個別の物件<script type="math/tex">id</script>に依存すると考えられる．</li>
+      <li>需要曲線が時間に依存する原因として，季節性とリードタイムがある．</li>
+      <li>需要曲線が物件に依存する原因として，Airbnbが扱う物件の特殊性と，人気の格差がある．</li>
+    </ul>
+  </li>
+  <li>以上から，需要曲線<script type="math/tex">F(P, t, id)</script>を予測するのは非常に難しい．</li>
+  <li>また，我々が提示した価格を，ホストが必ずしも採用しないことも，問題の複雑さを一層増す原因となっている．</li>
+</ul>
+
+<h2 id="our-approach">Our approach</h2>
+
+<ul>
+  <li><script type="math/tex">F(P, t, id)</script>を適正価格にマッピングするPricing strategy modelを提案する．このモデルは，独自に設定した損失関数を最小化するよう学習したモデルである．</li>
+  <li>従来手法では，製品の特徴に対して線形な価値関数を想定していた[1, 4, 5]が，我々のモデルは非線形である．
+    <ul>
+      <li>需要関数をGradient boosting machine (GBM)で予測する．</li>
+      <li>損失関数はSupport vector regression (SVR)で利用されている<script type="math/tex">\epsilon</script>-incentive loss functionをもとにしているが，正確な目的変数を持たず，<script type="math/tex">\epsilon</script>の値をtraining sampleごとに変えている．</li>
+    </ul>
+  </li>
+  <li>本論文の貢献は以下の二点：
+    <ul>
+      <li>適正価格の効率を放火する指標を提案する．</li>
+      <li>上記の指標をもとに，適正な価格戦略を学習する回帰モデルを提案する．</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="pricing-system-overview">Pricing system overview</h1>
+
+<ul>
+  <li>Airbnbの価格推奨モデルは，以下の３つから成る．
+    <ul>
+      <li>Booking probability model</li>
+      <li>Strategy model</li>
+      <li>Personalization</li>
+    </ul>
+  </li>
+  <li>以下では，特にStrategy modelに焦点をあてつつ，それぞれの特徴について述べる<sup id="fnref:configuration"><a href="#fn:configuration" class="footnote">1</a></sup>．</li>
+</ul>
+
+<h1 id="booking-probability-model">Booking probability model</h1>
+
+<ul>
+  <li>特定日に予約されるかどうかを，二値の識別問題として解く．</li>
+  <li>特徴量として，部屋の特徴，季節性，周辺地域の繁忙度などを用いる．</li>
+  <li>Grandient boosting machine（GBM）で学習する．地理情報を考慮してサンプリングレートを調整したら，精度があがった．</li>
+</ul>
+
+<h1 id="strategy-model">Strategy model</h1>
+
+<h2 id="evaluatinge-price-suggestion">Evaluatinge Price suggestion</h2>
+
+<ul>
+  <li>特定日の適正価格を推薦するために，回帰問題を解く．</li>
+  <li>通常の回帰問題と異なり，適正価格が教師データとして与えられないところに難しさがある．加えて，ホストはAirbnbが推奨する価格をそのまま採用するわけではない．</li>
+  <li>教師データは，以下の4パターンに分類できる．
+    <ul>
+      <li>ホストが推奨価格より小さい価格を設定し，予約された（a）</li>
+      <li>ホストが推奨価格より小さい価格を設定し，予約されなかった（b）</li>
+      <li>ホストが推奨価格以上の価格を設定し，予約された（c）</li>
+      <li>ホストが推奨価格以上の価格を設定し，予約されなかった（d）</li>
+    </ul>
+  </li>
+  <li>以下のような評価指標を導入した<sup id="fnref:precision-recall"><a href="#fn:precision-recall" class="footnote">2</a></sup><sup id="fnref:complicated"><a href="#fn:complicated" class="footnote">3</a></sup>．
+    <ul>
+      <li><strong>Price Decrease Recall (PDR)</strong> ：実際に予約されなかったデータのうち，予約されないと予測された（設定価格が推奨価格より大きい）データの割合．
+<script type="math/tex">PDR = \frac{d}{b+d}</script></li>
+      <li><strong>Price Decrease Precision (PDP)</strong> ：予約されないと予測された（設定価格が推奨価格より大きい）データのうち，実際に予約されなかったデータの割合．<script type="math/tex">PDR = \frac{d}{c+d}</script></li>
+      <li><strong>Price Increase Recall (PIR)</strong> ：実際に予約されたデータのうち，予約されると予測された（設定価格が推奨価格より小さい）データの割合．
+<script type="math/tex">PDR = \frac{a}{a+c}</script></li>
+      <li><strong>Price Increase Precision (PIP)</strong> ：予約されると予測された（設定価格が推奨価格より小さい）データのうち，実際に予約されたデータの割合．<script type="math/tex">PDR = \frac{a}{a+b}</script></li>
+      <li><strong>Booking Regret (BR)</strong>：<script type="math/tex">BR = median_{bookings}(max(0, \frac{P-P_{sug}}{P}))</script><sup id="fnref:br"><a href="#fn:br" class="footnote">4</a></sup></li>
+    </ul>
+  </li>
+  <li>ビジネス的な指標と相関が高かったのは，PDRとBRだった．
+    <ul>
+      <li>PDRが高いほど，ホストはより市場競争力の高い値付けをしていることになるため，成約率が高まると考えられる．</li>
+      <li>BRが小さいほど，成約価格と推奨価格が近いことになるため，ホストからより大きな信頼を勝ち取るれると考えられる．</li>
+      <li>両者はトレードオフの関係にあるため，同時に最適化する必要がある．一般に推奨価格を下げれば下げるほど，PDRが改善するが，BRが悪化する．</li>
+      <li>オフラインでの評価では，上記の二指標を用いる．</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="objective-function">Objective function</h2>
+
+<ul>
+  <li>以上の考察を踏まえて，損失関数を設定する．ただし：
+    <ul>
+      <li><script type="math/tex">\mathbf{x}_i</script>：案件<script type="math/tex">i</script>の特徴量．ホストの設定価格<script type="math/tex">P_i</script>，我々のモデルが予測した成約確率<script type="math/tex">q_i</script>，およびその他の市場需要指標を含む．</li>
+      <li><script type="math/tex">y_i</script>：案件<script type="math/tex">i</script>の成約状況．成約した場合は<script type="math/tex">1</script>，成約しなかった場合は<script type="math/tex">0</script>．</li>
+      <li><script type="math/tex">f_{\theta}(\mathbf{x}_i)</script>：案件<script type="math/tex">i</script>の特徴量<script type="math/tex">\mathbf{x}_i</script>とパラメータ<script type="math/tex">\theta</script>から推奨価格を計算する関数．</li>
+    </ul>
+  </li>
+  <li>損失関数：<script type="math/tex">\mathcal{L} = \mathrm{argmin}_{\theta}\sum_{i=1}^{N}(L(P_i, y_i) - f_{\theta}(\mathbf{x}_i))^{+} + (f_{\theta}(\mathbf{x}_i) - U(P_i, y_i))^{+}</script>
+    <ul>
+      <li><script type="math/tex">(\cdot)^{+}</script>は<script type="math/tex">\mathrm{max}(\cdot, 0)</script>を表す．</li>
+      <li>下限：<script type="math/tex">L(P_i, y_i) = y_i \cdot P_i + (1-y_i)\cdot c_1 P_i</script>．成約した案件については設定価格<script type="math/tex">P_i</script>を下限とし，成約しなかった案件については<script type="math/tex">% <![CDATA[
+0 < c_1 \leq 1 %]]></script>倍に値引きした価格を下限とする．</li>
+      <li>上限：<script type="math/tex">U(P_i, y_i) = (1-y_i) \cdot P_i + y_i\cdot c_2 P_i</script>．成約しなかった案件については設定価格<script type="math/tex">P_i</script>を上限とし，成約した案件については<script type="math/tex">c_2 \geq 1</script>倍に値上げした価格を上限とする．</li>
+      <li>このタスクでは最適価格がわからないため，上記のようなヒンジ型の損失関数（<script type="math/tex">\epsilon</script>-insensitive loss）を定義する．</li>
+      <li>なお，<script type="math/tex">c_1=c_2=1</script>と設定した場合は，<script type="math/tex">U=L</script>となり，実効的にホストによる設定価格<script type="math/tex">P_i</script>を教師データとした最適化が行われることになる．</li>
+    </ul>
+  </li>
+  <li>価格計算モデル：<script type="math/tex">P_{sug} = f_{\theta}(\mathrm{x}) = P_i \cdot V</script>．
+    <ul>
+      <li>デマンドスコアが高い（<script type="math/tex">D \geq 0</script>）とき：<script type="math/tex">V = 1 + \theta_1 (q^{\phi_H^{-qD}} - \theta_2)</script>．</li>
+      <li>デマンドスコアが低い（<script type="math/tex">% <![CDATA[
+D < 0 %]]></script>）とき：<script type="math/tex">V = 1 + \theta_1 (q^{\phi_L^{-(1-q)D}} - \theta_2)</script>．</li>
+      <li>デマンドスコア<script type="math/tex">D</script>は，クラスターレベルでガウス正規化されている．<script type="math/tex">D</script>が大きいとき，クラスター内の他の案件と比較してデマンドが高いことを意味する．</li>
+      <li>Demand constraint<sup id="fnref:constraint"><a href="#fn:constraint" class="footnote">5</a></sup> <script type="math/tex">% <![CDATA[
+1 < \phi_L < \phi_H < 2 %]]></script>は，デマンド曲線の曲がり具合を制御するためのパラメータ．デマンドが大きいときと小さいときで曲がり具合を変えるため，あえて別の定数として定めている．</li>
+    </ul>
+  </li>
+  <li>粒度：基本的に案件レベルでパラメータ学習を行う．しかし十分なデータがない場合は，クラスターレベルや全体レベルで学習したパラメータを用いる場合もある．</li>
+  <li>制約：<script type="math/tex">\theta_1</script>や<script type="math/tex">\theta_2</script>は，現実的な値になるよう上下に制約条件を設けている．</li>
+  <li>頻度：Sparkを用いて，SGD（Stochastic Gradient Descent）で毎日学習する．</li>
+</ul>
+
+<h1 id="references">References</h1>
+
+<p>個人的に気になったもののみ抜粋．</p>
+
+<ul>
+  <li>[1] Yasin Abbasi-Yadkori, Dávid Pál, and Csaba Szepesvári. 2011. Improved Algorithms for Linear Stochastic Bandits. In Proceedings of the 24th International Conference on Neural Information Processing Systems (NIPS’11). Curran Associates Inc., USA, 2312–2320.</li>
+  <li>[2] Patrick Bajari, Denis Nekipelov, Stephen P. Ryan, and Miaoyu Yang. 2015. Demand estimation with machine learning and model combination. National Bureau of Economic Research (2015).</li>
+  <li>[4] Wei Chu, Lihong Li, Lev Reyzin, and Robert Schapire. 2011. Contextual Bandits with Linear Payoff Functions. In Proceedings of the Fourteenth International Conference on Artificial Intelligence and Statistics (Proceedings of Machine Learning Research), Geoffrey Gordon, David Dunson, and Miroslav DudÃŋk (Eds.), Vol. 15. PMLR, Fort Lauderdale, FL, USA, 208–214.</li>
+  <li>[5] Maxime Cohen, Ilan Lobel, and Renato Paes Leme. 2016. Feature-based Dynamic Pricing. In Proceedings of the 2016 ACM Conference on Economics and Computation. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2737045</li>
+  <li>[8] hihua Zhang, Rachel J. C. Chen, Lee D. Han, and Lu Yang. 2017. Defining the price of hospitality: networked hospitality exchange via Airbnb. sustainability 9, 1635 (2017).</li>
+  <li>[9] A Ikkala, T.; Lampinen. 2014. Defining the price of hospitality: networked
+hospitality exchange via Airbnb. In Proceedings of the Companion Publication of
+the 17th ACM Conference on Computer Supported Cooperative Work and Social Computing, (Proceedings of Machine Learning Research). Baltimore, MD, USA,
+73âĂŞ–176.</li>
+  <li>[11] Q.; Yang T.; Guo L Li, Y.; Pan. 2016. Reasonable price recommendation on Airbnb using Multi-Scale clustering. In Proceedings of the 2016 35th Control Conference (CCC),. Chengdu, China, 7038âĂŞ7041.</li>
+  <li>[15] H. Varian. 2014. Big data: New tricks for econometrics. Journal of Economic Perspectives 28, 2 (2014), 3 – 28.</li>
+  <li>[16] J.L. Wang, D.; Nicolau. 2017. Price determinants of sharing economy based
+accommodation rental: A study oflistings from 33 cities on Airbnb.com. Int. J.
+Hosp. Manag. 62 (2017), 120–131.</li>
+</ul>
+
+<h1 id="参考">参考</h1>
+
+<p>以下の記事を参考にさせて頂いた．</p>
+
+<ul>
+  <li><a href="https://honawork.hatenablog.com/entry/2018/08/24/181947">【KDD2018】論文『Customized Regression Model for Airbnb Dynamic Pricing』を読んでまとめた - 港区で苦しむマーケティングサイエンティストのメモ帳</a></li>
+</ul>
+<div class="footnotes">
+  <ol>
+    <li id="fn:configuration">
+      <p>論文の章構成を一部変更している． <a href="#fnref:configuration" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:precision-recall">
+      <p>いつもPrecision（精度）とRecall（再現率）を忘れてしまう．Precisionは，正と予測したデータのうち，実際に正であるデータの割合．一方Recallは，実際に正であるデータのうち，正と予測したデータの割合．<a href="http://ibisforest.org/index.php?F%E5%80%A4">F値 (F-measure) - 朱鷺の杜Wiki</a>を参考にさせて頂いた． <a href="#fnref:precision-recall" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:complicated">
+      <p>ややこしい．推奨価格は，予約されうる最大の価格と考えると理解できる．設定価格が推奨価格より大きい場合，Airbnbの予測としては「予約されない」となる．逆に，設定価格が推奨価格より小さい場合，Airbnbの予測としては「予約される」となる． <a href="#fnref:complicated" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:br">
+      <p>BRについては，何を表しているかよくわからなかった． <a href="#fnref:br" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:constraint">
+      <p>適切な日本語訳が浮かばなかった．デマンド制約？ <a href="#fnref:constraint" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

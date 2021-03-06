@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/12/09/wireshark-on-vagrant">Vagrantで立てたUbuntu 16.04上のWireSharkで遊ぶ</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Network engineering Advent Calendar 2018の8日目の記事．諸事情によりVagrantで立てたUbuntu 16.04上でWireSharkを操作する必要があったため，環境設定をまとめておく． なお，4日目の記事については，想定よりはるかに大変で，現在作成中です．申し訳ありません…． 前提 Virtualbox Oracle VM VirtualBoxは，言わずと知れたx86仮想化ソフトウェア・パッケージ．ホストOSとして，Windows，Linux，Mac OS X，そしてSolarisに対応している．ホストOS上で実行できるゲストOSとして，Windows，Linux，OpenSolaris，OS/2，そしてOpenBSDに対応している．Webエンジニアがサーバ/クライアントの検証環境として使っていたり，ネットワークエンジニアが検証用ネットワークの構築に使っていたりする． 今回は，ゲストOSとしてUbuntu 16.04を立ち上げ，そこにWireShark環境を構築する． Vagrant Vagrantは仮想環境の設定自動化ツール．Rubyで実装されており，Debian，Windows，Centos，Linux，macOS，Arch Linux上で動作する．Vagrantを使うと，超簡単に仮想マシンを構築できるようになるし，検証環境を統一化できる．詳細はVagrant + VirtualBoxでWindows上に開発環境をサクッと構築する - Qiitaが参考になる． WireShark WireSharkは，最もメジャーなプロトコル・アナライザの一つ．プロトコル・アナライザとは，ネットワークに流れるデータを解析する装置やプログラムのこと．ノートパソコン上で動作する軽量かつ無料なものから，専用装置上で動作するプロ向けの高価なものまで様々なものが存在するが，WireSharkは前者に属する．無料であるにもかかわらず，多様な機能を提供していることから，多くの企業・非営利団体・政府組織・学術機関でデファクトスタンダードとして利用されている． WireSharkをapt installすると対話画面に遷移するため，プロビジョニングを完全に自動化するにはVagrantfileに工夫が必要． 事前準備 VirtualBoxとVagrantのインストールが必要．それぞれ，公式ページの指示に従ってインストーラーをダウンロードすれば簡単にインストールできる． VirtualBox Vagrant また，今回はX Window Systemを使ってゲストOS上で動作するWireSharkの画面をホストOSで表示するため，ホストOSにXサーバ環境を構築する必要がある．10.6以降のmacOS Xについては，XQuartzプロジェクトからX11をインストールすれば良いらしい．他のOSについては，各自ご対応願いたい．以下，参考記事． Mac 用の X11 について - Apple Vagrantの環境でGUIを立ち上げるための環境構築 - FPGA開発日記 実験 環境構築 私のGitHubレポジトリからVagrantfileを任意のディレクトリにダウンロードして，以下のコマンドを入力する． $ vagrant up...</p>-->
+      <p><p><a href="https://qiita.com/advent-calendar/2018/network-engineering">Network engineering Advent Calendar 2018</a>の8日目の記事．諸事情により<a href="https://www.vagrantup.com/">Vagrant</a>で立てたUbuntu 16.04上で<a href="https://www.wireshark.org/">WireShark</a>を操作する必要があったため，環境設定をまとめておく．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 9, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#network">Network</a>, 
+        
+      
+        
+        <a href="/categories/#vagrant">Vagrant</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/11/30/ns3-vagrant">VirtualBox+Vagrantでns-3.27環境を構築する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Network engineering Advent Calendar 2018の1日目の記事．一年以上前にQiitaでns-3.26の環境構築に関する記事を書いた．この一年で私も少しだけ成長して，Vagrantを使えるようになった1ので，コマンド一発でns-3.27の環境を構築できるよう，Vagrantfileを作成した．これからns3で遊びたいという方のお役に立てれば幸い． なお，diogomg/vagrant-ns-3-setup - GitHubを大いに参考にさせて頂いた． 前提 ns-3 ns-3は，オープンソースの離散事象ネットワークシミュレータ．前職ではこれを使って独自のプロトコルを実装し，実験結果を論文化する仕事をしていた．基本的にLinux上でしか動かず，また環境構築がやや煩雑なので，一般ユーザにとっては敷居が高い2．ns-3で何ができるかについては，ns-3でTCPの輻輳制御を観察する - Memotaroを参照されたい． 今回は，VirtualBoxとVagrantを使うことで仮想マシン上にns-3.27環境を自動構築できるようにし，敷居を下げたいと考えている．こんな風に書くとns-3の達人のように捉えられてしまうかもしれないが，私はコントリビューターでも何でもなく，ペーペーの素人であることは強調しておきたい． Virtualbox Oracle VM VirtualBoxは，言わずと知れたx86仮想化ソフトウェア・パッケージ．ホストOSとして，Windows，Linux，Mac OS X，そしてSolarisに対応している．ホストOS上で実行できるゲストOSとして，Windows，Linux，OpenSolaris，OS/2，そしてOpenBSDに対応している．Webエンジニアがサーバ/クライアントの検証環境として使っていたり，ネットワークエンジニアが検証用ネットワークの構築に使っていたりする． 今回は，ゲストOSとしてUbuntu 16.04を立ち上げ，そこにns-3.27環境を構築する． Vagrant Vagrantは仮想環境の設定自動化ツール．Rubyで実装されており，Debian，Windows，Centos，Linux，macOS，Arch Linux上で動作する．Vagrantを使うと，超簡単に仮想マシンを構築できるようになるし，検証環境を統一化できる．詳細はVagrant + VirtualBoxでWindows上に開発環境をサクッと構築する - Qiitaが参考になる． ns-3のインストールは事前準備が多くとにかく面倒3．Vagrantのシェルスクリプトによるプロビジョニング機能を使い，依存ライブラリのインストール，ns-3のインストール，テストまで一気に自動化する． 事前準備 VirtualBoxとVagrantのインストールが必要．逆に言えば，これさえ入っていれば，WindowsでもMacOSでもLinuxでも，ns-3の環境が構築できる．それぞれ，公式ページの指示に従ってインストーラーをダウンロードすれば簡単にインストールできる． VirtualBox Vagrant 実験 環境構築 私のGitHubレポジトリからVagrantfileを任意のディレクトリにダウンロードして，以下のコマンドを打てば，依存パッケージのインストールからns-3のテストまで全部やってくれる．便利すぎる．私の環境だと，ns-3のテストが完了するまでに1時間ほどかかった． $ vagrant up ssh Vagrantなら，仮想マシンへのSSH接続も簡単． $ vagrant ssh ちなみに，デフォルトでvagrantユーザ（パスワードはユーザ名と同じ）でログインする形になる．root化（su）する際にパスワードは不要． 感想 今までセットアップに苦労していたのがバカみたいだ．さっさと使えばよかった． いくらなんでも今更すぎるが，ご容赦いただきたい． &#8617; 少なくとも私はそうだった． &#8617;...</p>-->
+      <p><p><a href="https://qiita.com/advent-calendar/2018/network-engineering">Network engineering Advent Calendar 2018</a>の1日目の記事．一年以上前にQiitaで<a href="https://qiita.com/haltaro/items/b474d924f63692c155c8">ns-3.26の環境構築に関する記事</a>を書いた．この一年で私も少しだけ成長して，<a href="https://www.vagrantup.com/">Vagrant</a>を使えるようになった<sup id="fnref:toolate"><a href="#fn:toolate" class="footnote">1</a></sup>ので，コマンド一発でns-3.27の環境を構築できるよう，Vagrantfileを作成した．これからns3で遊びたいという方のお役に立てれば幸い．</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:toolate">
+      <p>いくらなんでも今更すぎるが，ご容赦いただきたい． <a href="#fnref:toolate" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">November 30, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#network">Network</a>, 
+        
+      
+        
+        <a href="/categories/#ns3">Ns3</a>, 
+        
+      
+        
+        <a href="/categories/#vagrant">Vagrant</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/10/14/directory">Pythonでディレクトリの有無を確認して自動作成する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Pythonでディレクトリの有無を確認して，自動生成するスクリプトをメモしておく．例えばCross validationでフォールドごとにデータを分けるときなどに使う．
+
+
+
+os.path.exists(path)でpathの有無を確認し，無い場合はos.mkdir(path)で作成する．
+</p>-->
+      <p><p>Pythonでディレクトリの有無を確認して，自動生成するスクリプトをメモしておく．例えばCross validationでフォールドごとにデータを分けるときなどに使う．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">October 14, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#python">Python</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/10/14/airbnb-dynamic-pricing">Customized Regression Model for Airbnb Dynamic Pricingを読んだ</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Peng Ye, et al., Customized Regression Model for Airbnb Dynamic Pricing, KDD2018を読んだ．Airbnbで実際に使われている価格推奨モデルについて，非常にわかりやすくまとめられている． この分野で初めて読んだ論文．時間はかかったが，読み通すことができた．実装しろと言われてすぐ実装できるとは言えないが，大筋は理解できたと思う．心理的なハードルは下がったので，他の論文もどんどん読んでいきたい． Abstract Airbnbの商品は基本的に過去にない唯一のもの．よって，過去の実績をもとに需要曲線を予測するのが非常に難しい． Airbnbが提案するシステムは３つのモデルで構成される． 特定の日にちの予約確率を予測するモデル． 特定の日にちの最適な売値を予測するモデル． 二番目の予測値を，さらにパーソナライズして売値をサジェストするモデル． 本論文では，二番目の売値予測モデルについて述べる．このモデルは，Price TipsとSmart Pricing toolとして実際にAirbnbのシステムに組み込まれている．A/Bテストでこのモデルの効果を確認した． Introduction プラットフォーマーとして，Airbnbは，ホストが設定する価格を直接的に制御していないが，ツールを使って適正値をアドバイスしている． Price Tips：暦情報をもとに，適正価格をサジェストする機能． Smart Pricing：ユーザが設定した希望価格の下限と上限をもとに，自動的に適正価格を計算する機能． 適正価格は機械学習で算出されており，モデルは日々更新されている． Related works Airbnbの値付けに関して，いくつかの論文が公開されている[8, 9, 11, 16]． Dynamic pricing at airbnb AirbnbでDynamic Pricingするにあたり，大きく２つの課題がある． Demand Estimation 従来は，大量生産品に対するDemand estimationが研究されてきた．この領域では，需要曲線を予測することが最大の目的である．ここで，は価格．近年では，機械学習を用いてを予測するモデルも提案されている[2, 15]．一方で，Airbnbにおける需要曲線は価格だけでなく，時間や個別の物件に依存すると考えられる． 需要曲線が時間に依存する原因として，季節性とリードタイムがある． 需要曲線が物件に依存する原因として，Airbnbが扱う物件の特殊性と，人気の格差がある． 以上から，需要曲線を予測するのは非常に難しい．...</p>-->
+      <p><p><a href="http://www.kdd.org/kdd2018/accepted-papers/view/customized-regression-model-for-airbnb-dynamic-pricing">Peng Ye, et al., Customized Regression Model for Airbnb Dynamic Pricing, KDD2018</a>を読んだ．<a href="https://www.airbnb.jp/">Airbnb</a>で実際に使われている価格推奨モデルについて，非常にわかりやすくまとめられている．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">October 14, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#machine learning">Machine learning</a>, 
+        
+      
+        
+        <a href="/categories/#papers">Papers</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/10/12/plotly-colorpalette">PlotlyでSeabornライクに色指定する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Plotlyはとても便利だが，Seabornのcolor_paletteのように柔軟に色指定ができない．そこで，Plotlyのcolor引数として使用可能なRGB値を，Seabornのcolor_paletteから取得するラッパー関数を作成した．
+
+Plotly
+
+Plotlyはインタラクティブで美麗なグラフ描画に強みを持つライブラリ．Python，R，あるいはJavaScriptから呼び出して使える．私はJupyter Notebook上で作図したグラフをグリグリ動かしてドヤることが多いので，この記事ではPythonからの利用を前提とする1．
+
+pipでインストールする場合はpip install plotly．Condaでインストールする場合はconda install -c plotly plotly．
+
+Seaborn
+
+Seabornは，matplotlibをベースとしたグラフ描画ライブラリ．color_palette(palette, n_colors)で，特定のpaletteのn_colors個の色リストを直感的に取得できる．Plotlyでこれを使いたい．
+
+
+
+pipでインストールする場合はpip install seaborn．Condaでインストールする場合はconda install -c anaconda seaborn．
+
+Plotlyにおける色指定
+
+Plotlyでは，非常に色指定をし辛い23．colorlover - GitHubを使ってカラーパレット的なものを使うチュートリアルが公開されているが，パレットの種類が少ないし，interpで任意のスケールに拡張したときにムラが出たり，エラーがでたりする場合がある．あるいは，markerのcolorscaleでパレットを指定するチュートリアルも公開されているが，colorでサンプルごとにスケール値を指定する必要があり，凡例ごとに色を塗り分けるときなど，直感的なコーディングがしづらそう．
+
+
+
+
+そこで，Seabornライクに色を指定するための関数を作成した．
+
+作成した関数
+
+
+
+関数の内部でsns.color_paletteを呼び出し，RGB値を取得している．ただし，Plotly用のフォーマットrgb({}, {}, {})に変換している．
+
+実験
+
+こちらのJupyter notebookで実験してみた．15パターンの凡例を折れ線グラフで表示する．
+
+ライブラリのインポート
+
+
+
+データセット生成
+
+15種類のランダムな100点からなるサンプルを作成する．
+
+
+
+Plotlyで素直にプロット
+
+
+
+
+
+11種類以上の判例になると，色が衝突しているのがわかる．
+
+PlotlyでSeabornライクにプロット
+
+まずはhlsでプロットしてみる．
+
+
+
+
+
+次はviridisでプロットしてみる．
+
+
+
+
+
+最後にinfernoでプロットしてみる．
+
+
+
+
+
+jet以外のMatplotlibのColormapを利用できる．
+
+感想
+
+これで，単なる折れ線グラフでもドヤれる．
+
+  
+    
+      RやJavaScriptから使ったことがない． &#8617;
+    
+    
+      単純に私のPlotly力が足りないという説もある．「こうすればできるよ」的なTipsがあれば是非ご教授ください． &#8617;
+    
+    
+      公式チュートリアルで，カラーコードを直接指定しているのを見てドン引きした人も多いはず． &#8617;
+    
+  
+
+</p>-->
+      <p><p><a href="https://plot.ly/feed/#/">Plotly</a>はとても便利だが，<a href="https://seaborn.pydata.org/">Seaborn</a>の<a href="https://seaborn.pydata.org/generated/seaborn.color_palette.html">color_palette</a>のように柔軟に色指定ができない．そこで，Plotlyの<code class="highlighter-rouge">color</code>引数として使用可能なRGB値を，Seabornの<code class="highlighter-rouge">color_palette</code>から取得するラッパー関数を作成した．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">October 12, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#python">Python</a>, 
+        
+      
+        
+        <a href="/categories/#visualization">Visualization</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+		<span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+    </span>
+		
+		<span class="page-number">Page 1 of 15</span>
+		
+		<a class="newer-posts" href="/page2">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

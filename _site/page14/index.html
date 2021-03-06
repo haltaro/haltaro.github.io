@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/page14/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/08/13/udacity-hadoop">Udacity, Intro to Hadoop and MapReduce</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>更新中： Udacity, Intro to Hadoop and MapReduceの受講メモ．6部構成の無料講座．全ての動画に日本語訳があり，とても助かる． 1. Big Data Big Dataとは，一つのマシンでは処理しきれないほど大量のデータである． Big Dataにおける課題は主に以下の２つ： データが高速に生成されること． データが異なるソースから多様なフォーマットで生成されること． データの性質を表現する三つのV： Volume（量）：データを保存するだけではなく，処理することも考える必要がある． Variety（多様性）：非構造データや半構造データが増加しており，従来のデータベースへは保管が難しい．もし非構造データをそのまま保存できれば，後で活用できるかもしれない．Hadoopでは，データフォーマットによらず，そのまま保存できる． Velocity（速度）：処理速度が速ければ速いほど，より多くのビジネスチャンスが生まれる． Hadoopの由来は，製作者の子供のおもちゃ． Hadoopの技術的コアは２つ： HDFS（Hadoop distributed file system）による分散ファイル保存． MapReduceによるデータ処理． Hadoopでは，データの保存及び処理が，クラスタ毎に行われる． Hadoop ecosystem： Pig，Hive：MapReduceのハイレベルインターフェース．SQLチックに使える． Impala：HDFSへの低レベルインターフェース．PigやHiveより高速． Sqoop，Flume：他のデータベース上のデータを，クラスタとして保存できる． HBase：HDFS上のリアルタイムデータベース． Hue：GUI． Oozie：ワークフロー管理ツール． Mahout：機械学習ライブラリ． Cloudera：環境構築ツール．上記のソフトウェアをまとめてインストールできる． 2. HDFS and MapReduce HDFSでは，データを64Mbyteのブロックに分割し，それぞれ別のマシンに保存する． ネームノードは，どのブロックがどのマシンに保存されているかというメタデータを管理する． 冗長性のため，Hadoopはブロックを三回複製する．またネームノードの複製も用意する． hadoop fs -lsなどで，HDFSにアクセスできる．-lsの部分は，UNIXのファイルシステムコマンドを利用可能． ハッシュテーブルは，Big Data適用時に，処理時間とメモリ消費という課題があった．...</p>-->
+      <p><p><i class="fa fa-spinner"></i> <strong>更新中</strong>： <a href="https://www.udacity.com/course/intro-to-hadoop-and-mapreduce--ud617">Udacity, Intro to Hadoop and MapReduce</a>の受講メモ．6部構成の無料講座．全ての動画に日本語訳があり，とても助かる．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">August 13, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#data science">Data science</a>, 
+        
+      
+        
+        <a href="/categories/#moocs">Moocs</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/08/10/udacity-rdb">Udacity, Intro to Relational Databases</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>更新中：Udacity, Intro to Relational Databasesの受講メモ．5部構成の無料講座． 1. Data and Tables Databaseは，同時に複数の人が編集可能．これが，普通のファイルと異なる点． Tableは，headerとbodyからなる．headerは，table nameと，column nameと，column typeからなる．bodyは，rowsとcolumnsからなる． 複数の行に跨る演算をaggregationと呼ぶ．SQLで使えるaggregationの代表的なものとして，count，avg，max，min，sumなどがある． codeからdatabaseにqueryを出すと，resultを返される．resultは，原則的にTable形式． Database中でデータの唯一性を担保するために，idを与えることがある．このように識別に用いられるcolumnをprimary keyと呼ぶ． 複数の情報を持つオブジェクトを定義するよりは，複数のTableで管理したほうが効率的． 2. Elements of SQL SQLのtypeとして，text，integer，dateなどがある．textおよびdateは，'2017-08-10'のようにシングルクォートで囲む．主なSQLのtypeは以下． Text and string types text：長さに制限のない文字列．Pythonのstrに相当． char(n)：長さがnの文字列． varchar(n)：長さが最大nの文字列． Numeric types integer：整数型．Pythonのintに相当． real：浮動小数点型．Pythonのfloatに相当．精度は小数第6位． double precision：倍精度小数点．精度は小数第15位． decimal：正確な小数型（？）． Date and time types date：日付型．年，月，日． time：時刻型． timestamp：dateおよびtime． 基本構文：select columns from tables where...</p>-->
+      <p><p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="https://www.udacity.com/course/intro-to-relational-databases--ud197">Udacity, Intro to Relational Databases</a>の受講メモ．5部構成の無料講座．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">August 10, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#data science">Data science</a>, 
+        
+      
+        
+        <a href="/categories/#moocs">Moocs</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/08/08/introduction-to-ad-tech">アドテク入門</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>アドテク（Advertising Technology）とは，広告配信の高度化に関する技術を指す．目的は，広告に関わる全プレーヤー（広告主，メディア，消費者）をwin-winの関係にすること．特にReal time bidding（RTB）市場は成長中であり，例えば機械学習で入札額を最適化する技術などが研究されている． 1. 目的 CyberAgent，日本一やさしいアドテク教室より抜粋． 1：広告主が求める高い広告効果を出すために，より適切な場所／人に広告を出すこと 2：メディアの広告枠販売や広告配信の効率化を実現し，収益最大化の支援をすること 2. 種類 対象や目的に応じて，三種類に分類できる． 2.a メディアの広告選択最適化 広告効果が大きい広告をいかに選択するか，という技術． Ad Network：Webやアプリメディアなどの広告配信可能な媒体を多数束ねて広告を配信するネットワーク． Ad Exchange：広告枠を１インプレッション単位で売買するプラットフォーム．各媒体やAd Networkが持つ広告掲載枠を交換できる仕組み．Ad Networkより大きな仕組み．Ad Exchangeでは，広告出稿数と広告枠のバランスで，リアルタイムで広告枠の入札単価が変動する．Ad Exchangeには，様々なプラットフォームがある． Double Click AdExchange：Googleが運営．世界最大のAd Exchange．2009年からサービス開始． Open X Market Japan：Open X Japanとcciが提携して運営．2009年からサービス開始． Microsoft Advertixing Exchange：Microsoftが運営．2013年からサービス開始．配信枠はMSNとSkype． Facebook AdExchange：Facebookが運営． Yild One：プラットフォーム・ワンが運営するSSPプラットフォーム．厳密にはAd Exchangeと異なるが，Ad Exchange的に利用することも可能． SSP：Supply Side Platform．オンライン広告において，広告枠を提供しているメディアの広告枠販売や広告収益最大化などを支援するツール．具体的な提供内容はサービスによって異なるが，主に，Ad NetworkやAd Exchangeの管理，リアルタイム入札（RTB）への対応などがある． 2.b 広告主の広告表現最適化 消費者一人ひとりにあった広告表現をいかに実現するか，という技術．...</p>-->
+      <p><p>アドテク（Advertising Technology）とは，広告配信の高度化に関する技術を指す．目的は，広告に関わる全プレーヤー（広告主，メディア，消費者）をwin-winの関係にすること．特にReal time bidding（RTB）市場は成長中であり，例えば機械学習で入札額を最適化する技術などが研究されている．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">August 8, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#marketing">Marketing</a>, 
+        
+      
+        
+        <a href="/categories/#machine learning">Machine learning</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/08/07/zillow-conpetition">Kaggle，Zillow Prize概要</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>KaggleのZillow Prizeは，Zillowが2017年5月に開始したコンペティション．課題は不動産価格の予測であり，賞金は総額1億円以上（$1,200,000）． 誤訳があるかもしれないのでご注意． 1. 背景 1.a Kaggle Kaggleは，データサイエンティストのプラットフォームである．様々なコンペティションを開催しており，データサイエンティストの腕試しの場として広く認知されている．Kaggleへの参加方法については，Kaggle事始めが詳しい． 1.b Zillow Zillowは，オンライン不動産データベースを運営するアメリカの企業である．アメリカ全土の1億件以上の物件情報を有し，Zestimateと呼ばれる価格見積もりサービスを持つ． 2. Zillow Prize 2.a 概要 Zillow Prizeは，Zillowが2017年5月に開始したコンペティションである．課題は不動産価格の予測で，賞金は総額1億円以上（$1,200,000）．本コンペティションは，Qualifying round（第1ラウンド）とPrivate round（第2ラウンド）からなる．Private roundは，Qualifying roundの上位100チームのみに対し2018年1月1日から実施される． DataやRules等の詳細は以下． 2.b Data 本コンペティションの目的は，Zestimate（）と実際の売値（）の対数誤差を予測すること．対数誤差は以下で定義される． 具体的には，2017年秋におけるを予測する．不動産価格は公開情報なので，取引が始まる前に，モデルの提出を打ち切る． 訓練データとして，2016年の三箇所（Los Angeles，Orange and Ventura，California）の全ての不動産データが提供される．訓練データは2016年10月15日以前の全ての取引と，それ以降のいくつかの取引を含む．public leaderboardのテストデータは，2016年10月15日から同年12月31日までのものである．private leader boardのテストデータは，2017年10月15日から同年12月15日まで（この期間をsales tracking periodと呼ぶ）のものである．つまり，参加者は次の６時点における全ての不動産に対して予測を行う必要がある． October 2016 (201610) November 2016 (201611) December 2016 (201612) October 2017 (201710) November 2017...</p>-->
+      <p><p><a href="https://www.kaggle.com/c/zillow-prize-1">KaggleのZillow Prize</a>は，<a href="https://www.zillow.com/">Zillow</a>が2017年5月に開始したコンペティション．課題は不動産価格の予測であり，賞金は総額1億円以上（$1,200,000）．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">August 7, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#kaggle">Kaggle</a>, 
+        
+      
+        
+        <a href="/categories/#machine learning">Machine learning</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2017/08/04/set-google-analytics">JekyllでGoogle Analytics</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>JekyllとGitHub Pagesで立ち上げたウェブサイトに，Google Analyticsでトラッキング機能を導入した．
+
+
+  2018/02/11追記：このあと，本サイトのJekyll themeをEasyBookからCentrariumに変更した．詳細はJekyll themeをCentrariumに変更する - Memotaroを参照されたい．
+
+
+
+
+おー．見えてる見えてる．
+
+参考
+
+
+  Google アナリティクス トラッキングを設定する：本家ヘルプ．
+  Google Analytics setup for Jekyll：Jekyllにおける設定方法について．
+  ブログにYouTubeの動画を埋め込む方法：Youtube動画の埋め込みについて．
+
+
+手順
+
+1. Google Analyticsの登録
+
+Google Analyticsにウェブサイト（https://haltaro.github.io）を登録．趣味で使うぶんにはデフォルト設定で十分だし，あとで変更可能．
+
+2. analytics.htmlの保存
+
+管理 &gt; プロパティ &gt; トラッキング情報 &gt; トラッキングコードを選択．以下のようなJavaScriptスニペットをコピーし，analytics.htmlとして/_includes/ディレクトリに保存．
+
+
+
+ただし，UA-*********-*はウェブサイト固有のトラッキングコード．
+
+3. default.htmlの修正
+
+/_layoutディレクトリのdefault.htmlに，下記のanalytics.htmlを追記．
+
+
+
+ここで，jekyll.environment == 'production'は，ローカル環境での動作テスト（$ jekyll serve）をトラッキング対象から除外するためのもの．
+
+4. 待機
+
+設定が反映されるまで，30分ほどかかった．
+
+感想
+
+指示通り設定すれば，問題なく動作した．Youtube動画も埋め込めたので満足．
+</p>-->
+      <p><p><a href="https://haltaro.github.io/2017/07/30/first-post">JekyllとGitHub Pagesで立ち上げたウェブサイト</a>に，<a href="https://analytics.google.com/analytics/web/provision/?authuser=0#provision/SignUp/">Google Analytics</a>でトラッキング機能を導入した．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">August 4, 2017</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#jekyll">Jekyll</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+			
+			<a class="newer-posts" href="/page13">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			
+		
+		<span class="page-number">Page 14 of 15</span>
+		
+		<a class="newer-posts" href="/page15">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

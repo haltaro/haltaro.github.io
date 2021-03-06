@@ -1,0 +1,47 @@
+<p><a href="https://haltaro.github.io/2017/07/30/first-post">JekyllとGitHub Pagesで立ち上げたウェブサイト</a>に，<a href="https://analytics.google.com/analytics/web/provision/?authuser=0#provision/SignUp/">Google Analytics</a>でトラッキング機能を導入した．</p>
+
+<blockquote>
+  <p><strong>2018/02/11追記</strong>：このあと，本サイトの<a href="http://jekyllthemes.org/">Jekyll theme</a>を<a href="https://github.com/laobubu/jekyll-theme-EasyBook">EasyBook</a>から<a href="https://github.com/bencentra/centrarium">Centrarium</a>に変更した．詳細は<a href="https://haltaro.github.io/2018/02/11/theme-change">Jekyll themeをCentrariumに変更する - Memotaro</a>を参照されたい．</p>
+</blockquote>
+
+<iframe width="100%" height="460" src="https://www.youtube.com/embed/sXyS1Dd0ULM?rel=0" frameborder="0" allowfullscreen=""></iframe>
+
+<p>おー．見えてる見えてる．</p>
+
+<h1 id="section">参考</h1>
+
+<ul>
+  <li><a href="https://support.google.com/analytics/answer/1008080?visit_id=1-636375329556963699-2710489376&amp;rd=1">Google アナリティクス トラッキングを設定する</a>：本家ヘルプ．</li>
+  <li><a href="https://michaelsoolee.com/google-analytics-jekyll/">Google Analytics setup for Jekyll</a>：Jekyllにおける設定方法について．</li>
+  <li><a href="http://techmemo.biz/web-cheat-sheet/%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AByoutube%E3%81%AE%E5%8B%95%E7%94%BB%E3%82%92%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80%E6%96%B9%E6%B3%95/">ブログにYouTubeの動画を埋め込む方法</a>：Youtube動画の埋め込みについて．</li>
+</ul>
+
+<h1 id="section-1">手順</h1>
+
+<h2 id="google-analytics">1. Google Analyticsの登録</h2>
+
+<p><a href="https://analytics.google.com">Google Analytics</a>にウェブサイト（<code class="highlighter-rouge">https://haltaro.github.io</code>）を登録．趣味で使うぶんにはデフォルト設定で十分だし，あとで変更可能．</p>
+
+<h2 id="analyticshtml">2. analytics.htmlの保存</h2>
+
+<p><code class="highlighter-rouge">管理 &gt; プロパティ &gt; トラッキング情報 &gt; トラッキングコード</code>を選択．以下のようなJavaScriptスニペットをコピーし，<code class="highlighter-rouge">analytics.html</code>として<code class="highlighter-rouge">/_includes/</code>ディレクトリに保存．</p>
+
+<script src="https://gist.github.com/haltaro/45500c3c134f5c48b549408b02c312c3.js"></script>
+
+<p>ただし，<code class="highlighter-rouge">UA-*********-*</code>はウェブサイト固有のトラッキングコード．</p>
+
+<h2 id="defaulthtml">3. default.htmlの修正</h2>
+
+<p><code class="highlighter-rouge">/_layout</code>ディレクトリの<code class="highlighter-rouge">default.html</code>に，下記の<code class="highlighter-rouge">analytics.html</code>を追記．</p>
+
+<script src="https://gist.github.com/haltaro/c9d454635b5304cdb2163c5f38490f3b.js"></script>
+
+<p>ここで，<code class="highlighter-rouge">jekyll.environment == 'production'</code>は，ローカル環境での動作テスト（<code class="highlighter-rouge">$ jekyll serve</code>）をトラッキング対象から除外するためのもの．</p>
+
+<h2 id="section-2">4. 待機</h2>
+
+<p>設定が反映されるまで，30分ほどかかった．</p>
+
+<h1 id="section-3">感想</h1>
+
+<p>指示通り設定すれば，問題なく動作した．Youtube動画も埋め込めたので満足．</p>

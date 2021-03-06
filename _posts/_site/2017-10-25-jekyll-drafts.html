@@ -1,0 +1,58 @@
+<p>これまでは下書き記事を<code class="highlighter-rouge">（作成中）</code>と注意書きして公開していたが，見栄えが良くないので，<a href="http://jekyllrb-ja.github.io/docs/drafts/">Jekyllのdrafts機能</a>で一旦非公開<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>にすることにした．ただし，途中経過を公開する意味がありそうな，読書メモや受講メモはそのまま残す．</p>
+
+<blockquote>
+  <p><strong>2018/02/11追記</strong>：このあと，本サイトの<a href="http://jekyllthemes.org/">Jekyll theme</a>を<a href="https://github.com/laobubu/jekyll-theme-EasyBook">EasyBook</a>から<a href="https://github.com/bencentra/centrarium">Centrarium</a>に変更した．詳細は<a href="https://haltaro.github.io/2018/02/11/theme-change">Jekyll themeをCentrariumに変更する - Memotaro</a>を参照されたい．</p>
+</blockquote>
+
+<h1 id="jekylldrafts">Jekyllのdrafts機能</h1>
+
+<p><a href="http://jekyllrb-ja.github.io/docs/drafts/">Jekyll，ドラフトを使う</a>を参考にした．</p>
+
+<p>下書き記事は<code class="highlighter-rouge">title.md</code>形式<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>で，ルートディレクトリに作成した<code class="highlighter-rouge">_drafts</code>フォルダに保存する．このまま<code class="highlighter-rouge">$ jekyll serve</code>すると，<code class="highlighter-rouge">_drafts</code>以下の記事を無視してサイトが構築される．</p>
+
+<p><img src="/assets/2017-10-25-jekyll-before.png" alt="before" /></p>
+
+<p>一方，<code class="highlighter-rouge">$ jekyll serve --drafts</code>とすると，<code class="highlighter-rouge">_drafts</code>以下の記事も含めてサイトが構築される．ここで，最終更新日が，各ドラフト記事の投稿日として処理されることに注意．</p>
+
+<p><img src="/assets/2017-10-25-jekyll-after.png" alt="after" /></p>
+
+<p>以下のように記事を整理した．</p>
+
+<h2 id="section">公開のままにした記事</h2>
+
+<p>未完成の読書メモや受講メモは，栞として役に立つ．<code class="highlighter-rouge">随時更新</code>と注意書きをつけて公開することにした．</p>
+
+<ul>
+  <li><a href="https://haltaro.github.io/2017/08/10/udacity-rdb">Udacity, Intro to Relational Databases</a></li>
+  <li><a href="https://haltaro.github.io/2017/08/13/udacity-hadoop">Udacity, Intro to Hadoop and MapReduce</a></li>
+  <li><a href="https://haltaro.github.io/2017/10/15/marketing">コトラー，アームストロング，恩藏のマーケティング原理</a></li>
+</ul>
+
+<h2 id="drafts">_draftsに退避した記事</h2>
+
+<p>その他の下書き記事は一旦<code class="highlighter-rouge">_drafts</code>に対比した．完成し次第，再度公開する予定．</p>
+
+<ul>
+  <li>Support vector machineの理論と実装</li>
+  <li>時系列分析技術まとめ</li>
+</ul>
+
+<h1 id="section-1">感想</h1>
+
+<p>Jekyllには，まだまだ理解していない機能がたくさんある．いつかドキュメントをちゃんと読まないと．</p>
+
+<h1 id="section-2">お礼とお詫び</h1>
+
+<p><a href="https://haltaro.github.io/2017/08/04/set-google-analytics">Google analyticsでアクセス解析</a>してみると，ごくわずかですが，本ウェブサイトを訪問してくださる方がいるみたいです．感謝です．</p>
+
+<p>今回のように，当方の勝手な都合で記事を削除させていただく場合もございます．何卒ご理解よろしくお願い致します．これに懲りず，たまに覗きに来ていただけると嬉しいです．</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>万が一リンクを保存していた方がいたらごめんなさい． <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><code class="highlighter-rouge">yyyy-mm-dd-title.md</code>形式で保存すると，エラーが出た． <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>

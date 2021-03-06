@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>OpenSSLが古すぎてbundle updateできない</title>
+  <meta name="description" content="Algoliaで全文検索機能を実装するためにGemfileを書き換えて$ bundle updateしたところ，OpenSSLが古すぎると叱られた．How to troubleshoot RubyGems and Bundler TLS/SSL Issues - Bundler Docsを参考に対応したら解決した．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Algoliaで全文検索機能を実装するためにGemfileを書き換えて$ bundle updateしたところ，OpenSSLが古すぎると叱られた．How to troubleshoot RubyGems and Bundler TLS/SSL Issues - Bundler Docsを参考に対応したら解決した．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="OpenSSLが古すぎてbundle updateできない" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2018-06-16-gem.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="OpenSSLが古すぎてbundle updateできない">
+  <meta name="twitter:description" content="Algoliaで全文検索機能を実装するためにGemfileを書き換えて$ bundle updateしたところ，OpenSSLが古すぎると叱られた．How to troubleshoot RubyGems and Bundler TLS/SSL Issues - Bundler Docsを参考に対応したら解決した．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2018-06-16-gem.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2018/06/16/too-old-openssl">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2018-06-16-gem.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">OpenSSLが古すぎてbundle updateできない</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">June 16, 2018</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#ruby">Ruby</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p><a href="https://haltaro.github.io/2018/06/16/jekyll-algolia">Algoliaで全文検索機能を実装</a>するために<code class="highlighter-rouge">Gemfile</code>を書き換えて<code class="highlighter-rouge">$ bundle update</code>したところ，<code class="highlighter-rouge">OpenSSL</code>が古すぎると叱られた．<a href="https://bundler.io/guides/rubygems_tls_ssl_troubleshooting_guide.html#the-solutions">How to troubleshoot RubyGems and Bundler TLS/SSL Issues - Bundler Docs</a>を参考に対応したら解決した．</p>
+
+<h1 id="症状">症状</h1>
+
+<p><code class="highlighter-rouge">bundle update</code>したら，次のようなエラーが出た．</p>
+
+<script src="https://gist.github.com/haltaro/659ab18c1adf3992c6d77d017bd7e370.js"></script>
+
+<p>よく見たら，冒頭に以下のような警告が．<code class="highlighter-rouge">OpenSSL</code>のバージョンが古すぎるのが原因らしい．</p>
+
+<script src="https://gist.github.com/haltaro/553c23ad838f043c81d208afd84b10ab.js"></script>
+
+<h1 id="対応記録">対応記録</h1>
+
+<p>ほぼ原因はわかっていたが，念の為<a href="https://bundler.io/guides/rubygems_tls_ssl_troubleshooting_guide.html#the-solutions">How to troubleshoot RubyGems and Bundler TLS/SSL Issues - Bundler Docs</a>を参考に以下のテストを実行した．</p>
+
+<script src="https://gist.github.com/haltaro/e337be914ab33cde81fb2313f14e382d.js"></script>
+
+<p>すると，案の定，<code class="highlighter-rouge">OpenSSL</code>のバージョンが古いことがわかった．</p>
+
+<script src="https://gist.github.com/haltaro/a2c798d8d1a2429cb1b42ac81dad3458.js"></script>
+
+<p><a href="https://stackoverflow.com/questions/30741367/ruby-using-wrong-version-of-openssl?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">Ruby using wrong version of openssl</a>を参考に以下を実行した．</p>
+
+<script src="https://gist.github.com/haltaro/e9be5079025e1c04f5bd9af81a8cba9b.js"></script>
+
+<p>すると<code class="highlighter-rouge">brew reinstall openssl</code>しろと怒られた．</p>
+
+<script src="https://gist.github.com/haltaro/ffe682173c1cc3c8ae980157bfd73427.js"></script>
+
+<p>これで再度<code class="highlighter-rouge">$ ruby -ropen-uri -e 'eval open("https://git.io/vQhWq").read'</code>にトライしたが，解決せず．<a href="https://bundler.io/guides/rubygems_tls_ssl_troubleshooting_guide.html#the-solutions">How to troubleshoot RubyGems and Bundler TLS/SSL Issues - Bundler Docs</a>のThe Solutionsに記載されている他のコマンドを試してみた．</p>
+
+<script src="https://gist.github.com/haltaro/98c4a5495aa8acea2232cfab11af960a.js"></script>
+
+<p>解決した．</p>
+
+<h1 id="感想">感想</h1>
+
+<p>Ruby力が低いため，具体的にどのコマンドが解決の鍵だったのかよくわからなかった．ただ，この機会に<code class="highlighter-rouge">bundle update</code>と<code class="highlighter-rouge">bundle install</code>の違いを理解できたので良かった．</p>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

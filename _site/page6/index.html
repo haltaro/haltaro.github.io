@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/page6/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/06/10/ucom-airmac">UCOMにAirMacを接続してWifi環境を構築する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>引越し先のマンションがUcomに契約していたので，壁付けのコンセントにLANケーブルを繋げばインターネットに接続できる．手持ちのAirMac Time Capsuleで無線LAN環境を構築したかったが，ネット上に情報が少なく，めちゃくちゃ苦戦した．試行錯誤の記録を残しておく． 2018年6月19日追記：接続がめちゃくちゃ不安定で，Skype英会話がまともにできない．おそらくNAT設定が原因だと思う． 2018年7月7日追記：AirMacユーティリティ&gt;ネットワーク&gt;ルーターモードで切（ブリッジモードに変更したら，すべての問題が解決した．ややこしいのは，最初にブリッジモードにしたときは複数台のデバイスを接続できなかったこと． 環境 UCOM光レジデンス LAN配線方式 AirMac Time Capsule 7.6.9 MacBook Pro，macOS Sierra（10.12.6） 設定 AirMacユーティリティ &gt; AirMac Time Capsule &gt; 編集を押す． インターネットタブを選択して，インターネット接続の設定 - UCOMをもとに最寄りのDNSサーバアドレスを設定する． ワイヤレスタブを選択して，設定を確認する．私の場合は，特に設定を変更する必要は無かった． ネットワークタブを選択して，ルーターモードとしてDHCPとNATを選択する． UCOM 光 レジデンス ご利用の手引き- UCOM等によると，ブリッジモードでないとうまく接続できないとのことだったが，これだと設定用のMacBookと他の端末（iPhone）を同時に接続できなかった． 一台しか接続できない - Apple コミュニティによると，MacBookがグローバルIPアドレスを専有してるのが原因っぽい．ネットワークが不安定なるリスクがあった1が，今回はDHCPとNATを選択した． これでアップデートを押す．システム環境設定 &gt; ネットワークでは，「Wi-Fiに自己割り当てIPアドレス...が設定されているためインターネットに接続できません。」と叱られるが，MacBookもiPhoneも同時に接続できている．もう疲れたので無視することにした． それでも繋がらないときは 実際，以上の設定を行っても一発では繋がらなかった．以下をいろいろ試すうちにいつの間にか繋がったので，ご参考までに． AirMacを再起動する． LANの接続口を変更する．どうやら，口ごとにIPアドレスが割り振られているっぽい．上位NW装置でどのような制御が行われているか不明だが，口を変えると一発で認証が通ることがあった． 参考 一台しか接続できない - Apple コミュニティ “Wi-Fi”に自己割り当てのIP...</p>-->
+      <p><p>引越し先のマンションがUcomに契約していたので，壁付けのコンセントにLANケーブルを繋げばインターネットに接続できる．手持ちのAirMac Time Capsuleで無線LAN環境を構築したかったが，ネット上に情報が少なく，めちゃくちゃ苦戦した．試行錯誤の記録を残しておく．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">June 10, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#network">Network</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/06/10/disqus">Jekyll-CentrariumにDisqusを導入する</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>このウェブサイトにDisqusでコメント機能を追加した．Centrariumの作り込みが素晴らしいので，Disqus上の登録と，_config.ymlの変更だけで実現できた．
+
+環境
+
+
+  Jekyll theme：Centrarium
+
+
+Disqusの設定
+
+Disqusでユーザ登録し，Install on Siteを選択する．以下に適当に情報を埋めていく．
+
+
+
+Planを選択する．広告を出したくなかったので，Plusのfreeを選択した．
+
+
+
+詳細設定を行う．とりあえずわかるところだけ埋めた．
+
+
+
+_config.ymlの変更
+
+bencentra/centrarium - GitHubのREADME.mdを読むと，どうやら_config.ymlのdisqus_shortnameに登録名を設定するだけで良いことがわかった．
+
+
+
+感想
+
+めちゃくちゃ簡単にできた．
+
+参考
+
+
+  JekyllにDisqusのコメントフォームをつけてみる - たけぞう瀕死ブログ
+  bencentra/centrarium - GitHub
+
+</p>-->
+      <p><p>このウェブサイトに<a href="https://disqus.com/">Disqus</a>でコメント機能を追加した．<a href="https://github.com/bencentra/centrarium">Centrarium</a>の作り込みが素晴らしいので，Disqus上の登録と，<code class="highlighter-rouge">_config.yml</code>の変更だけで実現できた．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">June 10, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#jekyll">Jekyll</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/05/31/dmm-english">DMM英会話受講メモ：2018年5月</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>DMM英会話の受講メモ．後半にかけて仕事が非常に忙しくなり，なかなか時間が取れなかった．英語力が日に日に落ちていくのを実感している．だんだん仕事にも慣れてきたので，6月以降はもっと時間が取れると思う． 20180501 Parking Shortage Plagues Macedonian Capital plague: to cause serious problems for someone or something encroach: to intrude on something; to exceed the normal limits outcry: a strong expression of anger and disapproval about something inconsiderate: not thinking about other people’s feelings or needs pedestrian: 歩行者 20180502 A Lifetime...</p>-->
+      <p><p><a href="http://eikaiwa.dmm.com/">DMM英会話</a>の受講メモ．後半にかけて仕事が非常に忙しくなり，なかなか時間が取れなかった．英語力が日に日に落ちていくのを実感している．だんだん仕事にも慣れてきたので，6月以降はもっと時間が取れると思う．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">May 31, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/04/24/dmm-english">DMM英会話受講メモ：2018年4月</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>DMM英会話の受講メモ．4月末は仕事がバタつき，なかなか時間を取れなかった． 20180402 Japan’s Endangered Languages archipelago：a group of islands discount：to think or say that something is not important or true dialect：方言、国なまり、(特定の職業・階層の)通用語 provincial：田舎者 conform to：to think or behave in the same way as most people in a group or society フィリピンの停電でレッスン中断してしまった． 20180403 NASA Wants to Send Your Name to the Sun...</p>-->
+      <p><p><a href="http://eikaiwa.dmm.com/">DMM英会話</a>の受講メモ．4月末は仕事がバタつき，なかなか時間を取れなかった．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">April 24, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/04/15/statistics-book-1">東京大学教養学部統計学教室編，統計学入門</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>東京大学教養学部統計学教室編，統計学入門を読んだ．統計学の基礎知識を復習できた．
+
+大数の法則と中心極限定理
+
+
+  大数の法則：標本平均は母平均に確率収束する．
+  中心極限定理：母集団分布がなんであっても，標本和は十分大きなに対して大略正規分布に収束する．モーメント母関数を用いて証明できる．
+  累積密度分布の逆関数が陽に求まる場合は，一様分布に従うを逆関数で変換することで，もとの確率密度関数に従う乱数を生成できる．
+
+
+標本分布
+
+
+  統計的推測とは，標本から母集団について推測すること．
+  母集団分布のパラメータを母数と呼ぶ．
+  標本平均のように，標本を要約し，母集団の母数の推測に使われるものを統計量と呼ぶ．
+  標本分散は，で計算できる．計算に母平均でなく標本平均を使っているため，自由度が1下がり，分母はとなることに注意．
+  母集団が再生性を持つ分布に従うとき，標本和の分布は簡単に求まる．再生性とは，独立な複数の確率変数が同一の分布族に属する場合，その和もそれに属すること．二項分布，ポアソン分布，正規分布など．
+  母集団が有限のとき，となる．このときを有限母集団修正と呼ぶ．
+
+
+正規分布からの標本
+
+
+  分布：を独立な，標準正規分布に従う確率変数とするとき，を自由度の分布と呼ぶ．ちなみに，は自由度の分布である．
+  分散が未知のときの標本平均の標本分布として，スチューデントの分布が用いられる．が標準正規分布に従い，と独立なが自由度の分布に従うとき，は自由度の分布である．つまり，は自由度の分布．
+  二標本問題．標本平均の差の標本分布は，条件により分布が異なる：
+    
+      母分散が既知のとき：正規分布
+      母分散が未知だが等しいとき：t分布
+      母分散が未知で，かつ等しいとは限らないとき：ウェルチの近似法を用いたt分布．
+    
+  
+  標本相関係数の標本分布．フィッシャーのz変換を使うらしい．詳細は不明．
+
+
+推定
+
+
+  推定量（estimator）：母数を推定するために標本から求めた統計量．標本平均や標本分散．
+  点推定（point estimation）：母数をある一つの値で指定する．
+  区間推定（interval estimation）：母数の値が入る確率がある値以上と保証される区間を求める．
+  モーメント法による点推定は，母集団モーメント関数と標本モーメント関数が等しいと仮定する方法．モーメント法で標本分散を点推定すると不偏推定量とはならない．より洗練された手法として，最尤法がある．
+  点推定の基準：不偏性．一致性．漸近正規性．有効性．
+
+
+統計的検定
+
+
+  母平均の差の検定は，検定を用いる．
+  母分散の検定は，検定を用いる．
+  母分散の比の検定は，検定を用いる．
+  適合度の検定．．ここで，は観測された値，は理論的に予測された値を表す．この考え方を使うと，分割表の独立性の検定などが実施できる．
+  第一種の誤り：帰無仮説を誤って棄却してしまうこと．有意水準の確率で発生しうる．
+  第二種の誤り：帰無仮説を誤って棄却しないこと．確率で発生し得る．このとき，を検出力と呼ぶ．
+  棄却域の調整によりとを調整できるが，療法を小さくすることは出来ない．
+
+
+回帰分析
+
+
+  決定係数は，の変動のうちで説明できる変動の割合を示す．0から1の値を取り，1に近いほど良い．
+  偏回帰係数（傾き）の検定するときは，をt検定にかける．重回帰の場合はF検定にかける．詳細は3巻2章で．
+
+</p>-->
+      <p><p><a href="http://amzn.asia/8f1AQFC">東京大学教養学部統計学教室編，統計学入門</a>を読んだ．統計学の基礎知識を復習できた．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">April 15, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#statistics">Statistics</a>, 
+        
+      
+        
+        <a href="/categories/#books">Books</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+			
+			<a class="newer-posts" href="/page5">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			
+		
+		<span class="page-number">Page 6 of 15</span>
+		
+		<a class="newer-posts" href="/page7">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

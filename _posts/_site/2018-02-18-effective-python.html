@@ -1,0 +1,67 @@
+<p><i class="fa fa-spinner"></i> <strong>更新中</strong>：<a href="http://amzn.asia/gDvdj6b">Brett Slatkin，Effective Python ―Pythonプログラムを改良する59項目</a>を読む．<a href="https://www.python.org/">Python</a>を効率的に書くための59のヒントが紹介されている．</p>
+
+<p>特に心に残った項目を以下にまとめる．Jupyter notebookは<a href="https://github.com/haltaro/effective-python">こちら</a>．</p>
+
+<h1 id="pythonic-thinking">1章．Pythonic thinking</h1>
+
+<h2 id="section">リスト内包表記には，3つ以上の式を避ける</h2>
+
+<script src="https://gist.github.com/haltaro/64f7a37df260ad506cb9be4d7b0ad106.js"></script>
+
+<p>リスト内包表記に毒されすぎて，もとの表記の何がわかりづらいのか，また修正された表記でわかりやすくなったのかピンとこない．気をつけないと．</p>
+
+<h2 id="section-1">大きな内包表記にはジェネレータ式を考える</h2>
+
+<script src="https://gist.github.com/haltaro/9284d0b7762c8d24b0cabf09af1723ef.js"></script>
+
+<p>イテレータとジェネレータについては，<a href="https://qiita.com/tomotaka_ito/items/35f3eb108f587022fa09">Pythonのイテレータとジェネレータ - Qiita</a>がわかりやすい．</p>
+
+<h2 id="tryexceptelsefinally"><code class="highlighter-rouge">try</code>/<code class="highlighter-rouge">except</code>/<code class="highlighter-rouge">else</code>/<code class="highlighter-rouge">finally</code>の各ブロックを活用する</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">except</code>：エラーが補足された場合の処理．</li>
+  <li><code class="highlighter-rouge">else</code>：エラーが捕捉されなかった場合の処理．</li>
+  <li><code class="highlighter-rouge">finally</code>：エラーの捕捉にかかわらず，最後に実行される処理．</li>
+</ul>
+
+<h1 id="section-2">2章．関数</h1>
+
+<h2 id="none"><code class="highlighter-rouge">None</code>を返すよりは例外を選ぶ</h2>
+
+<script src="https://gist.github.com/haltaro/7444e23cfc581fb1f2cb5dc8c8744503.js"></script>
+
+<p><code class="highlighter-rouge">None</code>と，<code class="highlighter-rouge">0</code>や空白文字などの他の値がすべて条件式において<code class="highlighter-rouge">False</code>と評価されるため，エラーを引き起こしやすい．それはそうと，<code class="highlighter-rouge">raise from</code>構文がよくわからない．あとで確認しよう．</p>
+
+<h2 id="section-3">クロージャが変数スコープとどう関わるか知っておく</h2>
+
+<p>クロージャとは，関数内の変数の名前解決が，その関数が宣言されたときのスコープで行われるもの．<a href="https://www.lifewithpython.com/2014/09/python-use-closures.html">Python Tips： Python でクロージャを使いたい - Life with python</a>がとてもわかりやすい．</p>
+
+<p>ちなみにここで登場した特殊メソッド<code class="highlighter-rouge">__call__(self)</code>は，クラスのインスタンスを関数っぽく呼び出したときに動作するもの．<a href="https://qiita.com/kyo-bad/items/439d8cc3a0424c45214a">Pythonのクラスにおける__call__メソッドの使い方 - Qiita</a>がわかりやすい．</p>
+
+<h2 id="section-4">リストを返さずにジェネレータを返すことを考える</h2>
+
+<p>これはやってしまいがち．例えば<code class="highlighter-rouge">text</code>中の単語のインデックスを返す関数は次のように定義できる．su</p>
+
+<script src="https://gist.github.com/haltaro/f029b65d87b604c8e3996ab9b5633eb6.js"></script>
+
+<p>ジェネレータを使うと，リストで返すよりもコードが明確になる．また，作業メモリに全ての入出力を保持する必要がないので，どのような長さの入力に対しても出力シーケンスを生成できる．</p>
+
+<h2 id="section-5">引数に対してイテレータを使うときには確実さを尊ぶ</h2>
+
+<p><code class="highlighter-rouge">StopIteration</code>例外が起きたあとのジェネレータをもう一度反復した場合，難の例外も発生しない．つまり，出力のないイテレータと，出力があったが尽きてしまったイテレータを区別できない．</p>
+
+<p>よって，関数にイテレータを渡した場合，奇妙な振る舞いや欠損値を生む可能性がある．コンテナとイテレータを区別する方法として，組み込み関数<code class="highlighter-rouge">iter()</code>に二度突っ込んで同じ結果が出るか確認する方法がある．</p>
+
+<script src="https://gist.github.com/haltaro/7a9ee7ed87ec7e13276083f814d91968.js"></script>
+
+<p>イテレータとジェネレータとコンテナの関係については，<a href="http://blog.amedama.jp/entry/2017/11/23/213233">Python: ジェネレータをイテレータから理解する - CUBE SUGAR CONTAINER</a>がわかりやすい．</p>
+
+<h2 id="section-6">可変長引数を使って，見た目をすっきりさせる</h2>
+
+<p><code class="highlighter-rouge">def function(*arg)</code>と定義すると，引数は可変長であり，内部でタプルとして処理される．また<code class="highlighter-rouge">def function(**arg)</code>と定義すると，やはり引数は可変長であり，内部で辞書型として処理される．<a href="http://a2c.hatenablog.com/entry/20090301/1235909666">pythonの引数にある*hogeとか**mapとか - When it’s ready.</a>がわかりやすい．</p>
+
+<script src="https://gist.github.com/haltaro/f7f1838ef92bae1325b656cc753493b0.js"></script>
+
+<p>ちなみに，関数に引数を渡すとき，<code class="highlighter-rouge">*list</code>でリスト（タプル）を展開してくれるし，<code class="highlighter-rouge">**dict</code>で辞書を展開してくれる．</p>
+
+<p>可変長引数は便利だが，展開時にメモリを大量に消費してしまう可能性がある．引数の入力個数が少ないことがわかっている場合に限って使った方が良い．</p>

@@ -1,0 +1,115 @@
+<p><i class="fa fa-spinner"></i> <strong>更新中</strong>： <a href="https://www.udacity.com/course/intro-to-hadoop-and-mapreduce--ud617">Udacity, Intro to Hadoop and MapReduce</a>の受講メモ．6部構成の無料講座．全ての動画に日本語訳があり，とても助かる．</p>
+
+<iframe width="100%" height="460" src="https://www.youtube.com/embed/DEQNknALf_8?rel=0" frameborder="0" allowfullscreen=""></iframe>
+
+<h1 id="big-data">1. Big Data</h1>
+
+<ul>
+  <li>Big Dataとは，一つのマシンでは処理しきれないほど大量のデータである．</li>
+  <li>Big Dataにおける課題は主に以下の２つ：
+    <ul>
+      <li>データが高速に生成されること．</li>
+      <li>データが異なるソースから多様なフォーマットで生成されること．</li>
+    </ul>
+  </li>
+  <li>データの性質を表現する三つのV：
+    <ul>
+      <li><strong>Volume</strong>（量）：データを保存するだけではなく，処理することも考える必要がある．</li>
+      <li><strong>Variety</strong>（多様性）：非構造データや半構造データが増加しており，従来のデータベースへは保管が難しい．もし非構造データをそのまま保存できれば，後で活用できるかもしれない．<code class="highlighter-rouge">Hadoop</code>では，データフォーマットによらず，そのまま保存できる．</li>
+      <li><strong>Velocity</strong>（速度）：処理速度が速ければ速いほど，より多くのビジネスチャンスが生まれる．</li>
+    </ul>
+  </li>
+  <li>Hadoopの由来は，製作者の子供のおもちゃ．</li>
+  <li>Hadoopの技術的コアは２つ：
+    <ul>
+      <li><strong>HDFS</strong>（Hadoop distributed file system）による分散ファイル保存．</li>
+      <li><strong>MapReduce</strong>によるデータ処理．</li>
+    </ul>
+  </li>
+  <li>Hadoopでは，データの保存及び処理が，クラスタ毎に行われる．</li>
+  <li>Hadoop ecosystem：
+    <ul>
+      <li><strong>Pig</strong>，<strong>Hive</strong>：MapReduceのハイレベルインターフェース．SQLチックに使える．</li>
+      <li><strong>Impala</strong>：HDFSへの低レベルインターフェース．PigやHiveより高速．</li>
+      <li><strong>Sqoop</strong>，<strong>Flume</strong>：他のデータベース上のデータを，クラスタとして保存できる．</li>
+      <li><strong>HBase</strong>：HDFS上のリアルタイムデータベース．</li>
+      <li><strong>Hue</strong>：GUI．</li>
+      <li><strong>Oozie</strong>：ワークフロー管理ツール．</li>
+      <li><strong>Mahout</strong>：機械学習ライブラリ．</li>
+      <li><strong>Cloudera</strong>：環境構築ツール．上記のソフトウェアをまとめてインストールできる．</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="hdfs-and-mapreduce">2. HDFS and MapReduce</h1>
+
+<ul>
+  <li>HDFSでは，データを64Mbyteの<strong>ブロック</strong>に分割し，それぞれ別のマシンに保存する．</li>
+  <li><strong>ネームノード</strong>は，どのブロックがどのマシンに保存されているかという<strong>メタデータ</strong>を管理する．</li>
+  <li>冗長性のため，Hadoopはブロックを三回複製する．またネームノードの複製も用意する．</li>
+  <li><code class="highlighter-rouge">hadoop fs -ls</code>などで，HDFSにアクセスできる．<code class="highlighter-rouge">-ls</code>の部分は，UNIXのファイルシステムコマンドを利用可能．</li>
+  <li>ハッシュテーブルは，Big Data適用時に，処理時間とメモリ消費という課題があった．</li>
+  <li>MapReduceのまとめ：
+    <ul>
+      <li><strong>Map</strong>：小さく分割されたデータを，<code class="highlighter-rouge">&lt;key, value&gt;</code>形式で保存し，同一<code class="highlighter-rouge">key</code>でまとめる．Mapperの出力を中間レコード（Intermediate records）と呼ぶ．</li>
+      <li><strong>Shuffle and sort</strong>：中間レコードをReduceに渡し，<code class="highlighter-rouge">key</code>でソートする．</li>
+      <li><strong>Reduce</strong>：<code class="highlighter-rouge">key</code>毎に処理し，<code class="highlighter-rouge">&lt;key, values&gt;</code>リストを作成する．</li>
+    </ul>
+  </li>
+  <li>最終結果をソートするためには，単独のReducerを使うか，別途処理を行うか．</li>
+  <li>各Reducerが受け取る<code class="highlighter-rouge">key</code>の数は，事前にはわからない．等分されるとは限らない．</li>
+  <li><strong>Job tracker</strong>が，MapperとReducerにジョブを割り当てる．</li>
+  <li>各デーモンは，<strong>Task tracker</strong>を持つ．</li>
+  <li>HadoopではJavaが使われるが，Pythonを使うこともできる．</li>
+  <li><code class="highlighter-rouge">hs {mapper script} {reducer script} {input_file} {output directory}</code>で実行できる．ただし，<code class="highlighter-rouge"><span class="p">{</span><span class="err">output</span><span class="w"> </span><span class="err">directory</span><span class="p">}</span></code>が既に存在する場合，エラーが返されるので注意．</li>
+  <li><code class="highlighter-rouge">hadoop fs -put</code>でデータをHDFSに保存し，<code class="highlighter-rouge">hadoop fs -get</code>で取り出す．</li>
+  <li>仮想マシンで実際にHadoopを動かす．以下，参考：
+    <ul>
+      <li><a href="https://docs.google.com/document/d/1v0zGBZ6EHap-Smsr3x3sGGpDW-54m82kDpPKC2M6uiY/pub">インストールと初期設定</a>：ダブルクリックで<code class="highlighter-rouge">.zip</code>を解凍したらうまくいかなかった．コマンドラインで<code class="highlighter-rouge">unzip</code>で解凍した．</li>
+      <li><a href="https://docs.google.com/document/d/1MZ_rNxJhR4HCU1qJ2-w7xlk2MTHVqa9lnl_uj-zRkzk/pub">ファイル共有</a>：うちの環境では<code class="highlighter-rouge">192.168.0.9</code>だった．</li>
+    </ul>
+  </li>
+</ul>
+
+<iframe width="100%" height="460" src="https://www.youtube.com/embed/l0I_2nyPNZM?rel=0" frameborder="0" allowfullscreen=""></iframe>
+
+<iframe width="100%" height="460" src="https://www.youtube.com/embed/d5TZ_2I7dwE?rel=0" frameborder="0" allowfullscreen=""></iframe>
+
+<ul>
+  <li>技術的な詳細は，<a href="http://go.cloudera.com/udacity-lesson-2">Chapter 6 of Tom White’s essential text, Hadoop: The Definitive Guide</a>を参照．</li>
+</ul>
+
+<h1 id="mapreduce-code">3. MapReduce Code</h1>
+
+<ul>
+  <li><strong>Hadoop streaming</strong>により，どんな言語でも処理を書くことができる．</li>
+  <li>MapperおよびReducerには，<code class="highlighter-rouge">sys.stdin</code>形式でデータを入力する．<code class="highlighter-rouge">for line in sys.stdin:</code>以下に処理を書く．</li>
+  <li>MapperおよびReducerは，処理結果を<code class="highlighter-rouge">print</code>で標準出力する．</li>
+  <li>シェルで<code class="highlighter-rouge">$ ./mapper.py</code>で実行すれば，Hadoop外でMapperの動作を検証できる．Reducerについても同様．さらに，以下のコマンドで全ての処理を検証可能．</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cat testfile | ./mapper.py | sort | ./reducer.py
+
+</code></pre>
+</div>
+
+<ul>
+  <li>詳細は，以下の動画がとてもわかりやすい．</li>
+</ul>
+
+<iframe width="100%" height="460" src="https://www.youtube.com/embed/MYo8EZwDRUA?rel=0" frameborder="0" allowfullscreen=""></iframe>
+
+<h1 id="project">4. Project</h1>
+
+<ul>
+  <li>1-1. 全店舗におけるカテゴリー毎の売上額を求めよ．</li>
+  <li>1-2.</li>
+  <li>1-3.</li>
+  <li>2-1.</li>
+  <li>2-2.</li>
+  <li>2-2.</li>
+</ul>
+
+<h1 id="mapreduce-design-patterns">5. MapReduce Design Patterns</h1>
+
+<h1 id="project-prep">6. Project Prep</h1>

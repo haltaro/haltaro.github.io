@@ -1,0 +1,68 @@
+<p><a href="https://fishshell.com/">Fish</a>（Frendly Interactive SHell）とは，シェルの一種．デフォルトのタブ保管が便利なので，Macでは重宝している．ローカルのUbuntuデスクトップでも使いたくなり，環境を構築することにした．</p>
+
+<iframe width="100%" height="460" src="https://www.youtube.com/embed/RiGvTt0K4Hs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+
+<p><a href="https://fishshell.com/">Fish</a>本体に加え，パッケージ管理ツールの<a href="https://github.com/fisherman/fisherman">Fisherman</a>，Fishテーマ<a href="https://github.com/oh-my-fish/theme-bobthefish">Bobthefish</a>，および<a href="https://github.com/powerline/fonts">Powerlineフォント</a>を導入した．また，ターミナルエミュレータ<a href="https://gnometerminator.blogspot.jp/p/introduction.html">Terminator</a>のフォントをPowerline系に変更した．慣れてきたら，FishをデフォルトShellに設定しようと思う．</p>
+
+<h1 id="section">環境</h1>
+
+<ul>
+  <li>Ubuntu 16.04</li>
+  <li><a href="https://gnometerminator.blogspot.jp/p/introduction.html">Terminator</a>：1.9.1</li>
+</ul>
+
+<h1 id="section-1">手順</h1>
+
+<h2 id="fish">Fishインストール</h2>
+
+<p><a href="http://takapi86.hatenablog.com/entry/2017/05/28/124642">自宅のubuntu-16.04マシンのシェルをfishに変更した - takapi86のブログ</a>を参考にした．<code class="highlighter-rouge">ppa</code>を追加しないと，最新版のFishをインストールできず，後述するBobthefishのインストールでハマるので注意．</p>
+
+<script src="https://gist.github.com/haltaro/dbba79b76244047de0c059edda1d8cf7.js"></script>
+
+<h2 id="fisherman">Fishermanインストール</h2>
+
+<p><a href="https://github.com/fisherman/fisherman">fisherman/fisherman - GitHub</a>を参考にした．</p>
+
+<script src="https://gist.github.com/haltaro/ba217c930f747792950ae5e954d984b1.js"></script>
+
+<h2 id="bobthefish">Bobthefishインストール</h2>
+
+<p><a href="https://dev.classmethod.jp/etc/fish-shell-life/">fish shell を使いたい人生だった - Developers.IO</a>を参考にした．</p>
+
+<script src="https://gist.github.com/haltaro/bd97069a1b87f1e6c13e480f9f17664c.js"></script>
+
+<h2 id="powerline">Powerlineインストール</h2>
+
+<p><a href="https://github.com/powerline/fonts">powerline/fonts - GitHub</a>を参考にした．</p>
+
+<script src="https://gist.github.com/haltaro/dc8a66e641df42c94cc7f5c672e98354.js"></script>
+
+<h2 id="terminator">Terminatorのフォント変更</h2>
+
+<p><a href="http://d.hatena.ne.jp/yohei-a/20140223/1393120021">ターミナルエミュレータ “Terminator” の背景を半透明にする - ablog</a>を参考にした．</p>
+
+<ul>
+  <li>Terminatorのウインドウ上で右クリックして，<code class="highlighter-rouge">Preference</code>を選択する．</li>
+  <li><code class="highlighter-rouge">Profiles &gt; Font</code>で任意のフォントを選択する．</li>
+</ul>
+
+<h2 id="section-2">結果</h2>
+
+<p>こんな感じになった．</p>
+
+<iframe width="100%" height="460" src="https://www.youtube.com/embed/RiGvTt0K4Hs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+
+<h1 id="section-3">感想</h1>
+
+<p>想定よりずっと簡単に導入できた．唯一の不満は，FishはBashと文法が違うこと．デフォルトシェルにするためには，設定ファイル<code class="highlighter-rouge">.bashrc</code>を翻訳する必要がある…．いつかやる．</p>
+
+<h1 id="section-4">参考</h1>
+
+<ul>
+  <li><a href="http://takapi86.hatenablog.com/entry/2017/05/28/124642">自宅のubuntu-16.04マシンのシェルをfishに変更した - takapi86のブログ</a></li>
+  <li><a href="https://github.com/fisherman/fisherman">fisherman/fisherman - GitHub</a></li>
+  <li><a href="https://github.com/oh-my-fish/theme-bobthefish">oh-my-fish/theme-bobthefish - GitHub</a></li>
+  <li><a href="https://dev.classmethod.jp/etc/fish-shell-life/">fish shell を使いたい人生だった - Developers.IO</a></li>
+  <li><a href="https://github.com/powerline/fonts">powerline/fonts - GitHub</a></li>
+  <li><a href="http://d.hatena.ne.jp/yohei-a/20140223/1393120021">ターミナルエミュレータ “Terminator” の背景を半透明にする - ablog</a></li>
+</ul>

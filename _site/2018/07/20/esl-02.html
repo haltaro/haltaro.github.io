@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Trevor Hastie，統計的学習の基礎：2章，教師あり学習の基礎</title>
+  <meta name="description" content="夏休みの宿題として，Trevor Hastie，統計的学習の基礎 ―データマイニング・推論・予測―を勉強している．以下は，第2章：教師あり学習の概要 のメモ．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="夏休みの宿題として，Trevor Hastie，統計的学習の基礎 ―データマイニング・推論・予測―を勉強している．以下は，第2章：教師あり学習の概要 のメモ．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Trevor Hastie，統計的学習の基礎：2章，教師あり学習の基礎" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2018-07-20-lake.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Trevor Hastie，統計的学習の基礎：2章，教師あり学習の基礎">
+  <meta name="twitter:description" content="夏休みの宿題として，Trevor Hastie，統計的学習の基礎 ―データマイニング・推論・予測―を勉強している．以下は，第2章：教師あり学習の概要 のメモ．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2018-07-20-lake.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2018/07/20/esl-02">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2018-07-20-lake.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">Trevor Hastie，統計的学習の基礎：2章，教師あり学習の基礎</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">July 20, 2018</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#machine learning">Machine learning</a>, 
+    
+  
+    
+    <a href="/categories/#statistics">Statistics</a>, 
+    
+  
+    
+    <a href="/categories/#books">Books</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>夏休みの宿題として，<a href="http://amzn.asia/ay0yxvo">Trevor Hastie，統計的学習の基礎 ―データマイニング・推論・予測―</a>を勉強している．以下は，<strong>第2章：教師あり学習の概要</strong> のメモ．</p>
+
+<h1 id="変数の種類と用語">変数の種類と用語</h1>
+
+<ul>
+  <li>順序付きカテゴリカル変数：値の順序のみに意味があり，計量としての意味がない変数．</li>
+  <li>記法：
+    <ul>
+      <li><script type="math/tex">X</script>：入力変数．</li>
+      <li><script type="math/tex">Y</script>：量的な出力．</li>
+      <li><script type="math/tex">G</script>：質的な出力．</li>
+      <li>変数そのものを指す場合は大文字（<script type="math/tex">X</script>），観測値を指す場合は小文字（<script type="math/tex">x</script>）．</li>
+      <li>行列を指す場合は太字の大文字（<script type="math/tex">\mathbf{X}</script>），ベクトルを指す場合は，単なる大文字（<script type="math/tex">x</script>）．</li>
+      <li>ベクトル<script type="math/tex">X</script>の<script type="math/tex">i</script>番目の要素の<script type="math/tex">n</script>個の観測値をまとめてベクトルで表す場合は，太字で表す（<script type="math/tex">\mathbf{x}_i</script>）．</li>
+      <li>予測値を指す場合は，ハットを用いる（<script type="math/tex">\hat{Y}</script>）．</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="予測のための二つの簡単なアプローチ最近傍法">予測のための二つの簡単なアプローチ：最近傍法</h1>
+
+<ul>
+  <li>データ数が<script type="math/tex">N</script>の<script type="math/tex">k</script>最近傍法において，有効パラメータ数は<script type="math/tex">N/k</script>．</li>
+  <li>最近傍法の拡張：
+    <ul>
+      <li>最近傍法では各点の重みを<script type="math/tex">\{0, 1\}</script>で表すが，カーネル平滑化では滑らかな連続変数で表す．</li>
+      <li>高次元データの場合，距離尺度を特徴づけるカーネルに修正を加える．</li>
+      <li>最近傍法では近傍領域を定数モデルで表すが，局所重み付け最小二乗法を用いた局所線形モデルでは線形モデルで表す．</li>
+      <li>入力変数を基底展開して線形モデルを構築すると任意の複雑なモデルを構築できる．</li>
+      <li>射影追跡法やニューラルネットワークは，非線形変換と線形モデルを構築したもの．</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="統計的決定理論">統計的決定理論</h1>
+
+<ul>
+  <li>期待予測誤差（Expected Prediction Error）：<script type="math/tex">\mathrm{EPE}(f) = \int \left(y - f(x) \right)^2 \mathrm{Pr} (dx, dy)</script></li>
+  <li>EPEを最小化するのは，条件付き期待値：<script type="math/tex">\mathrm{E}(Y \mid X=x)</script></li>
+  <li>条件付け：同時分布を<script type="math/tex">\mathrm{Pr}(X, Y) = \mathrm{Pr}(Y \mid X)\mathrm{Pr}(X)</script>のように分解すること．</li>
+  <li>十分な大きさの訓練データが得られれば，<script type="math/tex">\hat{f}(x) \rightarrow \mathrm{E}(Y \mid X=x)</script>となり，万能な近似モデルとなる．</li>
+  <li><script type="math/tex">\mathrm{card}(\mathcal{G})</script>は，集合<script type="math/tex">\mathcal{G}</script>の要素数を表す．</li>
+</ul>
+
+<h1 id="高次元での局所的手法">高次元での局所的手法</h1>
+
+<ul>
+  <li>バイアス-分散分解．平均二乗誤差（MSE）を分解すると，次のようになる．<script type="math/tex">\mathrm{MSE}(x_0) = \mathrm{E}_{\tau}[f(x_0)-\hat{y}_0]^2 = \mathrm{Var}_{\tau}(\hat{y}_0) + \mathrm{Bias}^2(\hat{y}_0)</script>．ここで，<script type="math/tex">\tau</script>は訓練データ集合を表す．</li>
+  <li>制限の強い仮定に基づく線形モデルと，柔軟な最近傍法は両極端な性質を持つ．以降，これらの中間的な性質を持つ方法を学ぶ．</li>
+</ul>
+
+<h1 id="統計モデル教師あり学習関数近似">統計モデル，教師あり学習，関数近似</h1>
+
+<ul>
+  <li>線形基底展開：<script type="math/tex">f_{\theta}(x) = \sum_{k=1}^{K}h_k (x) \theta_k</script>．
+    <ul>
+      <li><script type="math/tex">h_k</script>は入力ベクトル<script type="math/tex">x</script>に関する関数や変換を表す．</li>
+      <li>ニューラルネットワークはこの一種であり，<script type="math/tex">h_k(x) = \frac{1}{1 + \mathrm{exp}(-x^{T}\beta_k)}</script>．</li>
+    </ul>
+  </li>
+  <li>残差二乗和（RSS; Sum of Squared Residuals）：<script type="math/tex">\mathrm{RSS}(\theta) = \sum_{i=1}^N (y_i - f_{\theta}(x_i))^2</script></li>
+  <li>最尤推定：対数尤度関数を最大化するパラメータ<script type="math/tex">\theta</script>を採用する．
+    <ul>
+      <li>量的出力：<script type="math/tex">L(\theta) = \sum_{i=1}^N \mathrm{log} \mathrm{Pr}_{\theta} (y_i)</script>を最小化する．ここで，<script type="math/tex">\mathrm{Pr}_{\theta}(y_i)</script>は，パラメータ<script type="math/tex">\theta</script>で特徴づけられた<script type="math/tex">Y</script>の確率密度関数．加法的誤差モデル（<script type="math/tex">Y = f_{\theta} (X) + \epsilon</script>）において，<script type="math/tex">\epsilon \sim \mathcal{N}(0, \sigma^2)</script>ならば，最尤推定は最小二乗法と等価になる．</li>
+      <li>質的出力：<script type="math/tex">L(\theta) = \sum_{i=1}^N \mathrm{log} p_{g_i, \theta} (x_i)</script>を最小化する．ここで，<script type="math/tex">p_{k, \theta} (x) = \mathrm{Pr}(G=\mathcal{G}_k \mid X=x)</script>．交差エントロピーとも呼ぶ．</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="構造化回帰モデル">構造化回帰モデル</h1>
+
+<ul>
+  <li>残差二乗和<script type="math/tex">\mathrm{RSS}(f) = \sum_{i=1}^N (y_i - f(x_i))^2</script>に基づいて関数<script type="math/tex">f</script>を推定するとする．</li>
+  <li>データ数<script type="math/tex">N</script>が有限の場合，関数<script type="math/tex">f</script>を一意に求めるために，学習に対して制約を設ける．
+    <ul>
+      <li>制約の強さ：近傍領域の大きさ．</li>
+      <li>制約の複雑さ：近傍領域で想定する規則性．</li>
+    </ul>
+  </li>
+  <li>等方性の小さい領域を近傍とする局所的な方法は，どのようなものであっても高次元データにうまく適用できない．</li>
+  <li>ノンパラメトリックな推定のためには，大きく分けて３つの方法がある．
+    <ul>
+      <li>粗度に対する罰則：残差二乗和にペナルティ項を追加する．<script type="math/tex">\mathrm{PRSS}(f; \lambda) = \mathrm{RSS}(f) + \lambda J(f)</script>．射影追跡回帰や正則化など．ベイジアンの枠組みで理解することができる．</li>
+      <li>カーネル関数による局所関数近似：近傍領域をカーネル関数で表現し，明示的に回帰関数や条件付き期待値を推定する．</li>
+      <li>Dictionary method：基底関数を用いて関数を表現する．<script type="math/tex">f_{\theta}(x) = \sum_{m=1}^M \theta_m h_m (x)</script>．</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="モデル選択とバイアスと分散のトレードオフ">モデル選択と，バイアスと分散のトレードオフ</h1>
+
+<ul>
+  <li>モデルの複雑度が増すと分散が増え，複雑度が減るとバイアスが増える．</li>
+</ul>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

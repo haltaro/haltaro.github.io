@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>7年もののMacBook ProがUbuntu 16.04に生まれ変わった</title>
+  <meta name="description" content="MacBook Pro（13-inch Early 2011）の動作が怪しくなってきた．かれこれ7年以上使っているので，そろそろ寿命なのかもしれない．Ubuntu 16.04をインストールして，第二の人生を歩んでもらうことにした．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="MacBook Pro（13-inch Early 2011）の動作が怪しくなってきた．かれこれ7年以上使っているので，そろそろ寿命なのかもしれない．Ubuntu 16.04をインストールして，第二の人生を歩んでもらうことにした．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="7年もののMacBook ProがUbuntu 16.04に生まれ変わった" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2018-07-15-penguin.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="7年もののMacBook ProがUbuntu 16.04に生まれ変わった">
+  <meta name="twitter:description" content="MacBook Pro（13-inch Early 2011）の動作が怪しくなってきた．かれこれ7年以上使っているので，そろそろ寿命なのかもしれない．Ubuntu 16.04をインストールして，第二の人生を歩んでもらうことにした．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2018-07-15-penguin.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2018/07/18/macos-to-ubuntu">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2018-07-15-penguin.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">7年もののMacBook ProがUbuntu 16.04に生まれ変わった</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">July 18, 2018</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#mac">Mac</a>, 
+    
+  
+    
+    <a href="/categories/#linux">Linux</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>MacBook Pro（13-inch Early 2011）の動作が怪しくなってきた．かれこれ7年以上使っているので，そろそろ寿命なのかもしれない．<a href="https://www.ubuntu.com/">Ubuntu 16.04</a>をインストールして，第二の人生を歩んでもらうことにした．</p>
+
+<p><a href="https://www.virment.com/making-installusb-ubuntu-mac/">MacでubuntuのインストールUSBを作成する方法と手順 - virtualiment</a>で作成したところ，おそらくフォーマッティングに問題があったため，私の環境ではUSBメモリでブートできなかった．結局，<a href="https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos#0">Ubuntu公式チュートリアル</a>を参考に作業したらうまくいった．</p>
+
+<h1 id="環境">環境</h1>
+
+<ul>
+  <li>MacBook Pro（13-inch Early 2011）
+    <ul>
+      <li>プロセッサ：2.7 GHz Intel Core i7</li>
+      <li>メモリ：8 GB 1333 MHz DDR3</li>
+      <li>グラフィックス：Intel HD Graphics 3000 512 MB</li>
+    </ul>
+  </li>
+  <li>USBメモリ：2GB</li>
+</ul>
+
+<h1 id="手順">手順</h1>
+
+<h2 id="usbメモリの準備">USBメモリの準備</h2>
+
+<p><code class="highlighter-rouge">ディスクユーティリティ</code>で，当該USBメモリを初期化する．</p>
+
+<ul>
+  <li>フォーマット：MS-DOS (FAT)</li>
+  <li>方式：GUIDパーティションマップ</li>
+</ul>
+
+<p><img src="/assets/2018-07-15-disk-utility.png" alt="disk-utility" /></p>
+
+<h2 id="isoファイルのダウンロード"><code class="highlighter-rouge">iso</code>ファイルのダウンロード</h2>
+
+<p><a href="https://www.ubuntulinux.jp/News/ubuntu1604-ja-remix">Ubuntu 16.04 LTS 日本語 Remix リリース - ubuntu japanese team</a><sup id="fnref:lts"><a href="#fn:lts" class="footnote">1</a></sup>より，<code class="highlighter-rouge">ubuntu-ja-16.04-desktop-amd64.iso</code>をダウンロード．</p>
+
+<h2 id="etcherによる書き込み"><code class="highlighter-rouge">Etcher</code>による書き込み</h2>
+
+<p><a href="https://etcher.io/">Etcher</a>をインストールして，起動する．</p>
+
+<p><img src="/assets/2018-07-15-etcher.png" alt="etcher" /></p>
+
+<p><code class="highlighter-rouge">Select image</code>で<code class="highlighter-rouge">ubuntu-ja-16.04-desktop-amd64.iso</code>を，<code class="highlighter-rouge">Select drive</code>で当該USBメモリを選択肢，<code class="highlighter-rouge">Flash!</code>を押下．</p>
+
+<p><img src="/assets/2018-07-15-etcher-config.png" alt="etcher-config" /></p>
+
+<h2 id="ブート">ブート</h2>
+
+<p><code class="highlighter-rouge">option</code>キーを押しながらMacを起動するが，なぜかUSBメモリが表示されなかった．<a href="https://support.apple.com/ja-jp/ht202796">別の起動ディスクを選択する方法 - Apple support</a>を参考に，以下を実行すて再起動すると，無事表示された．</p>
+
+<script src="https://gist.github.com/haltaro/3a9637266e9105c5302d88bd99a1e7c8.js"></script>
+
+<p>あとは，当該USBメモリを選択し，画面上の指示に従えばUbuntuのインストールが完了した．</p>
+
+<h1 id="感想">感想</h1>
+
+<p>なんだかんだで，<a href="https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos#0">公式チュートリアル</a>を見るのが一番早かった．</p>
+
+<p>実は，無線LANに繋がらないという重大な問題が残っているが，これは以前投稿した<a href="https://haltaro.github.io/2018/06/10/ucom-airmac">UCOMとAirMacの問題</a>と絡んでおり根が深い．解決したら改めて記事にする．</p>
+
+<h1 id="参考">参考</h1>
+
+<ul>
+  <li><a href="https://www.virment.com/making-installusb-ubuntu-mac/">MacでubuntuのインストールUSBを作成する方法と手順 - virtualiment</a></li>
+  <li><a href="https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos#0">Create a bootable USB stick on macOS - Ubuntu tutorials</a></li>
+</ul>
+<div class="footnotes">
+  <ol>
+    <li id="fn:lts">
+      <p>2018年7月15日時点で，<a href="https://www.ubuntulinux.jp/News/ubuntu1804-ja-remix">Ubuntu 18.04 LTS</a>がリリースされているが，<a href="https://linuxfan.info/ubuntu-18-04-issues">まだ結構不具合がある</a>みたいなので，使い慣れている16.04にした． <a href="#fnref:lts" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

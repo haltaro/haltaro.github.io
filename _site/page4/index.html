@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Memotaro</title>
+  <meta name="description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="Memotaro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memotaro">
+  <meta name="twitter:description" content="I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/page4/">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="home">
+
+<div class="site-header-container has-cover" style="background-image: url(/assets/cover_image.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Memotaro</h1>
+      <p class="subtitle">Haltaro's technical memorandum</p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/07/12/bokeh-jekyll">JekyllにBokehのグラフを埋め込む</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>Bokehで作成したインタラクティブなグラフを，Jekyllに埋め込みたくなった．Embedding Bokeh Plots with Github Pages -
+Paige McKenzieを参考にしたら，簡単にできた．日本語もちゃんと表示されている．
+
+
+    
+        
+        Bokeh Plot
+
+
+
+
+
+    
+    
+
+        
+            
+        
+
+        
+        
+    
+
+
+環境
+
+
+  macOS Sierra, 10.12.6
+  Ruby 2.5.1p57
+  Jekyll 3.7.3
+  Python 3.6.5
+  Bokeh 0.12.15
+
+
+手順
+
+Embedding Bokeh Plots with Github Pages -
+Paige McKenzieを参考にすれば良い．
+
+htmlファイルの生成
+
+以下を実行して，2018-07-12-flowers.htmlを生成する．
+
+
+
+ポイントはoutput_file()で出力すること．この直後にshow(p)するとグラフを確認できる．
+
+htmlファイルの配置
+
+上記で生成した2018-07-12-flowers.htmlを，_includes以下の任意の場所に保存する．本ウェブサイトでは，_includes/bokeh/ディレクトリ配下に保存した．ただし，2018-07-12-flowers.html冒頭の&lt;!DOCTYPE html&gt;を削除しないと，そのまま表示されてしまうので注意．
+
+Markdownからの呼び出し
+
+以下を記載すれば，任意の場所にグラフを配置できる．
+
+
+
+
+    
+        
+        Bokeh Plot
+
+
+
+
+
+    
+    
+
+        
+            
+        
+
+        
+        
+    
+
+
+感想
+
+思ったよりずっと簡単にできた．これで，Projectsページのグラフをいい感じにできる．
+
+将来的には，週間少年ジャンプの掲載順を定期的に文化庁メディア情報データベースから取得して，インタラクティブにグラフ表示するようにしたい．無料で実現するためには，Herokuとか使えばいいのかしら．
+</p>-->
+      <p><p><a href="https://bokeh.pydata.org/en/latest/">Bokeh</a>で作成したインタラクティブなグラフを，<a href="https://jekyllrb-ja.github.io/">Jekyll</a>に埋め込みたくなった．<a href="https://p-mckenzie.github.io/python/2017/12/01/embedding-bokeh-with-github-pages/">Embedding Bokeh Plots with Github Pages -
+Paige McKenzie</a>を参考にしたら，簡単にできた．日本語もちゃんと表示されている．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">July 12, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#jekyll">Jekyll</a>, 
+        
+      
+        
+        <a href="/categories/#visualization">Visualization</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/07/10/kaggle-api">MacでKaggle-apiを使う</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>ものすごく今更ながら，kaggle-apiをMacBookで使ってみた．簡単だった．
+
+環境
+
+
+  macOS Sierra, 10.12.6
+
+
+手順
+
+kaggle-apiというKaggle公式のapiの使い方をまとめます - kaggleを全力でやりますを参考にさせて頂いた．
+
+
+
+Kaggleのuser profileに移動し，Create API Tokenをクリック．取得したkaggle.jsonを，~/.kaggle/kaggle.jsonに移動．ここで，kaggle.jsonの権限を変更する．
+
+
+
+使い方
+
+Kaggle/kaggle-api - GitHubを見るのが手っ取り早い．
+
+ヘルプ
+
+
+
+コンペティション一覧を取得
+
+2018年7月10日現在，次のような結果が出た．
+
+
+
+コンペティションのデータを一括ダウンロード
+
+例えば，Santander Value Prediction Challengeのデータを一括ダウンロードしたい場合は，次のようにコマンドを打つ．
+
+
+
+
+  -c：コンペティション名．kaggle competitions listのref列のものを使う．
+  -p：ダウンロード先のパス．デフォルトだと，~/.kaggle/competitions/．
+
+
+他にもいろいろオプションがある．kaggle competitions download -helpで確認できる．
+
+コンペティションに予測結果をアップロード
+
+例えば，Santander Value Prediction Challengeに予測結果をアップロードしたい場合は，次のようにコマンドを打つ．
+
+
+
+
+  -c：コンペティション名．kaggle competitions listのref列のものを使う．
+  -f：アップロードしたいファイル名．
+  -m：アップロード時のメッセージ．
+
+</p>-->
+      <p><p>ものすごく今更ながら，<a href="https://github.com/Kaggle/kaggle-api">kaggle-api</a>をMacBookで使ってみた．簡単だった．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">July 10, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#kaggle">Kaggle</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/07/07/time-series">萩原淳一郎，基礎からわかる時系列分析</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>萩原淳一郎，基礎からわかる時系列分析 ―Rで実践するカルマンフィルタ・MCMC・粒子フィルターをざっと読んで状態空間モデルを勉強した． 線形・ガウス型の状態空間モデルの場合はカルマンフィルタで解析的に解けるが，一般状態空間モデルの場合は，フィルタリング分布・予測分布・平滑化分布の積分計算を必ずしも解析的に解けない．そこで，MCMCを用いた一括解法や，粒子フィルタによる逐次解法が提案されている．本書のレポジトリは，hagijyun/tsbook - GitHub． カルマンフィルタ，MCMC，粒子フィルタの関係を理解することができた．次はPRMLの下巻を読み返して，MCMCの理論的背景を押さえておきたい． 確率・統計に関する基礎 周辺化消去は，同時分布から外したい変数の影響を，あらかじめ平均的に考慮することに相当する．なるほど，腑に落ちた． 定常過程と非定常過程． 強定常：確率過程の確率分布が時点によらず一定． 弱定常：確率過程の平均・分散・自己共分散・自己相関係数が時点によらず一定． 時系列分析ひとめぐり 五数要約：最小値・25%値・中央値・75%値・最大値．Rだとsummary()で，Python（pandas）だとDataFrame.describe()で確認できる． 自己相関係数．． 時系列データの成分分解：レベル＋傾き＋周期． ホルト・ウィンタース法．指数加重型移動平均（EWMA：Exponentially Weighted Moving Average）の一種．Rでは，HoltWinters()関数で実施できる． 残差を確認して，モデルの妥当性を分析する．残差の自己相関により，周期性を上手く捉えられたか確認できる． 状態空間モデルの解法の分類： 線形・ガウス型状態空間モデル： 一括型解法：ウィナーフィルタ． 逐次型解法：カルマンフィルタ． 一般状態空間モデル： 一括型解法：MCMCを利用した解法． 逐次型解法：粒子フィルタ． 状態空間モデル 方程式による表現： 状態方程式1： 観測方程式： 確率分布による表現： 状態方程式に相当： 観測方程式に相当： 状態空間モデルの同時分布： ARIMAモデルと状態空間モデルは密接な関係がある． 状態空間モデルにおける状態の推定 状態の周辺事後分布： ：平滑化分布 ：フィルタリング分布 ：予測分布 フィルタリング分布： モデルの状態方程式2と，以下の一期先予測分布，一期先予測尤度からなる．直感的には，一期先予測分布を観測方程式で補正して，一期先予測尤度で正規化したもの． 一期先予測分布： 一期先予測尤度3： 予測分布： 定式化： 一期先予測分布をもとに，状態方程式に基いて時間順方向への遷移を解繰り返したもの． 平滑化分布： 定式化：...</p>-->
+      <p><p><a href="http://amzn.asia/bTrcjv0">萩原淳一郎，基礎からわかる時系列分析 ―Rで実践するカルマンフィルタ・MCMC・粒子フィルター</a>をざっと読んで状態空間モデルを勉強した．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">July 7, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#statistics">Statistics</a>, 
+        
+      
+        
+        <a href="/categories/#books">Books</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/06/30/dmm-english">DMM英会話受講メモ：2018年6月</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>DMM英会話の受講メモ．12回/30日なので，4割程度の実施率．仕事の忙しさを考えると，このあたりが現実的な数字かもしれない． 20180609 Gamers Push Limits of Scientific Research tweak：a slight change to something in order to improve it invaluable：extremely useful outreach：the practice of providing help and advice to people before they have to ask for it 二週間ぶりの英会話．口が全然動かない．リハビリが必要． 20180610 Things Your Dog Might Know tilt: 傾き magnetism: 磁気 breed: 品種 deductive:...</p>-->
+      <p><p><a href="http://eikaiwa.dmm.com/">DMM英会話</a>の受講メモ．12回/30日なので，4割程度の実施率．仕事の忙しさを考えると，このあたりが現実的な数字かもしれない．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">June 30, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#english">English</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/2018/06/22/dead-kernel-lgbm">Light GBMを使うとOMPエラーでカーネルが死ぬ</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <!--<p>業務でも趣味でもよくLight GBMにお世話になっているが，この前手元のMacで使おうとしたらDead kernelエラーが発生した．condaで入れたLight GBMを一旦アンインストールして，Installation Guide - LightGBMに従って再インストールしたら解決した． 環境 macOS Sierra：10.12.6 Python：3.6.5 lightgbm：2.1.0 症状 解決策 公式のインストールガイドに従わず，$ conda install -c conda-forge lightgbmで落としたのが原因っぽい．一旦$ conda uninstall lightgbmして，Installation Guide - LightGBMに従ってインストールした． なお，Installation Guide - LightGBMではexport CXX=g++-7 CC=gcc-7だが，手元の環境に合わせてバージョンを変更する必要があることに注意． 参考 OMP: Error #15: Initializing libiomp5.dylib, but found libiomp5.dylib already initialized. #1715 - GitHub Installation Guide - LightGBM...</p>-->
+      <p><p>業務でも趣味でもよく<a href="https://github.com/Microsoft/LightGBM">Light GBM</a>にお世話になっているが，この前手元のMacで使おうとしたら<code class="highlighter-rouge">Dead kernel</code>エラーが発生した．<code class="highlighter-rouge">conda</code>で入れたLight GBMを一旦アンインストールして，<a href="https://lightgbm.readthedocs.io/en/latest/Installation-Guide.html">Installation Guide - LightGBM</a>に従って再インストールしたら解決した．</p>
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">June 22, 2018</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/categories/#machine learning">Machine learning</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+	<p>
+    
+			
+			<a class="newer-posts" href="/page3">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			
+		
+		<span class="page-number">Page 4 of 15</span>
+		
+		<a class="newer-posts" href="/page5">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+		
+	</p>
+</nav>
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

@@ -1,0 +1,4 @@
+algolia.sh
+.sass-cache/
+*.swp
+.DS_Store

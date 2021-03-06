@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>萩原淳一郎，基礎からわかる時系列分析</title>
+  <meta name="description" content="萩原淳一郎，基礎からわかる時系列分析 ―Rで実践するカルマンフィルタ・MCMC・粒子フィルターをざっと読んで状態空間モデルを勉強した．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="萩原淳一郎，基礎からわかる時系列分析 ―Rで実践するカルマンフィルタ・MCMC・粒子フィルターをざっと読んで状態空間モデルを勉強した．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="萩原淳一郎，基礎からわかる時系列分析" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2018-06-24-berries.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="萩原淳一郎，基礎からわかる時系列分析">
+  <meta name="twitter:description" content="萩原淳一郎，基礎からわかる時系列分析 ―Rで実践するカルマンフィルタ・MCMC・粒子フィルターをざっと読んで状態空間モデルを勉強した．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2018-06-24-berries.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2018/07/07/time-series">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2018-06-24-berries.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">萩原淳一郎，基礎からわかる時系列分析</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">July 7, 2018</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#statistics">Statistics</a>, 
+    
+  
+    
+    <a href="/categories/#books">Books</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p><a href="http://amzn.asia/bTrcjv0">萩原淳一郎，基礎からわかる時系列分析 ―Rで実践するカルマンフィルタ・MCMC・粒子フィルター</a>をざっと読んで状態空間モデルを勉強した．</p>
+
+<p>線形・ガウス型の状態空間モデルの場合はカルマンフィルタで解析的に解けるが，一般状態空間モデルの場合は，フィルタリング分布・予測分布・平滑化分布の積分計算を必ずしも解析的に解けない．そこで，MCMCを用いた一括解法や，粒子フィルタによる逐次解法が提案されている．本書のレポジトリは，<a href="https://github.com/hagijyun/tsbook">hagijyun/tsbook - GitHub</a>．</p>
+
+<p>カルマンフィルタ，MCMC，粒子フィルタの関係を理解することができた．次は<a href="http://amzn.asia/1Y3ckY8">PRMLの下巻</a>を読み返して，MCMCの理論的背景を押さえておきたい．</p>
+
+<h1 id="確率統計に関する基礎">確率・統計に関する基礎</h1>
+
+<ul>
+  <li>周辺化消去は，同時分布から外したい変数の影響を，あらかじめ平均的に考慮することに相当する．なるほど，腑に落ちた．</li>
+  <li>定常過程と非定常過程．
+    <ul>
+      <li>強定常：確率過程の確率分布が時点<script type="math/tex">t</script>によらず一定．</li>
+      <li>弱定常：確率過程の平均・分散・自己共分散・自己相関係数が時点<script type="math/tex">t</script>によらず一定．</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="時系列分析ひとめぐり">時系列分析ひとめぐり</h1>
+
+<ul>
+  <li>五数要約：最小値・25%値・中央値・75%値・最大値．Rだと<code class="highlighter-rouge">summary()</code>で，Python（pandas）だと<code class="highlighter-rouge">DataFrame.describe()</code>で確認できる．</li>
+  <li>自己相関係数．<script type="math/tex">\frac{\mathrm{Cov}[X_{t}, X_{t-k} ]}{\sqrt{\mathrm{Var}[X_t]}\sqrt{\mathrm{Var}[X_{t-k}]}}</script>．</li>
+  <li>時系列データの成分分解：レベル＋傾き＋周期．</li>
+  <li>ホルト・ウィンタース法．指数加重型移動平均（EWMA：Exponentially Weighted Moving Average）の一種．Rでは，<code class="highlighter-rouge">HoltWinters()</code>関数で実施できる．</li>
+  <li>残差を確認して，モデルの妥当性を分析する．残差の自己相関により，周期性を上手く捉えられたか確認できる．</li>
+  <li>状態空間モデルの解法の分類：
+    <ul>
+      <li>線形・ガウス型状態空間モデル：
+        <ul>
+          <li>一括型解法：ウィナーフィルタ．</li>
+          <li>逐次型解法：カルマンフィルタ．</li>
+        </ul>
+      </li>
+      <li>一般状態空間モデル：
+        <ul>
+          <li>一括型解法：MCMCを利用した解法．</li>
+          <li>逐次型解法：粒子フィルタ．</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="状態空間モデル">状態空間モデル</h1>
+
+<ul>
+  <li>方程式による表現：
+    <ul>
+      <li>状態方程式<sup id="fnref:state"><a href="#fn:state" class="footnote">1</a></sup>：<script type="math/tex">\mathbf{x}_t = f ( \mathbf{x}_{t-1}, \mathbf{w}_{t-1})</script></li>
+      <li>観測方程式：<script type="math/tex">y_t = h ( \mathbf{x}_{t}, v_{t})</script></li>
+    </ul>
+  </li>
+  <li>確率分布による表現：
+    <ul>
+      <li>状態方程式に相当：<script type="math/tex">p(\mathbf{x}_t \mid \mathbf{x}_{0:t-1}, y_{0:t-1}) = p(\mathbf{x}_t \mid \mathbf{x}_{t-1})</script></li>
+      <li>観測方程式に相当：<script type="math/tex">p(y_t \mid \mathbf{x}_{0:t}, y_{0:t-1}) = p(y_t\mid \mathbf{x}_{t})</script></li>
+    </ul>
+  </li>
+  <li>状態空間モデルの同時分布：<script type="math/tex">p(\mathbf{x}_{0:T}, y_{0:T}) = p(\mathbf{x}_0) \prod_{t=1}^{T} p(y_t\mid \mathbf{x}_{t}) p(\mathbf{x}_t \mid \mathbf{x}_{t-1})</script></li>
+  <li>ARIMAモデルと状態空間モデルは密接な関係がある．</li>
+</ul>
+
+<h1 id="状態空間モデルにおける状態の推定">状態空間モデルにおける状態の推定</h1>
+
+<ul>
+  <li>状態の周辺事後分布：<script type="math/tex">p(\mathbf{x}_{t'} \mid y_{1:t}) = \int p(\mathbf{x}_{0}, \mathbf{x}_{1}, \dots \mathbf{x}_{t'}, \dots \mid y_{1:t}) d\mathbf{x}_{t'以外}</script>
+    <ul>
+      <li><script type="math/tex">% <![CDATA[
+t' < t %]]></script>：平滑化分布</li>
+      <li><script type="math/tex">t' = t</script>：フィルタリング分布</li>
+      <li><script type="math/tex">t' > t</script>：予測分布</li>
+    </ul>
+  </li>
+  <li>フィルタリング分布：<script type="math/tex">p(\mathbf{x}_{t} \mid y_{1:t}) = p(\mathbf{x}_{t} \mid y_{1:t-1}) \frac{p(y_{t} \mid \mathbf{x}_{t})}{p(y_{t} \mid y_{1:t-1})}</script>
+    <ul>
+      <li>モデルの状態方程式<script type="math/tex">p(y_{t} \mid \mathbf{x}_{t})</script><sup id="fnref:mislead"><a href="#fn:mislead" class="footnote">2</a></sup>と，以下の一期先予測分布<script type="math/tex">p(\mathbf{x}_{t} \mid y_{1:t-1})</script>，一期先予測尤度<script type="math/tex">p(y_{t} \mid y_{1:t-1})</script>からなる．直感的には，一期先予測分布を観測方程式で補正して，一期先予測尤度で正規化したもの．</li>
+      <li>一期先予測分布： <script type="math/tex">p(\mathbf{x}_{t} \mid y_{1:t-1}) = \int p(\mathbf{x}_{t} \mid \mathbf{x}_{t-1}) p(\mathbf{x}_{t} \mid y_{1:t-1}) d\mathbf{x}_{t-1}</script></li>
+      <li>一期先予測尤度<sup id="fnref:likelihood"><a href="#fn:likelihood" class="footnote">3</a></sup>：<script type="math/tex">p(y_{t} \mid y_{1:t-1}) = \int p(y_t \mid \mathbf{x}_{t} ) p(\mathbf{x}_{t} \mid y_{1:t-1}) d\mathbf{x}_{t-1}</script></li>
+    </ul>
+  </li>
+  <li>予測分布：
+    <ul>
+      <li>定式化：<script type="math/tex">p(\mathbf{x}_{t+k} \mid y_{1:t}) = \int p(\mathbf{x}_{t+k} \mid \mathbf{x}_{t+k-1}) p(\mathbf{x}_{t+k-1} \mid y_{1:t}) d\mathbf{x}_{t+k-1}</script></li>
+      <li>一期先予測分布をもとに，状態方程式に基いて時間順方向への遷移を<script type="math/tex">k-1</script>解繰り返したもの．</li>
+    </ul>
+  </li>
+  <li>平滑化分布：
+    <ul>
+      <li>定式化：<script type="math/tex">p(\mathbf{x}_{t} \mid y_{1:T}) = p(\mathbf{x}_{t} \mid y_{1:t}) \int \frac{p(\mathbf{x}_{t+1} \mid \mathbf{x}_{t})}{p(\mathbf{x}_{t+1} \mid y_{1:t})} p(\mathbf{x}_{t+1} \mid y_{1:T}) d \mathbf{x}_{t+1}</script></li>
+      <li><script type="math/tex">p(\mathbf{x}_{t} \mid y_{1:t})</script>はフィルタリング分布，<script type="math/tex">p(\mathbf{x}_{t+1} \mid \mathbf{x}_{t})</script>は状態方程式，<script type="math/tex">p(\mathbf{x}_{t+1} \mid y_{1:t})</script>は予測分布，<script type="math/tex">p(\mathbf{x}_{t+1} \mid y_{1:T})</script>は1時点先の平滑化分布．</li>
+      <li>平滑化分布は，フィルタリング分布を再帰的に補正したもの．</li>
+    </ul>
+  </li>
+  <li>パラメータ集合を<script type="math/tex">\mathbf{\theta}</script>とすると，対数尤度は<script type="math/tex">l(\mathbf{\theta}) = \sum_{t=1}^{T} \mathrm{log} p( y_t \mid y_{1:t-1} ; \mathbf{\theta})</script>．
+    <ul>
+      <li>一期先予測尤度が含まれているため，特定のデータに基づきながら，過去の情報のみから見洗の値を当てる際の予測能力を踏まえた指標になっている．</li>
+      <li>この式には状態が登場しないため，周辺尤度あるいは対数周辺尤度と呼ばれることがある．</li>
+    </ul>
+  </li>
+  <li>状態空間モデルにおけるパラメータの扱い．
+    <ul>
+      <li><script type="math/tex">\mathbf{\theta}</script>が確率変数でない：<script type="math/tex">\mathrm{argmax}_{\mathbf{\theta}} l(\mathbf{\theta})</script>を準ニュートン法やEMアルゴリズムで求める．</li>
+      <li><script type="math/tex">\mathbf{\theta}</script>が確率変数：<script type="math/tex">\mathrm{argmax}_{\mathbf{\theta}} p(\mathbf{\theta} \mid y_{1:t}) \propto \mathrm{argmax}_{\mathbf{\theta}} \{ p(y_{1:t} \mid \mathbf{\theta} ) +  p(\mathbf{\theta} ) \}</script>をMAP推定で求める．</li>
+    </ul>
+  </li>
+  <li>パラメータを確率変数として扱う場合は，たとえもともと線形ガウス型の状態空間モデルであっても，一般状態空間モデルになる．つまり，ウィナーフィルタやカルマンフィルタでは直接解を求められない．</li>
+</ul>
+
+<h1 id="線形ガウス型状態空間モデルの一括解法">線形・ガウス型状態空間モデルの一括解法</h1>
+
+<ul>
+  <li>ウィナーフィルタは定常な時系列を前提としている．</li>
+  <li>ウィナーフィルタはスペクトル分解を使って定式化できる．詳細は割愛する．</li>
+</ul>
+
+<h1 id="線形ガウス型状態空間モデルの逐次解法">線形・ガウス型状態空間モデルの逐次解法</h1>
+
+<ul>
+  <li>カルマンフィルタは，推定すべきデータの真値と点推定値の間の平均二乗誤差を最小にする逐次推定法である．
+    <ul>
+      <li>状態方程式：<script type="math/tex">\mathbf{x}_t = \mathbf{G}_t \mathbf{x}_{t-1} + \mathbf{w}_t</script>，<script type="math/tex">\mathbf{w}_t \sim \mathcal{N} (\mathbf{0}, \mathbf{W}_t)</script></li>
+      <li>観測方程式：<script type="math/tex">y_t = \mathbf{F}_t \mathbf{x}_t + v_t</script>，<script type="math/tex">v_t \sim \mathcal{N} (0, V_t)</script></li>
+      <li>初期状態：<script type="math/tex">\mathbf{x}_0 \sim \mathcal{N} (\mathbf{m}_0, \mathbf{C}_0)</script></li>
+      <li>パラメータ：<script type="math/tex">\mathbf{\theta} = \{\mathbf{G}_t, \mathbf{F}_t, \mathbf{W}_t, V_t, \mathbf{m}_0, \mathbf{C}_0 \}</script></li>
+    </ul>
+  </li>
+  <li>上記の前提でフィルタリング分布・予測分布・平滑化分布を計算すると，逐次更新式を得る．詳細は割愛する．</li>
+</ul>
+
+<h1 id="一般状態空間モデルの一括解法">一般状態空間モデルの一括解法</h1>
+
+<ul>
+  <li>フィルタリング分布，予測分布，および平滑化分布には多次元の積分計算が含まれる．線形・ガウス型状態空間モデルの場合は，<strong>幸運にも</strong> 解析的に解けたが，一般状態空間モデルの場合は必ずしも解析的に解けないため，工夫が必要：
+    <ul>
+      <li>グリッドフィルタ：数値積分を活用するアプローチ．</li>
+      <li>重点サンプリング：ラプラス近似を利用して，一般状態空間モデルにおける分布を線形・ガウス型状態空間モデルにおける分布で近似するアプローチ．</li>
+      <li>MCMC（マルコフ連鎖モンテカルロ法；Markov chain Monte Carlo）：求めたい分布からのサンプルを直接生成するアプローチ．</li>
+    </ul>
+  </li>
+  <li>ギブス法によるMCMC：
+    <ol>
+      <li><script type="math/tex">\mathbf{\theta^{(0)}}</script>を初期化する．</li>
+      <li><strong>FOR</strong> <script type="math/tex">i = \{1, \dots, I \}</script>:
+        <ol>
+          <li><script type="math/tex">p ( \mathbf{x}_{0:T} \mid \mathbf{\theta} \! = \! \mathbf{\theta}^{(i-1)}, y_{1:T})</script>から<script type="math/tex">\mathbf{x}_{0:T}^{(i)}</script>をサンプリングする．</li>
+          <li><script type="math/tex">p ( \mathbf{\theta} \mid \mathbf{x}_{0:T} \! = \! \mathbf{x}_{0:T}^{(i)}, y_{1:T})</script>から<script type="math/tex">\mathbf{\theta}^{(i)}</script>をサンプリングする．</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li><code class="highlighter-rouge">1-1</code>の試行において，線形・ガウス型状態空間モデルに従う場合は，FFBS（前向きフィルタ後ろ向きサンプリング；Forward Filtering Backward Sampling）で効率的にサンプリングできる．</li>
+  <li>FFBSアルゴリズムは，時間順方向にカルマンフィルタをかけたあとで，時間逆方向にカルマン平滑化に基づいたサンプリングを行う．シミュレーション平滑化と呼ばれることもある．</li>
+</ul>
+
+<h1 id="一般状態空間モデルの逐次解法">一般状態空間モデルの逐次解法</h1>
+
+<ul>
+  <li>カルマンフィルタの拡張：
+    <ul>
+      <li>拡張カルマンフィルタ</li>
+      <li>アンセンテッドカルマンフィルタ</li>
+      <li>アンサンブルカルマンフィルタ</li>
+      <li><strong>粒子フィルタ</strong>：本書で紹介する．</li>
+    </ul>
+  </li>
+  <li>重点サンプリング
+    <ul>
+      <li><script type="math/tex">p(x)</script>からサンプリング可能な場合：<script type="math/tex">\mathrm{E}[ f(\mathbf{x})] \approx \frac{1}{N}\sum_{n=1}^{N} f (\mathbf{x}^{(n)})</script></li>
+      <li><script type="math/tex">p(x)</script>の代わりに<script type="math/tex">q(x)</script>からサンプリングする場合：<script type="math/tex">\mathrm{E}[ f(\mathbf{x})] \approx \frac{1}{N}\sum_{n=1}^{N} w(\mathbf{x}^{(n)}) f (\mathbf{x}^{(n)})</script></li>
+      <li>ただし，<script type="math/tex">w(\mathbf{x}^{(n)}) = \frac{p(\mathbf{x}^{(n)})}{q(\mathbf{x}^{(n)})}</script>を満たし，重点関数と呼ばれる．</li>
+    </ul>
+  </li>
+  <li>粒子フィルタリング：
+    <ol>
+      <li>時点<script type="math/tex">t-1</script>のフィルタリング分布：<script type="math/tex">\{ \mathbf{x}_{t-1}^{(n)}, w_{t-1}^{(n)} \}_{n=1}^N</script></li>
+      <li>時点<script type="math/tex">t</script>において，<strong>FOR</strong> <script type="math/tex">n = \{1, \dots, N \}</script>：
+        <ol>
+          <li>実現値を更新：<script type="math/tex">q \left( \mathbf{x}_{t} \mid \mathbf{x}_{0:t-1}^{(n)}, y_{1:t} \right)</script>から<script type="math/tex">\mathbf{x}_{t}^{(n)}</script>をサンプリング．</li>
+          <li>重みを更新：<script type="math/tex">w_t^{(n)} \leftarrow \frac{p\left(\mathbf{x}_t^{(n)} \mid \mathbf{x}_{t-1}^{(n)} \right) p \left( y_t \mid y_{1:t-1}, \mathbf{x}_t^{(n)} \right)}{q\left( \mathbf{x}_t^{(n)} \mid \mathbf{x}_{0:t-1}^{(n)}, y_{1:t} \right)}</script>．</li>
+        </ol>
+      </li>
+      <li>重みの規格化：<script type="math/tex">w_t^{(n)} \leftarrow \frac{w_t^{(n)}}{\sum_{n=1}^N w_{t}^{(n)}}</script></li>
+      <li><script type="math/tex">w_t^{(n)}</script>大きさに応じて，<script type="math/tex">x_t^{(n)}</script>を復元抽出．</li>
+      <li>時点<script type="math/tex">t</script>のフィルタリング分布：<script type="math/tex">　\{ \mathbf{x}_t^{(n)}, w_{t}^{(n)} \}_{n=1}^{N}</script>．</li>
+    </ol>
+  </li>
+  <li>フィルタリング分布の一般式と，次のように対応している．
+    <ul>
+      <li>一期先予測分布：<script type="math/tex">w_{t-1}^{(n)} p \left(\mathbf{x}_t^{(n)} \mid \mathbf{x}_{t-1}^{(n)} \right)</script></li>
+      <li>一期先予測尤度：重みの規格化．</li>
+      <li>フィルタリング分布：一期先予測分布<script type="math/tex">w_{t-1}^{(n)} p \left(\mathbf{x}_t^{(n)} \mid \mathbf{x}_{t-1}^{(n)} \right)</script>を<script type="math/tex">p\left( y_t \mid y_{1:t-1}, \mathbf{x}_{t}^{(n)} \right)</script>で補正<sup id="fnref:particle"><a href="#fn:particle" class="footnote">4</a></sup>．</li>
+    </ul>
+  </li>
+  <li>提案分布<script type="math/tex">q \left(\mathbf{x}_{t}^{(n)} \mid \mathbf{x}_{t-1}^{(n)} \right)</script>として，状態方程式<script type="math/tex">p \left(\mathbf{x}_{t}^{(n)} \mid \mathbf{x}_{t-1}^{(n)} \right)</script>を用いると，重みの更新式は非常に簡単になる．この条件の粒子フィルタをブートストラップフィルタ，あるいはモンテカルロフィルタと呼ぶ．</li>
+  <li>粒子数が有限の場合，リサンプリングにより近似性能の劣化を防ぐことができる．</li>
+  <li>粒子予測：重みを更新せず，実現値<script type="math/tex">x_{t+k}^{(n)}</script>を状態方程式で逐次的に更新することで，未来の点を予測できる．これは，粒子フィルタリングにおいて観測値<script type="math/tex">y_{t+k}</script>が存在しない（欠測）場合と等価．</li>
+  <li>粒子平滑化：
+    <ul>
+      <li>北川アルゴリズム：過去の粒子に対して，現時点の規範でリサンプリングする．原理的には任意の過去の時点まで平滑化可能だが，リサンプリングによる粒子の退化が問題となる．SIR平滑化，固定ラグ平滑化，廉価版平滑化とも呼ばれる．</li>
+      <li>前向きフィルタ後ろ向きシミュレーション（FFBS：Forward Filtering Backward Simulation）アルゴリズム：フィルタリング分布の<script type="math/tex">w_t^{(n)}</script>を再帰的に補正する．</li>
+    </ul>
+  </li>
+  <li>推定精度向上のためのテクニック：
+    <ul>
+      <li>補助粒子フィルタ：現在の観測値の影響を考慮したリサンプリング処理が，実現値や重み更新より<strong>先に</strong>行われる．</li>
+      <li>リュウ・ウエストフィルタ：補助粒子フィルタの適用例．粒子フィルタを用いて，状態とパラメータをあわせて推定する．カーネル平滑化を用いて，パラメータの推定値の分散を増大させることなく実現値をリフレッシュする．</li>
+      <li>ラオ・ブラックウェル化：一般化線形モデルにおいて，部分的に線形・ガウス型状態空間モデルが成り立っているとき，カルマンフィルタと粒子フィルタを組み合わせる手法．例えば，線形・ガウス型状態空間モデルのパラメータが未知の場合などがこれに該当する．</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="一般状態空間モデルにおける応用的な分析例">一般状態空間モデルにおける応用的な分析例</h1>
+
+<ul>
+  <li>本章では，構造変化について扱う．
+    <ul>
+      <li>変化点が既知：カルマンフィルタ</li>
+      <li>変化点が未知：粒子フィルタ，MCMC</li>
+    </ul>
+  </li>
+  <li>未知の変化点を実時間で検出するために，粒子フィルタを用いる．状態雑音の分散に対する時変の倍率が特定の閾値を超えた際に，構造変化が発生したと考える．</li>
+</ul>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:state">
+      <p>システム方程式とも呼ばれる． <a href="#fnref:state" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:mislead">
+      <p>書籍中，<script type="math/tex">p(y_t \mid \mathbf{x}_t)</script>を尤度と呼ぶことがあり，一期先予測尤度と混同してハマった． <a href="#fnref:mislead" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:likelihood">
+      <p>なぜ尤度と呼ぶんだろう．まだ腑に落ちてない． <a href="#fnref:likelihood" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:particle">
+      <p>一般的な状態空間モデルの定式化では<strong>一期先予測分布を観測方程式で補正</strong>していた． <a href="#fnref:particle" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

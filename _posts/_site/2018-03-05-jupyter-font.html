@@ -1,0 +1,11 @@
+<p><a href="http://jupyter.org/">Jupyter notebook</a>のコードブロックを等幅フォントにしたい．<a href="https://github.com/dunovank/jupyter-themes">Jupytertheme</a>を使っても良いが，拡張機能のボタンが消えてしまうことがあり不便．<code class="highlighter-rouge">~/.jupyter/custom/custom.css</code>をいじって変更した．</p>
+
+<h1 id="section">参考</h1>
+<ul>
+  <li><a href="http://shu87.hateblo.jp/entry/2017/08/30/003224">Jupyter notebookを等幅フォントにする - 元文学部統計学専攻学生の備忘録</a></li>
+  <li><a href="https://qiita.com/hiropignis/items/f2192d86971746b849e8">Jupyter Notebookを自分仕様に：背景，アイコンの変更 - Qiita</a></li>
+</ul>
+
+<h1 id="section-1">手順</h1>
+
+<p><code class="highlighter-rouge">~/.jupyter/custom/custom.css</code>に，<code class="highlighter-rouge">.CodeMirror pre, .output pre { font-family: Monaco, monospace; }</code>を追記して，Jupyterを再起動する．</p>

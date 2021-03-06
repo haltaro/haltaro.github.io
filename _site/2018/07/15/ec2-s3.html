@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>EC2にS3をマウントする</title>
+  <meta name="description" content="AWSのEC2（Ubuntu 16.04 LTS）に，S3をマウントする手順をメモしておく．前提として，EC2インスタンスに対して，SSH接続済みとする．">
+  
+  <meta name="author" content="haltaro">
+  <meta name="copyright" content="&copy; haltaro 2019">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/zenburn.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+  <!-- Mathjax -->
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- BotUI -->
+  <link rel="stylesheet" href="/css/botui.min.css" >
+  <link rel="stylesheet" href="/css/botui-theme-default.css" >
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <!--
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+-->
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="AWSのEC2（Ubuntu 16.04 LTS）に，S3をマウントする手順をメモしておく．前提として，EC2インスタンスに対して，SSH接続済みとする．" />
+  <meta property="og:url" content="http://0.0.0.0:4000" />
+  <meta property="og:site_name" content="Memotaro" />
+  <meta property="og:title" content="EC2にS3をマウントする" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/2018-07-15-cloud.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="EC2にS3をマウントする">
+  <meta name="twitter:description" content="AWSのEC2（Ubuntu 16.04 LTS）に，S3をマウントする手順をメモしておく．前提として，EC2インスタンスに対して，SSH接続済みとする．">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/2018-07-15-cloud.jpg">
+  <meta name="twitter:url" content="http://0.0.0.0:4000">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/2018/07/15/ec2-s3">
+  <link rel="alternate" type="application/rss+xml" title="Memotaro" href="http://0.0.0.0:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Memotaro">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+          <li class="nav-link"><a href="/categories/">Categories</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/projects/">Projects</a>
+          
+        
+          
+          <li class="nav-link"><a href="/search/">Search</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2018-07-15-cloud.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">EC2にS3をマウントする</h1>
+      <!--<p class="info">by <strong></strong></p>-->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">July 15, 2018</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/categories/#aws">Aws</a>, 
+    
+  
+    
+    <a href="/categories/#linux">Linux</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p><a href="https://aws.amazon.com/jp/">AWS</a>のEC2（Ubuntu 16.04 LTS）に，S3をマウントする手順をメモしておく．前提として，EC2インスタンスに対して，SSH接続済みとする．</p>
+
+<h1 id="環境">環境</h1>
+
+<ul>
+  <li>Ubuntu Server 16.04 LTS (HVM), SSD Volume Type</li>
+</ul>
+
+<h1 id="手順">手順</h1>
+
+<h2 id="s3-bucketを準備する">S3 bucketを準備する</h2>
+
+<p>マウントしたいEC2インスタンスと同じリージョンを選択すること．</p>
+
+<h2 id="iamロールの準備">IAMロールの準備</h2>
+
+<ul>
+  <li>信頼関係：
+    <ul>
+      <li>ロールを利用するサービス：EC2</li>
+      <li>ユースケースの選択：EC2</li>
+    </ul>
+  </li>
+  <li>アクセス権限
+    <ul>
+      <li>ポリシー名：AmazonS3FullAccess</li>
+    </ul>
+  </li>
+</ul>
+
+<p>作成したロールをEC2インスタンスに割り当てる．</p>
+
+<h2 id="s3fs-fuseのインストール"><code class="highlighter-rouge">s3fs-fuse</code>のインストール</h2>
+
+<script src="https://gist.github.com/haltaro/041eeaab46a6ed5d111ba8b4da742759.js"></script>
+
+<p>以下のコマンドでS3をマウントできる．</p>
+
+<script src="https://gist.github.com/haltaro/fb68727dfc45c7a9ca45cc2373e180b5.js"></script>
+
+<p>なお，<code class="highlighter-rouge">uid</code>と<code class="highlighter-rouge">gid</code>は<code class="highlighter-rouge">id ubuntu</code>で確認した値を設定すること．</p>
+
+<h2 id="マウントの自動化">マウントの自動化</h2>
+
+<p>ここで結構ハマった．<code class="highlighter-rouge">rc.local</code>で設定する方法で実現したかったが，どうしてもうまくいかなかったので，<code class="highlighter-rouge">.bashrc</code>で設定した．参考のため，以下に試行錯誤の記録を残す．</p>
+
+<p><a href="https://qiita.com/shicky1121/items/e19b50308c79e5a6081e">EC2インスタンスにS3をマウントする - Qiita</a>を参考に，<code class="highlighter-rouge">/etc/rc.local</code>に以下を追記した．</p>
+
+<script src="https://gist.github.com/haltaro/d0d44e135b154d3a33ff0369d9d20deb.js"></script>
+
+<p>Ubuntu 16.04だと，上記の方法では起動時に実行されないようだ．<a href="https://qiita.com/msrks/items/5201ae15d0e1f8de5946">Ubuntu16.04でスクリプトを起動時に自動実行する - Qiita</a>を参考にサービスファイルを作成したが，何故かうまく動作しなかった．</p>
+
+<p><a href="https://askubuntu.com/questions/765120/after-upgrade-to-16-04-lts-rc-local-is-not-executing-a-command">After upgrade to 16.04 LTS rc.local is not executing a command - StackExchange</a>を参考に，以下のように変更してみた．</p>
+
+<script src="https://gist.github.com/haltaro/47b8ef513273903bddd0e4f4a378eac2.js"></script>
+
+<p>そして，<code class="highlighter-rouge">/etc/rc.local</code>の一行目を<code class="highlighter-rouge"><span class="c">#!/bin/sh -e</span></code>から<code class="highlighter-rouge"><span class="c">#!/bin/bash</span></code>に変更する．上記でもうまくいかないので，<code class="highlighter-rouge">~/.bashrc</code>に以下を追記した．</p>
+
+<script src="https://gist.github.com/haltaro/339ab269a4d200247137a6635e0f26c2.js"></script>
+
+<p>うまくいった．bashを起動するたびにマウントされちゃうので，あまり良くない気がする．</p>
+
+<h1 id="参考">参考</h1>
+
+<ul>
+  <li><a href="https://qiita.com/shicky1121/items/e19b50308c79e5a6081e">EC2インスタンスにS3をマウントする - Qiita</a></li>
+  <li><a href="https://qiita.com/msrks/items/5201ae15d0e1f8de5946">Ubuntu16.04でスクリプトを起動時に自動実行する - Qiita</a></li>
+  <li><a href="https://askubuntu.com/questions/765120/after-upgrade-to-16-04-lts-rc-local-is-not-executing-a-command">After upgrade to 16.04 LTS rc.local is not executing a command - StackExchange</a></li>
+</ul>
+
+</article>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<!--
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+-->
+
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'memotaro-haltaro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Memotaro</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+          <li class="nav-link"><a href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/projects/">Projects</a>
+        
+        
+        
+          <li class="nav-link"><a href="/search/">Search</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:mail.to.haltaro[at]gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">mail.to.haltaro[at]gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/haltaro" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">github.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://qiita.com/haltaro" title="Follow me on Qiita">
+              <i class="fa fa-search"></i>
+              <span class="username">qiita.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://kaggle.com/haltaro" title="Follow me on Kaggle">
+              <i class="fa fa-space-shuttle"></i>
+              <span class="username">kaggle.com/haltaro</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://atcoder.jp/users/haltaro" title="Compete with me on AtCoder">
+              <i class="fa fa-horse-head"></i>
+              <span class="username">atcoder.jp/users/haltaro</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">I'm haltaro, a data scientist at an advertising agency in Tokyo, Japan. I love machine learning, marketing science, network engineering and shiba-inu:)</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+
+
+    
+
+  </body>
+
+</html>

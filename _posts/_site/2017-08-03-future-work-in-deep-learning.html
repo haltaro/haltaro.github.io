@@ -1,0 +1,67 @@
+<p>くだらないものばかりだけど，今後やりたいことをメモしておく．</p>
+
+<h1 id="section">1. 画像処理系</h1>
+
+<h2 id="a-">1.a 君の名は。の三葉の中身を顔画像から分類</h2>
+
+<p>組紐の有無とか眉毛の角度とかを学習してくれたら面白い．アニメ画像の顔検出は<a href="http://opencv.org/">OpenCV</a>で自動化できるので，データの準備はそこまで大変じゃない．</p>
+
+<ul>
+  <li><a href="http://ultraist.hatenablog.com/entry/20110718/1310965532">OpenCVによるアニメ顔検出ならlbpcascade_animeface.xml</a></li>
+</ul>
+
+<h2 id="b-">1.b スラムダンクの赤木と高砂を顔画像から分類</h2>
+
+<p>「桜木がAIなら湘北が勝ってた」あるいは「AIでも見間違うから桜木のミスはしょうがない」と，結果がどちらに転んでも面白い．課題は，画像データの準備と，ラベル数の偏り．</p>
+
+<h2 id="c-">1.c 顔画像から実子判定</h2>
+
+<p>数年前，DNA鑑定が大流行したので，ニーズはありそう．実子であれば，両親の面影が顔に顕れるはずだし，この類のタスクはdeep learningの得意技の気がする．</p>
+
+<p>下記のキーワードで，盛んに研究が行われている．</p>
+
+<ul>
+  <li><code class="highlighter-rouge">kinship identification</code></li>
+  <li><code class="highlighter-rouge">kinship verification</code></li>
+  <li><code class="highlighter-rouge">kinship recognition</code></li>
+</ul>
+
+<p>また，非商用の研究用途に限れば，データセットは入手可能である．</p>
+
+<ul>
+  <li><a href="http://www1.ece.neu.edu/~yunfu/research/Kinface/Kinface.htm">UB KinFace Database</a></li>
+</ul>
+
+<h2 id="d-cyclegan">1.d CycleGANで柴犬画像生成</h2>
+
+<p>UCバークレー発の<a href="https://github.com/junyanz/CycleGAN">CycleGAN</a>を柴犬に適用する．以下の記事がわかりやすかった．</p>
+
+<ul>
+  <li><a href="http://qiita.com/TSY/items/18eb8e9b6342d368c445">画像変換手法CycleGANでパンダ生成モデルを作った話</a></li>
+</ul>
+
+<h1 id="section-1">2. 言語処理系</h1>
+
+<h2 id="a--1">2.a 普通自動車免許の正誤問題</h2>
+
+<p>なんとなく，学習しやすそうと感じたため．いかに著作権上の問題を回避しつつデータを集めるかが問題．</p>
+
+<h1 id="section-2">3. 強化学習系</h1>
+<h2 id="a--2">3.a カイジの限定ジャンケンを強化学習</h2>
+
+<p><a href="https://ja.wikipedia.org/wiki/%E8%B3%AD%E5%8D%9A%E9%BB%99%E7%A4%BA%E9%8C%B2%E3%82%AB%E3%82%A4%E3%82%B8#.E9.99.90.E5.AE.9A.E3.82.B8.E3.83.A3.E3.83.B3.E3.82.B1.E3.83.B3">限定ジャンケン</a>は，数学的にも面白い問題<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>．カードや星の売買を考慮すると問題が複雑になりすぎる<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>ので，「全体の手数の総数を見て，次の自分の手を決定する問題」程度に単純化してモデル化する．</p>
+
+<h2 id="b--1">3.b 確定拠出年金のスイッチング最適化</h2>
+
+<p>確定拠出年金で，どの商品にどの程度の割合で投資すれば，最大の利益を得られるか学習する．いろいろ調べたが，そもそものデータ収集が難しそう．</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>1992年の東大入試では，じゃんけんグリコに関する問題が出されたらしい（<a href="http://mathtrain.jp/grk">じゃんけんグリコの最適戦略と東大の問題</a>）． <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>限定ジャンケンの本質はそこな気がするので，残念だけど． <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
